@@ -14,10 +14,19 @@ body {
   flex-direction: column;
 }
 
+#game-setup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  max-height: 85vh;
+}
+
 #gameboard {
   margin: 10px;
   background-color: green;
-  height: 85vh;
+  max-height: 85vh;
   width: 250px;
   border-radius: 5px;
 }
@@ -31,7 +40,12 @@ body {
   align-items: center;
 }
 
-.guess-pegs {
+#secret {
+  visibility: hidden;
+}
+
+.guess-pegs,
+.colour {
   margin: 5px;
   background-color: white;
   width: 40px;
@@ -51,10 +65,27 @@ body {
   align-items: center;
 }
 
+#not-visible {
+  background-color: inherit;
+}
+
 .result-pegs {
   margin: 2px;
   background-color: white;
   height: 15px;
   width: 15px;
   border-radius: 50%;
+}
+
+.result-pegs-invisible {
+  background-color: inherit;
+}
+.colours {
+  margin: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
 }
