@@ -8,24 +8,51 @@
 }
 
 body {
-    height: 100vh;
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
 }
 
 #gameboard {
-    background-color: brown;
-    width: 600px;
-    position:relative;
-    border-radius: 5px;
+  margin: 10px;
+  background-color: brown;
+  height: 85vh;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 5px;
+}
+
+.row {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .guess-pegs {
-    background-color: white;
-    widht:30px;
-    heigth: 30px;
-    border-radius: 50%;
+  margin: 10px;
+  background-color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }
 
+.result-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: pink;
+  height: 100%;
+}
 
+.result-pegs {
+  margin: 5px;
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}

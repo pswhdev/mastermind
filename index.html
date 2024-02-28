@@ -1,56 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="mastermind, master mind, senha, code-breaking game, code cracking, colors guess, code game">
-    <meta name="description" content="Code breaking game where the colour combination has to be figured out based on hints.">
-    <meta name="author" content="Patricia Halley"> 
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="mastermind, master mind, senha, code-breaking game, code cracking, colors guess, code game"
+    />
+    <meta
+      name="description"
+      content="Code breaking game where the colour combination has to be figured out based on hints."
+    />
+    <meta name="author" content="Patricia Halley" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Mastermind</title>
-</head>
-<!-- Body -->
-<body>
+  </head>
+  <!-- Body -->
+  <body>
     <!-- Logo -->
     <h1>Mastermind</h1>
-<!-- Main -->
-<main>
-    <!-- Game -->
-    <div id="gameboard">
-        <div id= "secret" class="row"></div>
-        <div class="row">
-            <div class="guess-pegs"></div>
-            <div class="guess-pegs"></div>
-            <div class="guess-pegs"></div>
-            <div class="guess-pegs"></div>
-            <div class="result-panel">
-                <div class="result-pegs"></div>
-                <div class="result-pegs"></div>
-                <div class="result-pegs"></div>
-                <div class="result-pegs"></div>
-            </div>
+    <!-- Main -->
+    <main>
+      <!-- Game -->
+      <div id="gameboard">
+        <div id="secret" class="row"></div>
+        <div class="row" id="row1">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
         </div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
+        <div class="row" id="row2">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="guess-pegs">Colour1</div>
+          <div class="guess-pegs">Colour2</div>
+          <div class="guess-pegs">Colour3</div>
+          <div class="guess-pegs">Colour4</div>
+          <div class="result-panel">
+            <div class="result-pegs">Result1</div>
+            <div class="result-pegs">Result2</div>
+            <div class="result-pegs">Result3</div>
+            <div class="result-pegs">Result4</div>
+          </div>
+        </div>
         <div id="guess" class="row"></div>
-
-
-    </div>
-</main>
-<script src="assets/js/script.js"></script>
-</body>
-<!-- Footer -->
-<footer>
-
-</footer>
+      </div>
+    </main>
+    <script src="assets/js/script.js"></script>
+  </body>
+  <!-- Footer -->
+  <footer></footer>
 </html>
