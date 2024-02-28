@@ -1,3 +1,5 @@
+
+
 /* To remove default padding and margin.
 */
 *,
@@ -88,5 +90,29 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: aqua;
+}
+
+#colour1 {
+    background-color: blue;
+}
+
+#colour2{
+    background-color: red;
+}
+
+#colour3 {
+    background-color: orange;
+}
+
+#colour4 {
+    background-color: pink;
+}
+
+#colour5 {
+    background-color: green;
+}
+
+#colour6 {
+    background-color: purple;
 }
