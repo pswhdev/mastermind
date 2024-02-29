@@ -43,12 +43,13 @@ body {
   align-items: center;
 }
 
-#secret {
+/* ****** Remember to comment this back in ********
+/* #secret {
   visibility: hidden;
-}
+} */
 
 .guess-pegs,
-.colour {
+.color {
   margin: 5px;
   background-color: white;
   width: 40px;
@@ -84,7 +85,7 @@ body {
 .result-pegs-invisible {
   background-color: inherit;
 }
-.colours {
+.colors {
   margin: 20px;
   padding: 15px;
   display: flex;
@@ -94,26 +95,26 @@ body {
   background-color: aqua;
 }
 
-#colour1 {
+#color1 {
     background-color: blue;
 }
 
-#colour2{
+#color2{
     background-color: red;
 }
 
-#colour3 {
+#color3 {
     background-color: orange;
 }
 
-#colour4 {
+#color4 {
     background-color: pink;
 }
 
-#colour5 {
+#color5 {
     background-color: green;
 }
 
-#colour6 {
+#color6 {
     background-color: purple;
 }
