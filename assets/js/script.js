@@ -45,6 +45,8 @@ console.log(result);
 
 function colorPresentWrongPosition(Arr1, Arr2) {
   let sumOfSameColorWrongPosition = 0;
+  // To allow us to check if that same item of the Array was already counted as a perfect macth;
+  let sumOfPerfectMacth = 0;
   for (let i = 0; i < Arr1.length; i++) {
     if (Arr1[i] !== Arr2[i] && Arr1.includes(Arr2[i])) {
       sumOfSameColorWrongPosition++;
