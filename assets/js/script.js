@@ -31,32 +31,40 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 //Create two empty sums starting at 0: (same color and same position) and (color exists but not on that position);
 //if the color and position match push +1 to the sum of correct,  if color exists but not on the same position (use index), add  1 to the sum of existing color  not on that position
 
-function compareIfIsPerfectMatch(Arr1, Arr2) {
-  let sumOfPerfectMacth = 0;
-  for (let i = 0; i < Arr1.length; i++) {
-    if (Arr1[i] === Arr2[i]) {
-      sumOfPerfectMacth++;
+function checkResult(arr1, arr2) {
+  let sumOfCorrect = 0;
+  let sumOfWrongPlace = 0;
+  // To check if the index position on the array with the secret has already been counted and avoid double counting the same item
+  let ArrIndexOfWrongPlaceOnArr1 = [];
+  for (i = 0; i < arr1.length; i++) {
+    if (arr1[i] === arr2[i]) {
+      sumOfCorrect++;
+      // To check if the index position on the array with the secret has already been counted and avoid double counting the same item
+      ArrIndexOfWrongPlaceOnArr1.push(i);
+    } else if (
+      arr1.indexOf(arr2[i]) !== -1 &&
+      // Change to if it is present on the array of indexes of wrong places, check if it appears again in another position (case: random is [ 'orange', 'purple', 'orange', 'pink' ] it only shows
+      // Correct: 0
+      // Wrong Place: 1
+      // [ 0 ]
+      // { perfectMatch: 0, wrongPlace: 1 })
+      // To check if the index position on the array with the secret has already been counted and avoid double counting the same item
+      !ArrIndexOfWrongPlaceOnArr1.includes(arr1.indexOf(arr2[i]))
+    ) {
+      sumOfWrongPlace++;
+      // To check if the index position on the array with the secret has already been counted and avoid double counting the same item
+      ArrIndexOfWrongPlaceOnArr1.push(arr1.indexOf(arr2[i]));
     }
   }
-  return sumOfPerfectMacth;
+  console.log("Correct: " + sumOfCorrect);
+  console.log("Wrong Place: " + sumOfWrongPlace);
+  console.log(ArrIndexOfWrongPlaceOnArr1);
+  return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 }
-let result = compareIfIsPerfectMatch(newCode, arrOfPickedColors);
+
+let result = checkResult(newCode, arrOfPickedColors);
 console.log(result);
 
-function colorPresentWrongPosition(Arr1, Arr2) {
-  let sumOfSameColorWrongPosition = 0;
-  // To allow us to check if that same item of the Array was already counted as a perfect macth;
-  let sumOfPerfectMacth = 0;
-  for (let i = 0; i < Arr1.length; i++) {
-    if (Arr1[i] !== Arr2[i] && Arr1.includes(Arr2[i])) {
-      sumOfSameColorWrongPosition++;
-    }
-  }
-  return sumOfSameColorWrongPosition;
-}
-
-let result2 = colorPresentWrongPosition(newCode, arrOfPickedColors);
-console.log(result2);
 //Change the backgroung-color of the result-pegs:
 //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
 //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
