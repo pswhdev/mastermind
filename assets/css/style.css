@@ -26,6 +26,7 @@ body {
 }
 
 #gameboard {
+  flex-shrink: 0;
   margin: 10px;
   background-color: green;
   max-height: 85vh;
