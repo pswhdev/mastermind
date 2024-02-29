@@ -27,9 +27,6 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 //When the user clicks on the white peg on the appropriate row, he can pick a color;
 
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
-//Create a function to compare the colors on each position with the secret code.
-//Create two empty sums starting at 0: (same color and same position) and (color exists but not on that position);
-//if the color and position match push +1 to the sum of correct,  if color exists but not on the same position (use index), add  1 to the sum of existing color  not on that position
 
 // To check results
 function checkResult(arr1, arr2) {
