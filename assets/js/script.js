@@ -46,7 +46,7 @@ function generateSecretCode() {
   let code4 = document.getElementById('rowS-4');
   code4.style.backgroundColor = secretCode[3];
   
-  // return secretCode;
+  return secretCode;
 }
 
 //When the user presses 'new game' a new code is generated and stored in an Array
