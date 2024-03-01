@@ -1,4 +1,6 @@
-//To generate the secret code (random colorpick). Note: It can add the same color multiple times
+/**Function to generate the secret code (random colorpick) once the page is
+ * loaded and upon completing or restarting the game
+ * Note: It allows the same color to be chosen multiple times */
 function generateSecretCode() {
   let colors = ["blue", "red", "orange", "pink", "green", "purple"];
   let secretCode = [];
@@ -24,8 +26,16 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 
 //Arrow appears showing what row the user should start clicking.
 
-//When the user clicks on the white peg on the appropriate row, he can pick a color;
+//When the user clicks on the peg on the appropriate row, he can pick a color;
+//*****Fix the following functions*****
+function addsEventListenerToPeg(){
+let currentPeg = document.getElementById(id);
+currentPeg.addEventListener(click, changeColor);
+}
 
+function changeColor(id,color){
+  id.style.backgroundColor=color;
+  }
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
 
 // To check results
