@@ -1,3 +1,32 @@
+// Wait for the DOM to finish loading before running the game
+// Get the button elements and add event listeners to them
+document.addEventListener("DOMContentLoaded", function() {
+  let buttons = document.getElementsByTagName("button");
+
+  for (let button of buttons) {
+      button.addEventListener("click", function() {
+          if (this.getAttribute("data-type") === "start") {
+            generateSecretCode();
+          } else if
+              (this.getAttribute("data-type") === "rules") {
+              //Add modal with rules;
+          } else if (this.getAttribute("data-type") === "play") {
+            checkResult(arr1, arr2);
+          }
+      });
+  }
+
+  document.getElementById("play").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        checkResult(arr1, arr2);
+      }
+  });
+
+  generateSecretCode();
+
+});
+
+
 /**Function to generate the secret code (random colorpick) once the page is
  * loaded and upon completing or restarting the game
  * Note: It allows the same color to be chosen multiple times */
@@ -7,7 +36,17 @@ function generateSecretCode() {
   for (i = 0; i < 4; i++) {
     secretCode.push(colors[Math.floor(Math.random() * 6)]);
   }
-  return secretCode;
+
+  let code1 = document.getElementById('rowS-1');
+  code1.style.backgroundColor = secretCode[0];
+  let code2 = document.getElementById('rowS-2');
+  code2.style.backgroundColor = secretCode[1];
+  let code3 = document.getElementById('rowS-3');
+  code3.style.backgroundColor = secretCode[2];
+  let code4 = document.getElementById('rowS-4');
+  code4.style.backgroundColor = secretCode[3];
+  
+  // return secretCode;
 }
 
 //When the user presses 'new game' a new code is generated and stored in an Array
@@ -64,7 +103,7 @@ function checkResult(arr1, arr2) {
       }
     }
   }
-
+//Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
   return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 }
 
