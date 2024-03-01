@@ -48,6 +48,10 @@ body {
   visibility: hidden;
 } */
 
+#rowS-result {
+  background-color: inherit;
+}
+
 .guess-pegs,
 .color {
   margin: 5px;

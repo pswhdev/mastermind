@@ -41,7 +41,7 @@ function checkResult(arr1, arr2) {
       checkedIndexes.push(i);
     }
   }
-  // For each element of the User's pick (arr2) not matching the corresponding element in the Secret code (arr1), we search for its presence in the Secret code (arr1) but at a different position, taking care not to recheck positions already marked as correct matches.
+  // For each element of the User's guess (arr2) that is not a perfect macth, we search for its presence in the Secret code (arr1) at different positions, chhecking if the current position hasn't been already checked as a perfect match.
   for (let i = 0; i < arr2.length; i++) {
     if (arr1[i] !== arr2[i]) {
       for (let j = 0; j < arr1.length; j++) {
@@ -65,3 +65,6 @@ console.log(result);
 //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
 
 // let newSecretOne = secretOne.style.backgroundColor(newCode[0])
+
+//When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
+//Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
