@@ -34,7 +34,7 @@ function generateSecretCode() {
   let colors = ["blue", "red", "orange", "pink", "green", "purple"];
   let secretCode = [];
   for (i = 0; i < 4; i++) {
-    secretCode.push(colors[Math.floor(Math.random() * 6)]);
+    secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
   }
 
   let code1 = document.getElementById('rowS-1');
@@ -66,15 +66,7 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 //Arrow appears showing what row the user should start clicking.
 
 //When the user clicks on the peg on the appropriate row, he can pick a color;
-//*****Fix the following functions*****
-function addsEventListenerToPeg(){
-let currentPeg = document.getElementById(id);
-currentPeg.addEventListener(click, changeColor);
-}
 
-function changeColor(id,color){
-  id.style.backgroundColor=color;
-  }
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
 
 // To check results
@@ -112,8 +104,6 @@ console.log(result);
 //Change the backgroung-color of the result-pegs:
 //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
 //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
-
-// let newSecretOne = secretOne.style.backgroundColor(newCode[0])
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
