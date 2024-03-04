@@ -60,7 +60,7 @@ body {
   height: 40px;
   border-radius: 50%;
   display: inline-block;
-  
+  cursor: pointer;
 }
 
 .result-panel {
