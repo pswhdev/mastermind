@@ -58,19 +58,21 @@ var selectedTargetPegId = '';
 
 function selectColor(color) {
   selectedColor = color;
-  console.log(selectedColor);
+  //console.log(selectedColor);
+  changeColor()
 }
 
 function selectTargetPeg(event) {
-  selectedTargetPegId = event.target.getAttribute('data-target-id');
-  console.log(selectedTargetPegId);
+  selectedTargetPegId = event.target.getAttribute('id');
+  //console.log(selectedTargetPegId);
 }
 
 function changeColor() {
   if (selectedTargetPegId !== '' && selectedColor !== '') {
-    document.getElementById(selectedTargetPegId).style.backgroundColor = selectedColor;
+    let currentPeg = document.getElementById(selectedTargetPegId);
+    currentPeg.style.backgroundColor = selectedColor;
   } else {
-    alert('Please select both a color from the palette and a target peg.');
+    alert('Please select a target peg.');
   }
 }
 
