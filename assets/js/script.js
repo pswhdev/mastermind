@@ -44,29 +44,39 @@ newGameButton.addEventListener("click", generateSecretCode);
 
 //When the user clicks on the peg on the appropriate row, he can pick a color;
 
-let color1 = document.getElementById('color1');
-let color2 = document.getElementById('color2');
-let color3 = document.getElementById('color3');
-let color4 = document.getElementById('color4');
-let color5 = document.getElementById('color5');
-let color6 = document.getElementById('color6');
+// let color1 = document.getElementById('color1');
+// let color2 = document.getElementById('color2');
+// let color3 = document.getElementById('color3');
+// let color4 = document.getElementById('color4');
+// let color5 = document.getElementById('color5');
+// let color6 = document.getElementById('color6');
 
 let row1Guess = [];
 
-let selectedColor = ''
+var selectedColor = '';
+var selectedTargetPegId = '';
 
 function selectColor(color) {
   selectedColor = color;
-  changeColor();
+  console.log(selectedColor);
 }
 
-document.querySelectorAll('.color').forEach(function(colorOption) {
-  colorOption.addEventListener('click', function() {
-    // Retrieve the background color of the clicked color option
-    let color = this.style.backgroundColor;
-    selectColor(color);
-  });
-});
+function selectTargetPeg(event) {
+  selectedTargetPegId = event.target.getAttribute('data-target-id');
+  console.log(selectedTargetPegId);
+}
+
+function changeColor() {
+  if (selectedTargetPegId !== '' && selectedColor !== '') {
+    document.getElementById(selectedTargetPegId).style.backgroundColor = selectedColor;
+  } else {
+    alert('Please select both a color from the palette and a target peg.');
+  }
+}
+
+//If what I am trying works --> after row 1 is finished I need to add attributes onclick="selectTargetPeg(event)" on the elements of row 2 with class r2
+
+
 
 
 
