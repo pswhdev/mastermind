@@ -1,29 +1,7 @@
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 document.addEventListener("DOMContentLoaded", function() {
-  let buttons = document.getElementsByTagName("button");
-
-  for (let button of buttons) {
-      button.addEventListener("click", function() {
-          if (this.getAttribute("data-type") === "start") {
-            generateSecretCode();
-          } else if
-              (this.getAttribute("data-type") === "rules") {
-              //Add modal with rules;
-          } else if (this.getAttribute("data-type") === "play") {
-            checkResult(arr1, arr2);
-          }
-      });
-  }
-
-  document.getElementById("play").addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        checkResult(arr1, arr2);
-      }
-  });
-
   generateSecretCode();
-
 });
 
 
@@ -50,7 +28,8 @@ function generateSecretCode() {
 }
 
 //When the user presses 'new game' a new code is generated and stored in an Array
-let newCode = generateSecretCode();
+let newGameButton = document.getElementById('newGame');
+newGameButton.addEventListener('click', generateSecretCode);
 
 //Code for the background-color of the secretpegs will then be the new random generated colors
 
@@ -68,6 +47,10 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 //When the user clicks on the peg on the appropriate row, he can pick a color;
 
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
+
+//When the user presses 'new game' a new code is generated and stored in an Array
+let playButton = document.getElementById('play');
+playButton.addEventListener('click', checkResult);
 
 // To check results
 function checkResult(arr1, arr2) {
