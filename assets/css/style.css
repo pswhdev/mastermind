@@ -61,7 +61,7 @@ body {
   border-radius: 50%;
   border: solid 1px black;
   display: inline-block;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   cursor: pointer;
 }
 

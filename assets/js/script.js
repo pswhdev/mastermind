@@ -4,12 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
   generateSecretCode();
 });
 
+// Out of the function so it is acessible to check function as well
+let secretCode = [];
+let arrOfPickedColors = [];
+
 /**Function to generate the secret code (random colorpick) once the page is
  * loaded and upon completing or restarting the game
  * Note: It allows the same color to be chosen multiple times */
 function generateSecretCode() {
   let colors = ["blue", "red", "orange", "pink", "green", "purple"];
-  let secretCode = [];
+  // let secretCode = [];
   for (i = 0; i < 4; i++) {
     secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
   }
@@ -25,6 +29,15 @@ function generateSecretCode() {
 
   return secretCode;
 }
+
+
+
+
+
+
+
+
+
 
 //When the user presses 'new game' a new code is generated and stored in an Array
 let newGameButton = document.getElementById("newGame");
@@ -42,19 +55,12 @@ newGameButton.addEventListener("click", generateSecretCode);
 
 //Arrow appears showing what row the user should start clicking.
 
-//When the user clicks on the peg on the appropriate row, he can pick a color;
+//When the user clicks on the peg on the appropriate row, he can pick the colors
 
-// let color1 = document.getElementById('color1');
-// let color2 = document.getElementById('color2');
-// let color3 = document.getElementById('color3');
-// let color4 = document.getElementById('color4');
-// let color5 = document.getElementById('color5');
-// let color6 = document.getElementById('color6');
-
-let row1Guess = [];
-
-var selectedColor = '';
-var selectedTargetPegId = '';
+// Out of the fucntions so it can be accessed by other functions
+let selectedColor = '';
+let selectedColorArr = []
+let selectedTargetPegId = '';
 
 function selectColor(color) {
   selectedColor = color;
@@ -71,24 +77,54 @@ function changeColor() {
   if (selectedTargetPegId !== '' && selectedColor !== '') {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
+    selectedColorArr.push(currentPeg, selectedColor);
+    //console.log(selectedColorArr)
   } else {
     alert('Please select a target peg.');
   }
 }
 
+
 //If what I am trying works --> after row 1 is finished I need to add attributes onclick="selectTargetPeg(event)" on the elements of row 2 with class r2
 
+//When the user is happy with the selection and ready to play, he clicks "play".
+// After the user presses "Play" : check that all pegs colors on the current row have been chosen;
+
+
+//Create an array with the picked colors (iterate over the array backwords to get the last combination of position and color)
+//compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
+
+
+
+//this has to be changed everytime the active row changes
+// let currentRow = document.querySelectorAll('.r1')
+// console.log(currentRow)
 
 
 
 
 
+// document.getElementById('play').addEventListener('click', function() {
+//   var allColorsDifferent = true;
 
-//When the user is happy with the selection and ready to play, he clicks ok (or play).
+//   for (let row of currentRow) {
+//     console.log(row)
+//   //   if (row.style.backgroundColor === 'white') {
+//   //     allColorsDifferent = false;
+//   //   }
+//   // });
 
-//When the user presses 'new game' a new code is generated and stored in an Array
-let playButton = document.getElementById("play");
-playButton.addEventListener("click", checkResult);
+//   // if (allColorsDifferent) {
+//   //   console.log('All boxes have a background color different from white.');
+//   // } else {
+//   //   console.log('Not all boxes have a background color different from white.');
+//   }
+// })
+
+
+
+// let playButton = document.getElementById("play");
+// playButton.addEventListener("click", checkResult);
 
 // To check results
 function checkResult(arr1, arr2) {
@@ -120,7 +156,7 @@ function checkResult(arr1, arr2) {
   return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 }
 
-// let result = checkResult(newCode, arrOfPickedColors);
+// let result = checkResult(secretCode, arrOfPickedColors);
 // console.log(result);
 
 //Change the backgroung-color of the result-pegs:
