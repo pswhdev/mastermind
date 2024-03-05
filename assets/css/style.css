@@ -130,6 +130,13 @@ body {
     background-color: purple;
 }
 
+.btn {
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 5px;
+  background-color: silver;
+}
+
 
 /* Modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
 .bg-modal {
