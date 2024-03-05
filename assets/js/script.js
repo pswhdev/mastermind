@@ -33,17 +33,44 @@ newGameButton.addEventListener("click", generateSecretCode);
 //Code for the background-color of the secretpegs will then be the new random generated colors
 
 //User picks colors *****Change code so the colors are whatever color user picks"
-let color1 = "red";
-let color2 = "orange";
-let color3 = "blue";
-let color4 = "orange";
-let arrOfPickedColors = [color1, color2, color3, color4];
+// let color1 = "red";
+// let color2 = "orange";
+// let color3 = "blue";
+// let color4 = "orange";
+// let arrOfPickedColors = [color1, color2, color3, color4];
 
-//Create a function that once the user press play it generates random colors and changes the background-color of the secret code pegs
 
 //Arrow appears showing what row the user should start clicking.
 
 //When the user clicks on the peg on the appropriate row, he can pick a color;
+
+let color1 = document.getElementById('color1');
+let color2 = document.getElementById('color2');
+let color3 = document.getElementById('color3');
+let color4 = document.getElementById('color4');
+let color5 = document.getElementById('color5');
+let color6 = document.getElementById('color6');
+
+let row1Guess = [];
+
+let selectedColor = ''
+
+function selectColor(color) {
+  selectedColor = color;
+  changeColor();
+}
+
+document.querySelectorAll('.color').forEach(function(colorOption) {
+  colorOption.addEventListener('click', function() {
+    // Retrieve the background color of the clicked color option
+    let color = this.style.backgroundColor;
+    selectColor(color);
+  });
+});
+
+
+
+
 
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
 
@@ -85,11 +112,14 @@ function checkResult(arr1, arr2) {
 // console.log(result);
 
 //Change the backgroung-color of the result-pegs:
+
 //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
 //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
+
+/* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
 
 let rulesBtn = document.getElementById("rules");
 let modal = document.getElementById("bg-modal");
