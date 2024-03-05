@@ -1,9 +1,8 @@
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   generateSecretCode();
 });
-
 
 /**Function to generate the secret code (random colorpick) once the page is
  * loaded and upon completing or restarting the game
@@ -15,21 +14,21 @@ function generateSecretCode() {
     secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
   }
 
-  let code1 = document.getElementById('rowS-1');
+  let code1 = document.getElementById("rowS-1");
   code1.style.backgroundColor = secretCode[0];
-  let code2 = document.getElementById('rowS-2');
+  let code2 = document.getElementById("rowS-2");
   code2.style.backgroundColor = secretCode[1];
-  let code3 = document.getElementById('rowS-3');
+  let code3 = document.getElementById("rowS-3");
   code3.style.backgroundColor = secretCode[2];
-  let code4 = document.getElementById('rowS-4');
+  let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
-  
+
   return secretCode;
 }
 
 //When the user presses 'new game' a new code is generated and stored in an Array
-let newGameButton = document.getElementById('newGame');
-newGameButton.addEventListener('click', generateSecretCode);
+let newGameButton = document.getElementById("newGame");
+newGameButton.addEventListener("click", generateSecretCode);
 
 //Code for the background-color of the secretpegs will then be the new random generated colors
 
@@ -49,8 +48,8 @@ let arrOfPickedColors = [color1, color2, color3, color4];
 //When the user is happy with the selection and ready to play, he clicks ok (or play).
 
 //When the user presses 'new game' a new code is generated and stored in an Array
-let playButton = document.getElementById('play');
-playButton.addEventListener('click', checkResult);
+let playButton = document.getElementById("play");
+playButton.addEventListener("click", checkResult);
 
 // To check results
 function checkResult(arr1, arr2) {
@@ -58,7 +57,7 @@ function checkResult(arr1, arr2) {
   let sumOfWrongPlace = 0;
   // To keep track of which indexes were matched
   let checkedIndexes = [];
-// Check for 
+  // Check for
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === arr2[i]) {
       sumOfCorrect++;
@@ -73,20 +72,33 @@ function checkResult(arr1, arr2) {
           sumOfWrongPlace++;
           checkedIndexes.push(j);
           // To move to the next element in User's pick (arr2)
-          break; 
+          break;
         }
       }
     }
   }
-//Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
+  //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
   return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 }
 
-let result = checkResult(newCode, arrOfPickedColors);
-console.log(result);
+// let result = checkResult(newCode, arrOfPickedColors);
+// console.log(result);
+
 //Change the backgroung-color of the result-pegs:
 //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
 //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
+
+let rulesBtn = document.getElementById("rules");
+let modal = document.getElementById("bg-modal");
+let closeModal = document.getElementById("closeModal");
+
+rulesBtn.addEventListener("click", function () {
+  modal.style.display = "flex";
+});
+
+closeModal.addEventListener("click", function () {
+  modal.style.display = "none";
+});
