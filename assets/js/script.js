@@ -58,7 +58,7 @@ function changeColor() {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
     selectedColorObj[selectedTargetPegId] = selectedColor;
-    //console.log(selectedColorObj)
+    console.log(selectedColorObj)
   } else {
     alert('Please select a target peg.');
   }
