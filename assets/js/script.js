@@ -1,3 +1,7 @@
+// Current bugs: Result feedback from second row on is wrong;
+// game doesn't move further than second row.
+
+
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 document.addEventListener("DOMContentLoaded", function () {
@@ -135,24 +139,38 @@ function checkResult(arr1, arr2) {
   }
   console.log(result);
   giveUserFeedback();
-  removeOnClicKAtt();
-  moveActiveClass();
+  selectedColorObj = {};
 
   //Check if the SecretCode was cracked, if the user has used all the attempts or if the game continues on the next row
-  // if (sumOfCorrect === 4) {
-  //   alert('Congratulations! You cracked the code!!')
-  //   break;
-  // } else if (){//consider the user reached the last row,in this case user looses. Else, continue on the next row. Add onclick attribute on them and active class on the result pegs
+  if (sumOfCorrect === 4) {
+    alert('Congratulations! You cracked the code!!');
+    removeOnClicKAtt();
+    moveActiveClass();
+    
+    //remove attribute onclick from colors 
+    //include to change style visibility of secret code to visible
+    //implement automatic restart of a new game maybe (?)
 
-  // }
+    //the user reached the last row,in this case user looses. Else, continue on the next row.
+  } else if (currentDivGrandparentId === '10'){
+    alert('GameOver. You have used all your chances. Good luck next time!');
+    //include to change style visibility of secret code to visible
+  } else {
+    removeOnClicKAtt();
+    moveActiveClass();
+    sumOfCorrect = 0;
+    sumOfWrongPlace = 0;
+  }
 }
 
+//variables needed for function checkResult, therefore out of any function
+// the element with the class active --> allows feedback to the user
+let currentDiv = document.getElementById("resultRow1_1");
+let currentDivParent = currentDiv.parentNode;
+let currentDivGrandparent = currentDivParent.parentNode;
+let currentDivGrandparentId = currentDivGrandparent.id;
 function moveActiveClass() {
-  // the element with the class active --> allows feedback to the user
-  let currentDiv = document.getElementById("resultRow1_1");
-  let currentDivParent = currentDiv.parentNode;
-  let currentDivGrandparent = currentDivParent.parentNode;
-  let currentDivGrandparentId = currentDivGrandparent.id;
+  
   //Turn id to number, add 1 to it and turn back to string --> id of the next row to be played
   let nextRowsId = (parseInt(currentDivGrandparentId) + 1).toString();
 
@@ -166,10 +184,12 @@ function moveActiveClass() {
   for (let nextRowsResultPeg of nextRowsResultPegs) {
     nextRowsResultPeg.classList.add("active");
   }
-
+  
   // Remove class="active" from last row played:
-  for (let childDiv of currentDivParent) {
-    childDiv.classList.remove('active');
+  let currentResultPanelDivs= currentDivParent.querySelectorAll(".result-pegs");
+  for (let currentResultPanelDiv of currentResultPanelDivs) {
+   
+    currentResultPanelDiv.classList.remove('active');
 
   // To add the onclick attribute on the guess-pegs of the next row.
   let nextGuessPegs = nextRow.querySelectorAll(".guess-pegs");
