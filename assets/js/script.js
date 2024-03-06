@@ -137,8 +137,8 @@ function checkResult(arr1, arr2) {
   giveUserFeedback();
   removeOnClicKAtt();
   moveActiveClass();
-  
-  //create function to remove active class from played row result pegs
+
+  //Check if the SecretCode was cracked, if the user has used all the attempts or if the game continues on the next row
   // if (sumOfCorrect === 4) {
   //   alert('Congratulations! You cracked the code!!')
   //   break;
@@ -147,36 +147,37 @@ function checkResult(arr1, arr2) {
   // }
 }
 
-function moveActiveClass(){
-  let currentActive = document.getElementById('resultRow1_1');
-// Get the parent of the "active" div element
-let activesParentEl = currentActive.parentNode;
-// Get the grandparent of the div element
-let ActivesGrandparentEl = activesParentEl.parentNode;
-// Get the id of the grandparent div
-let ActivesGrandparentId = ActivesGrandparentEl.id;
-//console.log(ActivesGrandparentId)
-//Turn id to number, add 1 to it and turn back to string
-let nextRowsId = (parseInt(ActivesGrandparentId) + 1).toString();
-//console.log(nextRowsId)
-//To add the class "active" to the grandchildren (Result-Pegs) of the next row.
-//First we need to get the parent div based in it's id
-let nextRow = document.getElementById(nextRowsId);
-console.log(nextRow);
-//To find child div which is the parent of the divs we need to add the class of active to
-let nextResultPanel = nextRow.querySelector('.result-panel');
-//To get the grandchildren divs (result pegs) and add the class of active to them
-let nextRowsResultPegs = nextResultPanel.querySelectorAll('.result-pegs');
-console.log(nextRowsResultPegs)
-for (let nextRowsResultPeg of nextRowsResultPegs) {
-nextRowsResultPeg.classList.add('active');}
+function moveActiveClass() {
+  // the element with the class active --> allows feedback to the user
+  let currentDiv = document.getElementById("resultRow1_1");
+  let currentDivParent = currentDiv.parentNode;
+  let currentDivGrandparent = currentDivParent.parentNode;
+  let currentDivGrandparentId = currentDivGrandparent.id;
+  //Turn id to number, add 1 to it and turn back to string --> id of the next row to be played
+  let nextRowsId = (parseInt(currentDivGrandparentId) + 1).toString();
 
-// To add the onclick attribute on the guess-pegs of the next row.
-let nextGuessPegs = nextRow.querySelectorAll('.guess-pegs');
-for(let nextGuessPeg of nextGuessPegs) {
-nextGuessPeg.setAttribute('onclick', 'selectTargetPeg(event)');}
-//console.log(nextGuessPeg);
- }
+  //To add the class "active" to the grandchildren div (Result-Pegs) of the next row.
+  //First we need to get the parent div based in it's id
+  let nextRow = document.getElementById(nextRowsId);
+  //To find child div which is the parent of the divs we need to add the class of active to
+  let nextResultPanel = nextRow.querySelector(".result-panel");
+  //To get the grandchildren divs (result pegs) and add the class of active to them
+  let nextRowsResultPegs = nextResultPanel.querySelectorAll(".result-pegs");
+  for (let nextRowsResultPeg of nextRowsResultPegs) {
+    nextRowsResultPeg.classList.add("active");
+  }
+
+  // Remove class="active" from last row played:
+  for (let childDiv of currentDivParent) {
+    childDiv.classList.remove('active');
+
+  // To add the onclick attribute on the guess-pegs of the next row.
+  let nextGuessPegs = nextRow.querySelectorAll(".guess-pegs");
+  for (let nextGuessPeg of nextGuessPegs) {
+    nextGuessPeg.setAttribute("onclick", "selectTargetPeg(event)");
+  }
+}
+}
 
 function giveUserFeedback() {
   let firstResultPeg = document.getElementsByClassName("active")[0];
@@ -240,6 +241,7 @@ function giveUserFeedback() {
     fourthResultPeg.style.backgroundColor = "white";
   }
 }
+
 
 function removeOnClicKAtt() {
   let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
