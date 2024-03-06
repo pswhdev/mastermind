@@ -67,6 +67,18 @@ function changeColor() {
 //When the user is happy with the selection and ready to play, he clicks "play".
 // After the user presses "Play" : check that all pegs colors on the current row have been chosen;
 // Create the arrOfPickedColors
+function createArrOfPickedColors () {
+  let sortedIds = Object.keys(selectedColorObj).sort(); // Sorting id names (keys) alphabetically
+console.log(sortedIds);
+//
+for (let id of sortedIds) {
+  let color = selectedColorObj[id];
+    arrOfPickedColors.push(color);
+}
+
+console.log(arrOfPickedColors);
+}
+
 //compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
 
 // After results get computed:
