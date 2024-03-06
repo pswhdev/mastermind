@@ -1,7 +1,6 @@
 // Current bugs: Result feedback from second row on is wrong;
 // game doesn't move further than second row.
 
-
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 document.addEventListener("DOMContentLoaded", function () {
@@ -42,17 +41,18 @@ newGameButton.addEventListener("click", generateSecretCode);
 
 // Variables declared out of the fucntions so it can be accessed by other functions
 let selectedColor = "";
-let selectedColorArr = [];
 let selectedTargetPegId = "";
 let selectedColorObj = {};
 
 function selectColor(color) {
+  selectedColor = "";
   selectedColor = color;
   //console.log(selectedColor);
   changeColor();
 }
 
 function selectTargetPeg(event) {
+  selectedTargetPegId = "";
   selectedTargetPegId = event.target.getAttribute("id");
   //console.log(selectedTargetPegId);
 }
@@ -80,7 +80,6 @@ function createArrOfPickedColors() {
   }
   // console.log(arrOfPickedColors);
   // console.log(secretCode);
-  checkResult(secretCode, arrOfPickedColors);
 }
 
 // After results get computed:
@@ -105,6 +104,7 @@ function computeResult() {
   } else {
     alert("Please choose all your colors.");
   }
+  checkResult(secretCode, arrOfPickedColors);
 }
 
 // variables created out of the fucntion to be acessible to all functions
@@ -140,26 +140,28 @@ function checkResult(arr1, arr2) {
   console.log(result);
   giveUserFeedback();
   selectedColorObj = {};
+  selectedColor = "";
+  selectedTargetPegId = "";
 
   //Check if the SecretCode was cracked, if the user has used all the attempts or if the game continues on the next row
   if (sumOfCorrect === 4) {
-    alert('Congratulations! You cracked the code!!');
+    alert("Congratulations! You cracked the code!!");
     removeOnClicKAtt();
-    moveActiveClass();
-    
-    //remove attribute onclick from colors 
+    return sumOfCorrect;
+    //remove attribute onclick from colors
     //include to change style visibility of secret code to visible
     //implement automatic restart of a new game maybe (?)
 
     //the user reached the last row,in this case user looses. Else, continue on the next row.
-  } else if (currentDivGrandparentId === '10'){
-    alert('GameOver. You have used all your chances. Good luck next time!');
+  } else if (currentDivGrandparentId === "10") {
+    alert("GameOver. You have used all your chances. Good luck next time!");
     //include to change style visibility of secret code to visible
   } else {
-    removeOnClicKAtt();
     moveActiveClass();
     sumOfCorrect = 0;
     sumOfWrongPlace = 0;
+    arrOfPickedColors = [];
+    result = {};
   }
 }
 
@@ -169,8 +171,8 @@ let currentDiv = document.getElementById("resultRow1_1");
 let currentDivParent = currentDiv.parentNode;
 let currentDivGrandparent = currentDivParent.parentNode;
 let currentDivGrandparentId = currentDivGrandparent.id;
+
 function moveActiveClass() {
-  
   //Turn id to number, add 1 to it and turn back to string --> id of the next row to be played
   let nextRowsId = (parseInt(currentDivGrandparentId) + 1).toString();
 
@@ -183,20 +185,26 @@ function moveActiveClass() {
   let nextRowsResultPegs = nextResultPanel.querySelectorAll(".result-pegs");
   for (let nextRowsResultPeg of nextRowsResultPegs) {
     nextRowsResultPeg.classList.add("active");
+    console.log(nextRowsResultPegs)
   }
-  
-  // Remove class="active" from last row played:
-  let currentResultPanelDivs= currentDivParent.querySelectorAll(".result-pegs");
-  for (let currentResultPanelDiv of currentResultPanelDivs) {
-   
-    currentResultPanelDiv.classList.remove('active');
 
-  // To add the onclick attribute on the guess-pegs of the next row.
+  // Remove class="active" from last row played:
+  let currentResultPanelDivs =
+    currentDivParent.querySelectorAll(".result-pegs");
+  for (let currentResultPanelDiv of currentResultPanelDivs) {
+    currentResultPanelDiv.classList.remove("active");
+  }
+// Remove onlcick from last played row
+  let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
+  for (let element of elementsWithOnclick) {
+    element.removeAttribute("onclick");
+  }
+
+  // Add the onclick attribute on the guess-pegs of the next row.
   let nextGuessPegs = nextRow.querySelectorAll(".guess-pegs");
   for (let nextGuessPeg of nextGuessPegs) {
     nextGuessPeg.setAttribute("onclick", "selectTargetPeg(event)");
   }
-}
 }
 
 function giveUserFeedback() {
@@ -261,7 +269,6 @@ function giveUserFeedback() {
     fourthResultPeg.style.backgroundColor = "white";
   }
 }
-
 
 function removeOnClicKAtt() {
   let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
