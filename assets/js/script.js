@@ -69,14 +69,14 @@ function changeColor() {
 // Create the arrOfPickedColors
 function createArrOfPickedColors () {
   let sortedIds = Object.keys(selectedColorObj).sort(); // Sorting id names (keys) alphabetically
-console.log(sortedIds);
-//
+//console.log(sortedIds);
 for (let id of sortedIds) {
   let color = selectedColorObj[id];
     arrOfPickedColors.push(color);
 }
-
-console.log(arrOfPickedColors);
+// console.log(arrOfPickedColors);
+// console.log(secretCode);
+checkResult(secretCode, arrOfPickedColors)
 }
 
 //compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
@@ -91,9 +91,21 @@ console.log(arrOfPickedColors);
 
 
 
-// let playButton = document.getElementById("play");
-// playButton.addEventListener("click", checkResult);
+let playButton = document.getElementById("play");
+playButton.addEventListener("click", computeResult);
 
+function computeResult() {
+  //Count the amount of key-value pairs on the selectedColorObj to make sure the user picked a color for each peg
+  let count = Object.keys(selectedColorObj).length;
+  //console.log(count)
+  if(count === 4) {
+    createArrOfPickedColors()
+  } else {
+    alert('Please choose all your colors.');
+  }
+}
+
+let result = {};
 // To check results
 function checkResult(arr1, arr2) {
   let sumOfCorrect = 0;
@@ -119,8 +131,11 @@ function checkResult(arr1, arr2) {
         }
       }
     }
+    result.perfectMatch = sumOfCorrect;
+    result.wrongPlace = sumOfWrongPlace;
   }
-  //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
+  console.log(result);
+    //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
   return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 }
 
