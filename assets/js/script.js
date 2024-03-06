@@ -136,6 +136,12 @@ function checkResult(arr1, arr2) {
   console.log(result);
   giveUserFeedback();
   removeOnClicKAtt();
+  //create function to remove active class from played row result pegs
+  if (sumOfCorrect === 4) {
+    alert('Congratulations! You cracked the code!!')
+  } else if (){//consider the user reached the last row,in this case user looses. Else, continue on the next row. Add onclick attribute on them and active class on the result pegs
+
+  }
 }
 
 function giveUserFeedback() {
