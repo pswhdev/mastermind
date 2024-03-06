@@ -30,32 +30,11 @@ function generateSecretCode() {
   return secretCode;
 }
 
-
-
-
-
-
-
-
-
-
 //When the user presses 'new game' a new code is generated and stored in an Array
 let newGameButton = document.getElementById("newGame");
 newGameButton.addEventListener("click", generateSecretCode);
 
-//Code for the background-color of the secretpegs will then be the new random generated colors
-
-//User picks colors *****Change code so the colors are whatever color user picks"
-// let color1 = "red";
-// let color2 = "orange";
-// let color3 = "blue";
-// let color4 = "orange";
-// let arrOfPickedColors = [color1, color2, color3, color4];
-
-
-//Arrow appears showing what row the user should start clicking.
-
-//When the user clicks on the peg on the appropriate row, he can pick the colors
+//Mark the row the user should start clicking -- Still to be implemented
 
 // Variables declared out of the fucntions so it can be accessed by other functions
 let selectedColor = '';
@@ -85,30 +64,18 @@ function changeColor() {
   }
 }
 
-
-//If what I am trying works --> after row 1 is finished I need to add attributes onclick="selectTargetPeg(event)" on the elements of row 2 with class r2
-
 //When the user is happy with the selection and ready to play, he clicks "play".
 // After the user presses "Play" : check that all pegs colors on the current row have been chosen;
-
-
-//Create an array with the picked colors (iterate over the array backwords to get the last combination of position and color)
-//Another idea: create an object and populate with the color choices and then check if there are 4 elements and extract the colors for the array.
-
-
+// Create the arrOfPickedColors
 //compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
 
-
-
+// After results get computed:
+//add onclick attibute to the next row and delete from the last played row
+// mark the active row
+//If what I am trying works --> after row 1 is finished I need to add attributes onclick="selectTargetPeg(event)" on the elements of row 2 with class r2
 //this has to be changed everytime the active row changes
 // let currentRow = document.querySelectorAll('.r1')
 // console.log(currentRow)
-
-
-
-
-
-
 
 
 
@@ -157,7 +124,6 @@ function checkResult(arr1, arr2) {
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
 
 /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
-
 let rulesBtn = document.getElementById("rules");
 let modal = document.getElementById("bg-modal");
 let closeModal = document.getElementById("closeModal");
