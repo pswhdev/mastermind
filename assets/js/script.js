@@ -57,10 +57,11 @@ newGameButton.addEventListener("click", generateSecretCode);
 
 //When the user clicks on the peg on the appropriate row, he can pick the colors
 
-// Out of the fucntions so it can be accessed by other functions
+// Variables declared out of the fucntions so it can be accessed by other functions
 let selectedColor = '';
-let selectedColorArr = []
+let selectedColorArr = [];
 let selectedTargetPegId = '';
+let selectedColorObj = {};
 
 function selectColor(color) {
   selectedColor = color;
@@ -77,8 +78,8 @@ function changeColor() {
   if (selectedTargetPegId !== '' && selectedColor !== '') {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
-    selectedColorArr.push(currentPeg, selectedColor);
-    //console.log(selectedColorArr)
+    selectedColorObj[selectedTargetPegId] = selectedColor;
+    //console.log(selectedColorObj)
   } else {
     alert('Please select a target peg.');
   }
@@ -92,6 +93,9 @@ function changeColor() {
 
 
 //Create an array with the picked colors (iterate over the array backwords to get the last combination of position and color)
+//Another idea: create an object and populate with the color choices and then check if there are 4 elements and extract the colors for the array.
+
+
 //compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
 
 
@@ -104,22 +108,7 @@ function changeColor() {
 
 
 
-// document.getElementById('play').addEventListener('click', function() {
-//   var allColorsDifferent = true;
 
-//   for (let row of currentRow) {
-//     console.log(row)
-//   //   if (row.style.backgroundColor === 'white') {
-//   //     allColorsDifferent = false;
-//   //   }
-//   // });
-
-//   // if (allColorsDifferent) {
-//   //   console.log('All boxes have a background color different from white.');
-//   // } else {
-//   //   console.log('Not all boxes have a background color different from white.');
-//   }
-// })
 
 
 
