@@ -132,15 +132,91 @@ function checkResult(arr1, arr2) {
     result.perfectMatch = sumOfCorrect;
     result.wrongPlace = sumOfWrongPlace;
   }
+  let firstResultPeg = document.getElementsByClassName("active")[0];
+  let secondResultPeg = document.getElementsByClassName("active")[1];
+  let thirdResultPeg = document.getElementsByClassName("active")[2];
+  let fourthResultPeg = document.getElementsByClassName("active")[3];
+
+  if (sumOfCorrect === 4) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "black";
+    fourthResultPeg.style.backgroundColor = "black";
+    console.log(firstResultPeg.style.backgroundColor);
+  } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "black";
+  } else if (sumOfCorrect === 3 && sumOfWrongPlace === 1) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "black";
+    fourthResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 0) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 1) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 2) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "white";
+    fourthResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 0) {
+    firstResultPeg.style.backgroundColor = "black";
+  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 1) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 2) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "white";
+    thirdResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 3) {
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "white";
+    thirdResultPeg.style.backgroundColor = "white";
+    fourthResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 1) {
+    firstResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 2) {
+    firstResultPeg.style.backgroundColor = "white";
+    secondResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 3) {
+    firstResultPeg.style.backgroundColor = "white";
+    secondResultPeg.style.backgroundColor = "white";
+    thirdResultPeg.style.backgroundColor = "white";
+  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 4) {
+    firstResultPeg.style.backgroundColor = "white";
+    secondResultPeg.style.backgroundColor = "white";
+    thirdResultPeg.style.backgroundColor = "white";
+    fourthResultPeg.style.backgroundColor = "white";
+  }
   console.log(result);
-  //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
-  return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
+  // Translate result to user feedback on the screen with the colored pegs
+  //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
+  //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
+  //resultFeedback();
 }
+//Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
+//return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 
-//Change the backgroung-color of the result-pegs:
+// function resultFeedback(){
+//   // To allow us to use the same function each round
+//   let firstResultPeg = document.getElementsByClassName('active')[0];
+//   let secondResultPeg =  document.getElementsByClassName('active')[1];
+//   let thirdResultPeg =  document.getElementsByClassName('active')[2];
+//   let fourthResultPeg =  document.getElementsByClassName('active')[3];
 
-//If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
-//If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
+//   if (sumOfCorrect === 4){
+//     firstResultPeg.style.backgroundColor = "black";
+//     secondResultPeg.style.backgroundColor = "black";
+//     thirdResultPeg.style.backgroundColor = "black";
+//     fourthResultPeg.style.backgroundColor = "black";
+//     console.log(firstResultPeg.style.backgroundColor);
+//   }
+//   }
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
