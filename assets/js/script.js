@@ -30,7 +30,7 @@ function generateSecretCode() {
   // return secretCode;
 }
 
-//When the user presses 'new game' a new code is generated and stored in an Array
+//When the user presses 'new game' a new code is generated and stored in an Array -- not working!!
 let newGameButton = document.getElementById("newGame");
 newGameButton.addEventListener("click", generateSecretCode);
 
@@ -58,7 +58,7 @@ function changeColor() {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
     selectedColorObj[selectedTargetPegId] = selectedColor;
-    console.log(selectedColorObj);
+    //console.log(selectedColorObj);
   } else {
     alert("Please select a target peg.");
   }
@@ -91,6 +91,8 @@ let playButton = document.getElementById("play");
 playButton.addEventListener("click", computeResult);
 
 function computeResult() {
+  // to stop user beign able to change pegs colors on played row
+  selectedTargetPegId = "";
   //Count the amount of key-value pairs on the selectedColorObj to make sure the user picked a color for each peg
   let count = Object.keys(selectedColorObj).length;
   //console.log(count)
@@ -107,7 +109,6 @@ let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
 // To check results
 function checkResult(arr1, arr2) {
- 
   // To keep track of which indexes were matched
   let checkedIndexes = [];
   // Check for
@@ -134,9 +135,10 @@ function checkResult(arr1, arr2) {
   }
   console.log(result);
   giveUserFeedback();
+  removeOnClicKAtt();
 }
 
-function giveUserFeedback(){
+function giveUserFeedback() {
   let firstResultPeg = document.getElementsByClassName("active")[0];
   let secondResultPeg = document.getElementsByClassName("active")[1];
   let thirdResultPeg = document.getElementsByClassName("active")[2];
@@ -147,7 +149,6 @@ function giveUserFeedback(){
     secondResultPeg.style.backgroundColor = "black";
     thirdResultPeg.style.backgroundColor = "black";
     fourthResultPeg.style.backgroundColor = "black";
-    console.log(firstResultPeg.style.backgroundColor);
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -197,6 +198,13 @@ function giveUserFeedback(){
     secondResultPeg.style.backgroundColor = "white";
     thirdResultPeg.style.backgroundColor = "white";
     fourthResultPeg.style.backgroundColor = "white";
+  }
+}
+
+function removeOnClicKAtt() {
+  let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
+  for (let element of elementsWithOnclick) {
+    element.removeAttribute("onclick");
   }
 }
 //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
