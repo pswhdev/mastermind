@@ -27,7 +27,7 @@ function generateSecretCode() {
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
 
-  return secretCode;
+  // return secretCode;
 }
 
 //When the user presses 'new game' a new code is generated and stored in an Array
@@ -79,8 +79,6 @@ function createArrOfPickedColors() {
   checkResult(secretCode, arrOfPickedColors);
 }
 
-//compare the Secret Code with the chosen Colors using the function checkResult(arr1, arr2)
-
 // After results get computed:
 //add onclick attibute to the next row and delete from the last played row
 // mark the active row
@@ -103,11 +101,13 @@ function computeResult() {
   }
 }
 
+// variables created out of the fucntion to be acessible to all functions
 let result = {};
+let sumOfCorrect = 0;
+let sumOfWrongPlace = 0;
 // To check results
 function checkResult(arr1, arr2) {
-  let sumOfCorrect = 0;
-  let sumOfWrongPlace = 0;
+ 
   // To keep track of which indexes were matched
   let checkedIndexes = [];
   // Check for
@@ -132,6 +132,11 @@ function checkResult(arr1, arr2) {
     result.perfectMatch = sumOfCorrect;
     result.wrongPlace = sumOfWrongPlace;
   }
+  console.log(result);
+  giveUserFeedback();
+}
+
+function giveUserFeedback(){
   let firstResultPeg = document.getElementsByClassName("active")[0];
   let secondResultPeg = document.getElementsByClassName("active")[1];
   let thirdResultPeg = document.getElementsByClassName("active")[2];
@@ -193,30 +198,9 @@ function checkResult(arr1, arr2) {
     thirdResultPeg.style.backgroundColor = "white";
     fourthResultPeg.style.backgroundColor = "white";
   }
-  console.log(result);
-  // Translate result to user feedback on the screen with the colored pegs
-  //If the number of perfect match is 4 --> change background-color of the 4 result-pegs to black;
-  //If the number of perfect match is 3 and the number of existing color on the wrong position--> change background-color of the 3 result-pegs to black and one to white;
-  //resultFeedback();
 }
 //Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
 //return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
-
-// function resultFeedback(){
-//   // To allow us to use the same function each round
-//   let firstResultPeg = document.getElementsByClassName('active')[0];
-//   let secondResultPeg =  document.getElementsByClassName('active')[1];
-//   let thirdResultPeg =  document.getElementsByClassName('active')[2];
-//   let fourthResultPeg =  document.getElementsByClassName('active')[3];
-
-//   if (sumOfCorrect === 4){
-//     firstResultPeg.style.backgroundColor = "black";
-//     secondResultPeg.style.backgroundColor = "black";
-//     thirdResultPeg.style.backgroundColor = "black";
-//     fourthResultPeg.style.backgroundColor = "black";
-//     console.log(firstResultPeg.style.backgroundColor);
-//   }
-//   }
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
