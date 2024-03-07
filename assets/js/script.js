@@ -1,26 +1,125 @@
-// Current bugs: Result feedback from second row on is wrong;
-// game doesn't move further than second row.
+//When we press the button Start new game, it has to clear all the colors on the pegs (maybe selecting all)
 
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 document.addEventListener("DOMContentLoaded", function () {
-  generateSecretCode();
+  startGame();
+
+  let newGameButton = document.getElementById("newGame");
+  newGameButton.addEventListener("click", handleNewGame);
+
+  let playButton = document.getElementById("play");
+  playButton.addEventListener("click", computeResult);
 });
 
-// Out of the function so it is acessible to check function as well
+function handleNewGame() {
+  // Restarts the game
+  startGame();
+}
+
+// Out of any function so it is acessible to other functions as well
 let secretCode = [];
 let arrOfPickedColors = [];
+let currentRow = 0;
+let selectedColor = "";
+let selectedTargetPegId = "";
+let selectedColorObj = {};
+let result = {};
+let sumOfCorrect = 0;
+let sumOfWrongPlace = 0;
+
+
+function startGame() {
+  secretCode = [];
+  arrOfPickedColors = [];
+  currentRow = 0;
+  selectedColor = "";
+  selectedTargetPegId = "";
+  selectedColorObj = {};
+  result = {};
+  sumOfCorrect = 0;
+  sumOfWrongPlace = 0;
+
+  // To clear the colors on guess and result pegs once game is restarted
+  let allGuessPegs = document.getElementsByClassName("guess-pegs");
+  for (let allGuessPeg of allGuessPegs) {
+    allGuessPeg.style.backgroundColor = 'white';
+  }
+
+  let allResPegs = document.getElementsByClassName("result-pegs");
+  for (let allResPeg of allResPegs) {
+    allResPeg.style.backgroundColor = 'gray';
+  }
+
+  moveNextRow();
+  addClickActiveCurrRow();
+
+  // Add event listeners to guess pegs and class active to result pegs of the current row
+  function addClickActiveCurrRow() {
+  let currRowElement = document.getElementById((currentRow).toString());
+  let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
+  for (let guessPegCurrRow of guessPegsCurrRow) {
+    guessPegCurrRow.addEventListener("click", selectTargetPeg);
+  }
+  let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
+  let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
+  for (let ResPegCurrRow of ResPegsCurrRow) {
+    ResPegCurrRow.classList.add("active");
+  }
+}
+  generateSecretCode();
+}
+
+// Move current row to be the next row
+function moveNextRow() {
+  currentRow++;
+  return currentRow;
+}
+
+// Move to the next row
+function moveToNextRow() {
+  // Add event listeners to guess pegs of the next row
+  let nextRow = document.getElementById((currentRow + 1).toString());
+  let guessPegs = nextRow.querySelectorAll(".guess-pegs");
+  for (let guessPeg of guessPegs) {
+    guessPeg.addEventListener("click", selectTargetPeg);
+  }
+  // Add class active to result pegs of the next row
+  let resultPanel = nextRow.querySelector(".result-panel");
+  let resultPegs = resultPanel.querySelectorAll(".result-pegs");
+  for (let resultPeg of resultPegs) {
+    resultPeg.classList.add("active");
+  }
+
+  console.log(currentRow);
+  console.log(nextRow);
+
+  if (currentRow >= 2) {
+    // Remove event listeners from guess pegs of the previous row
+    let prevRow = document.getElementById((currentRow - 1).toString());
+    let prevGuessPegs = prevRow.querySelectorAll(".guess-pegs");
+    let prevResPanel = prevRow.querySelector(".result-panel");
+    let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
+    for (let prevGuessPeg of prevGuessPegs) {
+      prevGuessPeg.removeEventListener("click", selectTargetPeg);
+    }
+
+    // Remove class active from result pegs of the previous row
+    for (let prevResPeg of prevResPegs) {
+      prevResPeg.classList.remove("active");
+    }
+  }
+}
 
 /**Function to generate the secret code (random colorpick) once the page is
  * loaded and upon completing or restarting the game
  * Note: It allows the same color to be chosen multiple times */
 function generateSecretCode() {
   let colors = ["blue", "red", "orange", "pink", "green", "purple"];
-  // let secretCode = [];
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
   }
-
+  // To assign the color to the pegs on the secret row
   let code1 = document.getElementById("rowS-1");
   code1.style.backgroundColor = secretCode[0];
   let code2 = document.getElementById("rowS-2");
@@ -29,32 +128,20 @@ function generateSecretCode() {
   code3.style.backgroundColor = secretCode[2];
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
-
-  // return secretCode;
 }
 
-//When the user presses 'new game' a new code is generated and stored in an Array -- not working!!
-let newGameButton = document.getElementById("newGame");
-newGameButton.addEventListener("click", generateSecretCode);
-
 //Mark the row the user should start clicking -- Still to be implemented
-
-// Variables declared out of the fucntions so it can be accessed by other functions
-let selectedColor = "";
-let selectedTargetPegId = "";
-let selectedColorObj = {};
 
 function selectColor(color) {
   selectedColor = "";
   selectedColor = color;
-  //console.log(selectedColor);
   changeColor();
 }
 
 function selectTargetPeg(event) {
   selectedTargetPegId = "";
   selectedTargetPegId = event.target.getAttribute("id");
-  //console.log(selectedTargetPegId);
+  console.log(selectedTargetPegId);
 }
 
 function changeColor() {
@@ -62,60 +149,38 @@ function changeColor() {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
     selectedColorObj[selectedTargetPegId] = selectedColor;
-    //console.log(selectedColorObj);
   } else {
     alert("Please select a target peg.");
   }
 }
 
 //When the user is happy with the selection and ready to play, he clicks "play".
-// After the user presses "Play" : check that all pegs colors on the current row have been chosen;
-// Create the arrOfPickedColors
 function createArrOfPickedColors() {
-  let sortedIds = Object.keys(selectedColorObj).sort(); // Sorting id names (keys) alphabetically
-  //console.log(sortedIds);
+  // To sort id names (keys) alphabetically
+  let sortedIds = Object.keys(selectedColorObj).sort();
   for (let id of sortedIds) {
     let color = selectedColorObj[id];
     arrOfPickedColors.push(color);
   }
-  // console.log(arrOfPickedColors);
-  // console.log(secretCode);
 }
-
-// After results get computed:
-//add onclick attibute to the next row and delete from the last played row
-// mark the active row
-//If what I am trying works --> after row 1 is finished I need to add attributes onclick="selectTargetPeg(event)" on the elements of row 2 with class r2
-//this has to be changed everytime the active row changes
-// let currentRow = document.querySelectorAll('.r1')
-// console.log(currentRow)
-
-let playButton = document.getElementById("play");
-playButton.addEventListener("click", computeResult);
 
 function computeResult() {
   // to stop user beign able to change pegs colors on played row
   selectedTargetPegId = "";
   //Count the amount of key-value pairs on the selectedColorObj to make sure the user picked a color for each peg
   let count = Object.keys(selectedColorObj).length;
-  //console.log(count)
   if (count === 4) {
     createArrOfPickedColors();
+    checkResult(secretCode, arrOfPickedColors);
   } else {
     alert("Please choose all your colors.");
   }
-  checkResult(secretCode, arrOfPickedColors);
 }
 
-// variables created out of the fucntion to be acessible to all functions
-let result = {};
-let sumOfCorrect = 0;
-let sumOfWrongPlace = 0;
-// To check results
 function checkResult(arr1, arr2) {
   // To keep track of which indexes were matched
   let checkedIndexes = [];
-  // Check for
+
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === arr2[i]) {
       sumOfCorrect++;
@@ -139,72 +204,6 @@ function checkResult(arr1, arr2) {
   }
   console.log(result);
   giveUserFeedback();
-  selectedColorObj = {};
-  selectedColor = "";
-  selectedTargetPegId = "";
-
-  //Check if the SecretCode was cracked, if the user has used all the attempts or if the game continues on the next row
-  if (sumOfCorrect === 4) {
-    alert("Congratulations! You cracked the code!!");
-    removeOnClicKAtt();
-    return sumOfCorrect;
-    //remove attribute onclick from colors
-    //include to change style visibility of secret code to visible
-    //implement automatic restart of a new game maybe (?)
-
-    //the user reached the last row,in this case user looses. Else, continue on the next row.
-  } else if (currentDivGrandparentId === "10") {
-    alert("GameOver. You have used all your chances. Good luck next time!");
-    //include to change style visibility of secret code to visible
-  } else {
-    moveActiveClass();
-    sumOfCorrect = 0;
-    sumOfWrongPlace = 0;
-    arrOfPickedColors = [];
-    result = {};
-  }
-}
-
-//variables needed for function checkResult, therefore out of any function
-// the element with the class active --> allows feedback to the user
-let currentDiv = document.getElementById("resultRow1_1");
-let currentDivParent = currentDiv.parentNode;
-let currentDivGrandparent = currentDivParent.parentNode;
-let currentDivGrandparentId = currentDivGrandparent.id;
-
-function moveActiveClass() {
-  //Turn id to number, add 1 to it and turn back to string --> id of the next row to be played
-  let nextRowsId = (parseInt(currentDivGrandparentId) + 1).toString();
-
-  //To add the class "active" to the grandchildren div (Result-Pegs) of the next row.
-  //First we need to get the parent div based in it's id
-  let nextRow = document.getElementById(nextRowsId);
-  //To find child div which is the parent of the divs we need to add the class of active to
-  let nextResultPanel = nextRow.querySelector(".result-panel");
-  //To get the grandchildren divs (result pegs) and add the class of active to them
-  let nextRowsResultPegs = nextResultPanel.querySelectorAll(".result-pegs");
-  for (let nextRowsResultPeg of nextRowsResultPegs) {
-    nextRowsResultPeg.classList.add("active");
-    console.log(nextRowsResultPegs)
-  }
-
-  // Remove class="active" from last row played:
-  let currentResultPanelDivs =
-    currentDivParent.querySelectorAll(".result-pegs");
-  for (let currentResultPanelDiv of currentResultPanelDivs) {
-    currentResultPanelDiv.classList.remove("active");
-  }
-// Remove onlcick from last played row
-  let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
-  for (let element of elementsWithOnclick) {
-    element.removeAttribute("onclick");
-  }
-
-  // Add the onclick attribute on the guess-pegs of the next row.
-  let nextGuessPegs = nextRow.querySelectorAll(".guess-pegs");
-  for (let nextGuessPeg of nextGuessPegs) {
-    nextGuessPeg.setAttribute("onclick", "selectTargetPeg(event)");
-  }
 }
 
 function giveUserFeedback() {
@@ -214,10 +213,9 @@ function giveUserFeedback() {
   let fourthResultPeg = document.getElementsByClassName("active")[3];
 
   if (sumOfCorrect === 4) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "black";
-    fourthResultPeg.style.backgroundColor = "black";
+    //User wins
+    alert("Congratulations! You cracked the code!!");
+    return sumOfCorrect;
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -268,16 +266,24 @@ function giveUserFeedback() {
     thirdResultPeg.style.backgroundColor = "white";
     fourthResultPeg.style.backgroundColor = "white";
   }
-}
 
-function removeOnClicKAtt() {
-  let elementsWithOnclick = document.querySelectorAll("[onclick].guess-pegs");
-  for (let element of elementsWithOnclick) {
-    element.removeAttribute("onclick");
+  if (currentRow === 10) {
+    alert("GameOver. You have used all your chances. Good luck next time!");
+    return currentRow;
+    //include to change style visibility of secret code to visible
+  } else {
+    // Move to the next row
+    moveNextRow();
+    moveToNextRow();
+    sumOfCorrect = 0;
+    sumOfWrongPlace = 0;
+    arrOfPickedColors = [];
+    result = {};
   }
+  selectedColorObj = {};
+  selectedColor = "";
+  selectedTargetPegId = "";
 }
-//Extend the function to either show result pegs and move to the next row OR finish the game (user won or reached the last row) and offering  the user to start again
-//return { perfectMatch: sumOfCorrect, wrongPlace: sumOfWrongPlace };
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
