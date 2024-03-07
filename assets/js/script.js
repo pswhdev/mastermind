@@ -6,18 +6,9 @@
 // Get the button elements and add event listeners to them
 document.addEventListener("DOMContentLoaded", function () {
   startGame();
-
   let newGameButton = document.getElementById("newGame");
-  newGameButton.addEventListener("click", handleNewGame);
-
-  let playButton = document.getElementById("play");
-  playButton.addEventListener("click", computeResult);
+  newGameButton.addEventListener("click", startGame);
 });
-
-  // Restarts the game
-function handleNewGame() {
-  startGame();
-}
 
 // Variables assigned out of any function so it is acessible to other functions as well
 let secretCode = [];
@@ -54,6 +45,14 @@ function startGame() {
   moveNextRow();
   addClickActiveCurrRow();
   generateSecretCode();
+  console.log('startGame running')
+}
+
+// Move current row to be the next row
+function moveNextRow() {
+  currentRow++;
+  console.log('moveNextRow running')
+  return currentRow;
 }
 
 // Add event listeners to guess pegs and class active to result pegs of the current row
@@ -69,30 +68,7 @@ function addClickActiveCurrRow() {
   for (let ResPegCurrRow of ResPegsCurrRow) {
     ResPegCurrRow.classList.add("active");
   }
-}
-
-// Move current row to be the next row
-function moveNextRow() {
-  currentRow++;
-  return currentRow;
-}
-
-// Move to the next row
-function moveToNextRow() {
-  if (currentRow >= 2) {
-    // Remove event listeners from guess pegs of the previous row
-    let prevRow = document.getElementById((currentRow - 1).toString());
-    let prevGuessPegs = prevRow.querySelectorAll(".guess-pegs");
-    let prevResPanel = prevRow.querySelector(".result-panel");
-    let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
-    for (let prevGuessPeg of prevGuessPegs) {
-      prevGuessPeg.removeEventListener("click", selectTargetPeg);
-    }
-    // Remove class active from result pegs of the previous row
-    for (let prevResPeg of prevResPegs) {
-      prevResPeg.classList.remove("active");
-    }
-  }
+  console.log('addClickActiveCurrRow running')
 }
 
 /**Function to generate the secret code (random colorpick) once the page is
@@ -112,38 +88,38 @@ function generateSecretCode() {
   code3.style.backgroundColor = secretCode[2];
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
+  console.log('generateSecretCode running')
 }
 
+// User clicks on one of the pegs of the active row (marked with different color board)
+function selectTargetPeg(event) {
+  selectedTargetPegId = "";
+  selectedTargetPegId = event.target.getAttribute("id");
+  console.log("selectedTargetPegId running. Id:" + selectedTargetPegId);
+}
+
+// After choosing a peg from the active row, the user clicks on a color to choose it
 function selectColor(color) {
   selectedColor = "";
   selectedColor = color;
   changeColor();
+  console.log('selectColor running');
 }
 
-function selectTargetPeg(event) {
-  selectedTargetPegId = "";
-  selectedTargetPegId = event.target.getAttribute("id");
-  console.log(selectedTargetPegId);
-}
-
+// Chamges color of the selected peg on the current row
 function changeColor() {
   if (selectedTargetPegId !== "" && selectedColor !== "") {
     let currentPeg = document.getElementById(selectedTargetPegId);
     currentPeg.style.backgroundColor = selectedColor;
     selectedColorObj[selectedTargetPegId] = selectedColor;
   } else {
-    alert("Please select a target peg.");
+    alert("Please select a peg from the current row.");
   }
+  console.log('changeColor running');
 }
 
-function createArrOfPickedColors() {
-  // To sort id names (keys) alphabetically
-  let sortedIds = Object.keys(selectedColorObj).sort();
-  for (let id of sortedIds) {
-    let color = selectedColorObj[id];
-    arrOfPickedColors.push(color);
-  }
-}
+let playButton = document.getElementById("play");
+  playButton.addEventListener("click", computeResult);
 
 function computeResult() {
   // to stop user beign able to change pegs colors on played row
@@ -156,6 +132,17 @@ function computeResult() {
   } else {
     alert("Please choose all your colors.");
   }
+  console.log(' computeResult running')
+}
+
+function createArrOfPickedColors() {
+  // To sort id names (keys) alphabetically
+  let sortedIds = Object.keys(selectedColorObj).sort();
+  for (let id of sortedIds) {
+    let color = selectedColorObj[id];
+    arrOfPickedColors.push(color);
+  }
+  console.log('createArrOfPickedColors running')
 }
 
 function checkResult(arr1, arr2) {
@@ -183,6 +170,7 @@ function checkResult(arr1, arr2) {
     result.wrongPlace = sumOfWrongPlace;
   }
   giveUserFeedback();
+  console.log('checkResult running')
 }
 
 function giveUserFeedback() {
@@ -194,7 +182,7 @@ function giveUserFeedback() {
   if (sumOfCorrect === 4) {
     //User wins
     alert("Congratulations! You cracked the code!!");
-    return sumOfCorrect;
+    //return sumOfCorrect;
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -248,7 +236,7 @@ function giveUserFeedback() {
 
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
-    return currentRow;
+    //return currentRow;
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
@@ -263,6 +251,28 @@ function giveUserFeedback() {
   selectedColorObj = {};
   selectedColor = "";
   selectedTargetPegId = "";
+
+  console.log('giveUserFeedback running');
+}
+
+// Move to the next row
+function moveToNextRow() {
+  if (currentRow >= 2) {
+    // Remove event listeners from guess pegs of the previous row
+    let prevRow = document.getElementById((currentRow - 1).toString());
+    let prevGuessPegs = prevRow.querySelectorAll(".guess-pegs");
+    let prevResPanel = prevRow.querySelector(".result-panel");
+    let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
+    for (let prevGuessPeg of prevGuessPegs) {
+      prevGuessPeg.removeEventListener("click", selectTargetPeg);
+      prevGuessPeg.style.border = "solid 1px black";
+    }
+    // Remove class active from result pegs of the previous row
+    for (let prevResPeg of prevResPegs) {
+      prevResPeg.classList.remove("active");
+    }
+  }
+  console.log('moveToNextRow running')
 }
 
 // Modal
