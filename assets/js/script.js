@@ -55,7 +55,11 @@ function startGame() {
   addClickActiveCurrRow();
 
   // Add event listeners to guess pegs and class active to result pegs of the current row
-  function addClickActiveCurrRow() {
+  
+  generateSecretCode();
+}
+
+function addClickActiveCurrRow() {
   let currRowElement = document.getElementById((currentRow).toString());
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let guessPegCurrRow of guessPegsCurrRow) {
@@ -67,8 +71,6 @@ function startGame() {
     ResPegCurrRow.classList.add("active");
   }
 }
-  generateSecretCode();
-}
 
 // Move current row to be the next row
 function moveNextRow() {
@@ -78,22 +80,6 @@ function moveNextRow() {
 
 // Move to the next row
 function moveToNextRow() {
-  // Add event listeners to guess pegs of the next row
-  let nextRow = document.getElementById((currentRow + 1).toString());
-  let guessPegs = nextRow.querySelectorAll(".guess-pegs");
-  for (let guessPeg of guessPegs) {
-    guessPeg.addEventListener("click", selectTargetPeg);
-  }
-  // Add class active to result pegs of the next row
-  let resultPanel = nextRow.querySelector(".result-panel");
-  let resultPegs = resultPanel.querySelectorAll(".result-pegs");
-  for (let resultPeg of resultPegs) {
-    resultPeg.classList.add("active");
-  }
-
-  console.log(currentRow);
-  console.log(nextRow);
-
   if (currentRow >= 2) {
     // Remove event listeners from guess pegs of the previous row
     let prevRow = document.getElementById((currentRow - 1).toString());
@@ -274,6 +260,7 @@ function giveUserFeedback() {
   } else {
     // Move to the next row
     moveNextRow();
+    addClickActiveCurrRow();
     moveToNextRow();
     sumOfCorrect = 0;
     sumOfWrongPlace = 0;
