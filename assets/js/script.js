@@ -1,4 +1,6 @@
-//When we press the button Start new game, it has to clear all the colors on the pegs (maybe selecting all)
+//Mark the row the user should start clicking -- Still to be implemented
+//When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
+//Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
 
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
@@ -12,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
   playButton.addEventListener("click", computeResult);
 });
 
-function handleNewGame() {
   // Restarts the game
+function handleNewGame() {
   startGame();
 }
 
-// Out of any function so it is acessible to other functions as well
+// Variables assigned out of any function so it is acessible to other functions as well
 let secretCode = [];
 let arrOfPickedColors = [];
 let currentRow = 0;
@@ -27,7 +29,6 @@ let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
-
 
 function startGame() {
   secretCode = [];
@@ -43,24 +44,21 @@ function startGame() {
   // To clear the colors on guess and result pegs once game is restarted
   let allGuessPegs = document.getElementsByClassName("guess-pegs");
   for (let allGuessPeg of allGuessPegs) {
-    allGuessPeg.style.backgroundColor = 'white';
+    allGuessPeg.style.backgroundColor = "white";
   }
-
   let allResPegs = document.getElementsByClassName("result-pegs");
   for (let allResPeg of allResPegs) {
-    allResPeg.style.backgroundColor = 'gray';
+    allResPeg.style.backgroundColor = "gray";
   }
 
   moveNextRow();
   addClickActiveCurrRow();
-
-  // Add event listeners to guess pegs and class active to result pegs of the current row
-  
   generateSecretCode();
 }
 
+// Add event listeners to guess pegs and class active to result pegs of the current row
 function addClickActiveCurrRow() {
-  let currRowElement = document.getElementById((currentRow).toString());
+  let currRowElement = document.getElementById(currentRow.toString());
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let guessPegCurrRow of guessPegsCurrRow) {
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
@@ -89,7 +87,6 @@ function moveToNextRow() {
     for (let prevGuessPeg of prevGuessPegs) {
       prevGuessPeg.removeEventListener("click", selectTargetPeg);
     }
-
     // Remove class active from result pegs of the previous row
     for (let prevResPeg of prevResPegs) {
       prevResPeg.classList.remove("active");
@@ -116,8 +113,6 @@ function generateSecretCode() {
   code4.style.backgroundColor = secretCode[3];
 }
 
-//Mark the row the user should start clicking -- Still to be implemented
-
 function selectColor(color) {
   selectedColor = "";
   selectedColor = color;
@@ -140,7 +135,6 @@ function changeColor() {
   }
 }
 
-//When the user is happy with the selection and ready to play, he clicks "play".
 function createArrOfPickedColors() {
   // To sort id names (keys) alphabetically
   let sortedIds = Object.keys(selectedColorObj).sort();
@@ -166,7 +160,6 @@ function computeResult() {
 function checkResult(arr1, arr2) {
   // To keep track of which indexes were matched
   let checkedIndexes = [];
-
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === arr2[i]) {
       sumOfCorrect++;
@@ -188,7 +181,6 @@ function checkResult(arr1, arr2) {
     result.perfectMatch = sumOfCorrect;
     result.wrongPlace = sumOfWrongPlace;
   }
-  console.log(result);
   giveUserFeedback();
 }
 
@@ -256,7 +248,7 @@ function giveUserFeedback() {
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
     return currentRow;
-    //include to change style visibility of secret code to visible
+    //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
     moveNextRow();
@@ -272,9 +264,7 @@ function giveUserFeedback() {
   selectedTargetPegId = "";
 }
 
-//When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
-//Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
-
+// Modal
 /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
 let rulesBtn = document.getElementById("rules");
 let modal = document.getElementById("bg-modal");
