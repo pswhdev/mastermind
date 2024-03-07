@@ -1,4 +1,5 @@
-//Mark the row the user should start clicking -- Still to be implemented
+//Current bug: when I press start new game the active row is the one last played and not the first row. The last played row and the first row are active accepting color choice result is computed on the last active row before restarting when pressing play. The results are computed on that row up until we pass that row
+
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
 
@@ -45,13 +46,13 @@ function startGame() {
   moveNextRow();
   addClickActiveCurrRow();
   generateSecretCode();
-  console.log('startGame running')
+  console.log("startGame running");
 }
 
 // Move current row to be the next row
 function moveNextRow() {
   currentRow++;
-  console.log('moveNextRow running')
+  console.log("moveNextRow running");
   return currentRow;
 }
 
@@ -68,7 +69,7 @@ function addClickActiveCurrRow() {
   for (let ResPegCurrRow of ResPegsCurrRow) {
     ResPegCurrRow.classList.add("active");
   }
-  console.log('addClickActiveCurrRow running')
+  console.log("addClickActiveCurrRow running");
 }
 
 /**Function to generate the secret code (random colorpick) once the page is
@@ -88,7 +89,7 @@ function generateSecretCode() {
   code3.style.backgroundColor = secretCode[2];
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
-  console.log('generateSecretCode running')
+  console.log("generateSecretCode running");
 }
 
 // User clicks on one of the pegs of the active row (marked with different color board)
@@ -103,7 +104,7 @@ function selectColor(color) {
   selectedColor = "";
   selectedColor = color;
   changeColor();
-  console.log('selectColor running');
+  console.log("selectColor running");
 }
 
 // Chamges color of the selected peg on the current row
@@ -115,11 +116,11 @@ function changeColor() {
   } else {
     alert("Please select a peg from the current row.");
   }
-  console.log('changeColor running');
+  console.log("changeColor running");
 }
 
 let playButton = document.getElementById("play");
-  playButton.addEventListener("click", computeResult);
+playButton.addEventListener("click", computeResult);
 
 function computeResult() {
   // to stop user beign able to change pegs colors on played row
@@ -132,7 +133,7 @@ function computeResult() {
   } else {
     alert("Please choose all your colors.");
   }
-  console.log(' computeResult running')
+  console.log(" computeResult running");
 }
 
 function createArrOfPickedColors() {
@@ -142,7 +143,7 @@ function createArrOfPickedColors() {
     let color = selectedColorObj[id];
     arrOfPickedColors.push(color);
   }
-  console.log('createArrOfPickedColors running')
+  console.log("createArrOfPickedColors running");
 }
 
 function checkResult(arr1, arr2) {
@@ -170,7 +171,7 @@ function checkResult(arr1, arr2) {
     result.wrongPlace = sumOfWrongPlace;
   }
   giveUserFeedback();
-  console.log('checkResult running')
+  console.log("checkResult running");
 }
 
 function giveUserFeedback() {
@@ -252,7 +253,7 @@ function giveUserFeedback() {
   selectedColor = "";
   selectedTargetPegId = "";
 
-  console.log('giveUserFeedback running');
+  console.log("giveUserFeedback running");
 }
 
 // Move to the next row
@@ -272,7 +273,7 @@ function moveToNextRow() {
       prevResPeg.classList.remove("active");
     }
   }
-  console.log('moveToNextRow running')
+  console.log("moveToNextRow running");
 }
 
 // Modal
