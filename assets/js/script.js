@@ -62,6 +62,7 @@ function addClickActiveCurrRow() {
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let guessPegCurrRow of guessPegsCurrRow) {
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
+    guessPegCurrRow.style.border = "solid 3px green";
   }
   let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
   let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
