@@ -1,3 +1,7 @@
+//Try to implement restarting the game after it is gameOver. Bug when trying --> Pegs marked on the wrong row after winning
+//Try to mark first peg of each row automatically
+//Current bug: When I win on the first row restart pressing the button it doens't go passed the first row
+
 //Remove reminders from the code
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
@@ -215,7 +219,8 @@ function giveUserFeedback() {
   if (sumOfCorrect === 4) {
     //User wins
     alert("Congratulations! You cracked the code!!");
-    //return sumOfCorrect;
+    return;
+    // resetGame();
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -269,7 +274,8 @@ function giveUserFeedback() {
 
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
-
+    return;
+    //resetGame();
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
