@@ -2,6 +2,8 @@
 //Try to mark first peg of each row automatically
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
+//Program toask the user if he wantes to play again after the game is over and //resetGame();
+
 
 //Remove reminders from the code
 
@@ -23,6 +25,7 @@ let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
+let secretRow = document.getElementById('secret');
 
 function resetGame() {
   resetPegs();
@@ -35,6 +38,7 @@ function resetGame() {
   result = {};
   sumOfCorrect = 0;
   sumOfWrongPlace = 0;
+  secretRow.style.visibility = "hidden";
   startGame();
 }
 
@@ -203,10 +207,12 @@ function checkResult(arr1, arr2) {
   if (sumOfCorrect === 4) {
     //User wins
     alert("Congratulations! You cracked the code!!");
-    resetGame();
+    secretRow.style.visibility = "visible";
+    //resetGame();
   } else if (currentRow === 10) {
+    secretRow.style.visibility = "visible";
     alert("GameOver. You have used all your chances. Good luck next time!");
-    resetGame();
+    //resetGame();
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row

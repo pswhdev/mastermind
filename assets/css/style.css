@@ -43,10 +43,9 @@ body {
   align-items: center;
 }
 
-/* ****** Remember to comment this back in ********
-/* #secret {
-  visibility: hidden;
-} */
+#secret {
+visibility: hidden;
+}
 
 #rowS-result {
   background-color: inherit !important;
