@@ -87,6 +87,15 @@ function addClickActiveCurrRow() {
   for (let guessPegCurrRow of guessPegsCurrRow) {
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.style.border = "solid 3px green";
+    guessPegCurrRow.addEventListener("click", function () {
+      // Remove 'selected' class from previously selected div
+      for (let div of document.querySelectorAll(".guess-pegs.selected")) {
+        div.classList.remove("selected");
+      }
+
+      // Add 'selected' class to the clicked div
+      this.classList.add("selected");
+    });
   }
   let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
   let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
@@ -253,7 +262,6 @@ function giveUserFeedback() {
 
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
-
 
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {

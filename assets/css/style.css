@@ -61,11 +61,12 @@ body {
   border-radius: 50%;
   border: solid 1px black;
   display: inline-block;
-  transition-duration: 0.3s;
+  transition: 0.2s ease;
   cursor: pointer;
 }
 
-.color:hover{
+/* Increase scale when hover(colors) and selected(pegs) */
+.color:hover, .selected {
   transform: scale(1.3);
 }
 
