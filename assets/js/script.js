@@ -66,6 +66,10 @@ function resetPegs() {
   for (let allResPeg of allResPegs) {
     allResPeg.style.backgroundColor = "gray";
   }
+
+  for (let div of document.querySelectorAll(".guess-pegs.selected")) {
+    div.classList.remove("selected");
+  }
 }
 
 function startGame() {
@@ -157,6 +161,9 @@ function computeResult() {
   let count = Object.keys(selectedColorObj).length;
   if (count === 4) {
     createArrOfPickedColors();
+    for (let div of document.querySelectorAll(".guess-pegs.selected")) {
+      div.classList.remove("selected");
+    }
     checkResult(secretCode, arrOfPickedColors);
   } else {
     alert("Please choose all your colors.");
