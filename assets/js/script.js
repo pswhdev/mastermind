@@ -28,7 +28,7 @@ let sumOfWrongPlace = 0;
 let lastPlayedRow = "";
 
 function resetGame() {
-  // Save the last played row before the game was retarted
+  // Save the last played row before the game was retarted in order to be able to resetPegs on the intended
   lastPlayedRow = currentRow.toString();
   // Clear out all saved information from last played game except the last played row
   secretCode = [];
@@ -167,6 +167,15 @@ function computeResult() {
     createArrOfPickedColors();
     for (let div of document.querySelectorAll(".guess-pegs.selected")) {
       div.classList.remove("selected");
+    
+
+
+
+
+
+
+
+
     }
     checkResult(secretCode, arrOfPickedColors);
   } else {
@@ -219,8 +228,7 @@ function giveUserFeedback() {
   if (sumOfCorrect === 4) {
     //User wins
     alert("Congratulations! You cracked the code!!");
-    return;
-    // resetGame();
+    resetGame();
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -274,8 +282,7 @@ function giveUserFeedback() {
 
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
-    return;
-    //resetGame();
+    resetGame();
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
