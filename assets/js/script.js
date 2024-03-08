@@ -1,6 +1,8 @@
 //Try to implement restarting the game after it is gameOver. Bug when trying --> Pegs marked on the wrong row after winning
 //Try to mark first peg of each row automatically
-//Current bug: When I win on the first row restart pressing the button it doens't go passed the first row
+//Bug: when adding restart function to the end of the game (winning). Active row is always the second row. All played rows before winning are also active to be clicked on (they enlarge but don’t accept colors. Colors go on the second row.
+
+// Bug: When game starts with page reload the only clickable pegs are the ones on the current row. After you loose or play until certain row and restart with the start new game button, the pegs of the played rows don’t loose the .selected class.
 
 //Remove reminders from the code
 
@@ -25,12 +27,9 @@ let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
-let lastPlayedRow = "";
 
 function resetGame() {
-  // Save the last played row before the game was retarted in order to be able to resetPegs on the intended
-  lastPlayedRow = currentRow.toString();
-  // Clear out all saved information from last played game except the last played row
+  resetPegs();
   secretCode = [];
   arrOfPickedColors = [];
   currentRow = 0;
@@ -40,39 +39,30 @@ function resetGame() {
   result = {};
   sumOfCorrect = 0;
   sumOfWrongPlace = 0;
-
-  resetPegs();
   startGame();
 }
 
 function resetPegs() {
-  // Remove event listeners from guess pegs of the last played row
-  let rowElLastGame = document.getElementById(lastPlayedRow);
-  let guessPegsRowLast = rowElLastGame.querySelectorAll(".guess-pegs");
-  for (let guessPegRowLast of guessPegsRowLast) {
-    guessPegRowLast.removeEventListener("click", selectTargetPeg);
-    guessPegRowLast.style.border = "solid 1px black";
+  // Select all Guest Pegs
+  let allGuessPegs = document.querySelectorAll(".guess-pegs");
+  // Reset styles and remove event listeners from all guess pegs
+  for (let GuessPeg of allGuessPegs) {
+    if (GuessPeg.classList.contains("selected")) {
+      GuessPeg.classList.remove("selected");
+    }
+    GuessPeg.style.backgroundColor = "white";
+    GuessPeg.style.border = "solid 1px black";
+    GuessPeg.removeEventListener("click", selectTargetPeg);
+    GuessPeg.removeEventListener("click", handleSelected);
   }
-
-  // Remove class active from result pegs of the last played row
-  let resultPanelRowLast = rowElLastGame.querySelector(".result-panel");
-  let resPegsRowLast = resultPanelRowLast.querySelectorAll(".result-pegs");
-  for (let resPegRowLast of resPegsRowLast) {
-    resPegRowLast.classList.remove("active");
-  }
-
-  // Clear the colors on guess and result pegs once game is restarted
-  let allGuessPegs = document.getElementsByClassName("guess-pegs");
-  for (let allGuessPeg of allGuessPegs) {
-    allGuessPeg.style.backgroundColor = "white";
-  }
-  let allResPegs = document.getElementsByClassName("result-pegs");
-  for (let allResPeg of allResPegs) {
-    allResPeg.style.backgroundColor = "gray";
-  }
-
-  for (let div of document.querySelectorAll(".guess-pegs.selected")) {
-    div.classList.remove("selected");
+  // Select all Result Pegs
+  let allResultPegs = document.querySelectorAll(".result-pegs");
+  // Remove class active from all result pegs
+  for (let ResultPeg of allResultPegs) {
+    if (ResultPeg.classList.contains("active")) {
+      ResultPeg.classList.remove("active");
+    }
+    ResultPeg.style.backgroundColor = "gray";
   }
 }
 
@@ -93,23 +83,26 @@ function addClickActiveCurrRow() {
   let currRowElement = document.getElementById(currentRow.toString());
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let guessPegCurrRow of guessPegsCurrRow) {
-    guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.style.border = "solid 3px green";
-    guessPegCurrRow.addEventListener("click", function () {
-      // Remove 'selected' class from previously selected div
-      for (let div of document.querySelectorAll(".guess-pegs.selected")) {
-        div.classList.remove("selected");
-      }
-
-      // Add 'selected' class to the clicked div
-      this.classList.add("selected");
-    });
+    guessPegCurrRow.addEventListener("click", selectTargetPeg);
+    guessPegCurrRow.addEventListener("click", handleSelected);
   }
   let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
   let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
   for (let ResPegCurrRow of ResPegsCurrRow) {
     ResPegCurrRow.classList.add("active");
   }
+}
+
+function handleSelected() {
+  // Remove 'selected' class from previously selected div
+  for (let prevSelectedGuessPeg of document.querySelectorAll(
+    ".guess-pegs.selected"
+  )) {
+    prevSelectedGuessPeg.classList.remove("selected");
+  }
+  // Add 'selected' class to the clicked div
+  this.classList.add("selected");
 }
 
 /**Function to generate the secret code (random colorpick) once the page is
@@ -165,17 +158,11 @@ function computeResult() {
   let count = Object.keys(selectedColorObj).length;
   if (count === 4) {
     createArrOfPickedColors();
-    for (let div of document.querySelectorAll(".guess-pegs.selected")) {
-      div.classList.remove("selected");
-    
-
-
-
-
-
-
-
-
+    // remove highlight of last clicked peg
+    for (let prevSelectedGuessPeg of document.querySelectorAll(
+      ".guess-pegs.selected"
+    )) {
+      prevSelectedGuessPeg.classList.remove("selected");
     }
     checkResult(secretCode, arrOfPickedColors);
   } else {
@@ -217,6 +204,27 @@ function checkResult(arr1, arr2) {
     result.wrongPlace = sumOfWrongPlace;
   }
   giveUserFeedback();
+  if (sumOfCorrect === 4) {
+    //User wins
+    alert("Congratulations! You cracked the code!!");
+    resetGame();
+  } else if (currentRow === 10) {
+    alert("GameOver. You have used all your chances. Good luck next time!");
+    resetGame();
+    //include to change style visibility of secret code to visible. Can't forget!!!!!********************
+  } else {
+    // Move to the next row
+    moveNextRow();
+    addClickActiveCurrRow();
+    moveToNextRow();
+    sumOfCorrect = 0;
+    sumOfWrongPlace = 0;
+    arrOfPickedColors = [];
+    result = {};
+    selectedColorObj = {};
+    selectedColor = "";
+    selectedTargetPegId = "";
+  }
 }
 
 function giveUserFeedback() {
@@ -226,9 +234,10 @@ function giveUserFeedback() {
   let fourthResultPeg = document.getElementsByClassName("active")[3];
 
   if (sumOfCorrect === 4) {
-    //User wins
-    alert("Congratulations! You cracked the code!!");
-    resetGame();
+    firstResultPeg.style.backgroundColor = "black";
+    secondResultPeg.style.backgroundColor = "black";
+    thirdResultPeg.style.backgroundColor = "black";
+    fourthResultPeg.style.backgroundColor = "black";
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
     firstResultPeg.style.backgroundColor = "black";
     secondResultPeg.style.backgroundColor = "black";
@@ -279,24 +288,6 @@ function giveUserFeedback() {
     thirdResultPeg.style.backgroundColor = "white";
     fourthResultPeg.style.backgroundColor = "white";
   }
-
-  if (currentRow === 10) {
-    alert("GameOver. You have used all your chances. Good luck next time!");
-    resetGame();
-    //include to change style visibility of secret code to visible. Can't forget!!!!!********************
-  } else {
-    // Move to the next row
-    moveNextRow();
-    addClickActiveCurrRow();
-    moveToNextRow();
-    sumOfCorrect = 0;
-    sumOfWrongPlace = 0;
-    arrOfPickedColors = [];
-    result = {};
-  }
-  selectedColorObj = {};
-  selectedColor = "";
-  selectedTargetPegId = "";
 }
 
 // Move to the next row
