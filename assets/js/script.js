@@ -1,13 +1,9 @@
 //Try to implement restarting the game after it is gameOver. Bug when trying --> Pegs marked on the wrong row after winning
 //Try to mark first peg of each row automatically
-//Bug: when adding restart function to the end of the game (winning). Active row is always the second row. All played rows before winning are also active to be clicked on (they enlarge but don’t accept colors. Colors go on the second row.
-
-// Bug: When game starts with page reload the only clickable pegs are the ones on the current row. After you loose or play until certain row and restart with the start new game button, the pegs of the played rows don’t loose the .selected class.
-
-//Remove reminders from the code
-
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
+
+//Remove reminders from the code
 
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
@@ -300,7 +296,9 @@ function moveToNextRow() {
     let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
     for (let prevGuessPeg of prevGuessPegs) {
       prevGuessPeg.removeEventListener("click", selectTargetPeg);
+      prevGuessPeg.removeEventListener("click", handleSelected);
       prevGuessPeg.style.border = "solid 1px black";
+      prevGuessPeg.classList.remove("selected");
     }
     // Remove class active from result pegs of the previous row
     for (let prevResPeg of prevResPegs) {
