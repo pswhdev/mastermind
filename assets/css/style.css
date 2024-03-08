@@ -49,7 +49,7 @@ body {
 } */
 
 #rowS-result {
-  background-color: inherit;
+  background-color: inherit !important;
 }
 
 .guess-pegs,

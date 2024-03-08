@@ -1,4 +1,4 @@
-//Remove console.logs and reminders from the code
+//Remove reminders from the code
 
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
@@ -72,13 +72,11 @@ function startGame() {
   moveNextRow();
   addClickActiveCurrRow();
   generateSecretCode();
-  console.log("startGame running");
 }
 
 // Move current row to be the next row
 function moveNextRow() {
   currentRow++;
-  console.log("moveNextRow running");
   return currentRow;
 }
 
@@ -95,7 +93,6 @@ function addClickActiveCurrRow() {
   for (let ResPegCurrRow of ResPegsCurrRow) {
     ResPegCurrRow.classList.add("active");
   }
-  console.log("addClickActiveCurrRow running");
 }
 
 /**Function to generate the secret code (random colorpick) once the page is
@@ -115,14 +112,12 @@ function generateSecretCode() {
   code3.style.backgroundColor = secretCode[2];
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
-  console.log("generateSecretCode running");
 }
 
 // User clicks on one of the pegs of the active row (marked with different color board)
 function selectTargetPeg(event) {
   selectedTargetPegId = "";
   selectedTargetPegId = event.target.getAttribute("id");
-  console.log("selectedTargetPegId running. Id:" + selectedTargetPegId);
 }
 
 // After choosing a peg from the active row, the user clicks on a color to choose it
@@ -130,7 +125,6 @@ function selectColor(color) {
   selectedColor = "";
   selectedColor = color;
   changeColor();
-  console.log("selectColor running");
 }
 
 // Chamges color of the selected peg on the current row
@@ -142,7 +136,6 @@ function changeColor() {
   } else {
     alert("Please select a peg from the current row.");
   }
-  console.log("changeColor running");
 }
 
 let playButton = document.getElementById("play");
@@ -159,7 +152,6 @@ function computeResult() {
   } else {
     alert("Please choose all your colors.");
   }
-  console.log(" computeResult running");
 }
 
 function createArrOfPickedColors() {
@@ -169,7 +161,6 @@ function createArrOfPickedColors() {
     let color = selectedColorObj[id];
     arrOfPickedColors.push(color);
   }
-  console.log("createArrOfPickedColors running");
 }
 
 function checkResult(arr1, arr2) {
@@ -197,7 +188,6 @@ function checkResult(arr1, arr2) {
     result.wrongPlace = sumOfWrongPlace;
   }
   giveUserFeedback();
-  console.log("checkResult running");
 }
 
 function giveUserFeedback() {
@@ -263,7 +253,8 @@ function giveUserFeedback() {
 
   if (currentRow === 10) {
     alert("GameOver. You have used all your chances. Good luck next time!");
-    //return currentRow;
+
+
     //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
@@ -278,8 +269,6 @@ function giveUserFeedback() {
   selectedColorObj = {};
   selectedColor = "";
   selectedTargetPegId = "";
-
-  console.log("giveUserFeedback running");
 }
 
 // Move to the next row
@@ -299,7 +288,6 @@ function moveToNextRow() {
       prevResPeg.classList.remove("active");
     }
   }
-  console.log("moveToNextRow running");
 }
 
 // Modal
