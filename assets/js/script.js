@@ -1,5 +1,7 @@
 //Current bug: when I press start new game the active row is the one last played and not the first row. The last played row and the first row are active accepting color choice result is computed on the last active row before restarting when pressing play. The results are computed on that row up until we pass that row
 
+//Remove console.logs and reminders from the code
+
 //When the game is over make #rowS-result show message: Try again --> when clicked it starts a new game
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
 
@@ -8,7 +10,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   startGame();
   let newGameButton = document.getElementById("newGame");
-  newGameButton.addEventListener("click", startGame);
+  newGameButton.addEventListener("click", resetGame);
 });
 
 // Variables assigned out of any function so it is acessible to other functions as well
@@ -22,7 +24,34 @@ let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
 
-function startGame() {
+function resetGame(){
+  // Remove event listeners from guess pegs of the last played row
+  let lastRowElement = document.getElementById(currentRow.toString());
+  let lastGuessPegsRow = lastRowElement.querySelectorAll(".guess-pegs");
+  for (let lastGuessPegRow of lastGuessPegsRow) {
+  lastGuessPegRow.removeEventListener("click", selectTargetPeg);
+  lastGuessPegRow.style.border = "solid 1px black";
+  }
+  console.log(lastGuessPegRow);
+
+  // Remove class active from result pegs of the last played row
+  let resultPanelLastRow = currRowElement.querySelector(".result-panel");
+  let resPegsLastRow = resultPanelLastRow.querySelectorAll(".result-pegs");
+  for (let resPegLastRow of resPegsLastRow) {
+    resPegLastRow.classList.remove("active");
+  }
+  console.log(ResPegCurrRow);
+
+  // Clear the colors on guess and result pegs once game is restarted
+  let allGuessPegs = document.getElementsByClassName("guess-pegs");
+  for (let allGuessPeg of allGuessPegs) {
+    allGuessPeg.style.backgroundColor = "white";
+  }
+  let allResPegs = document.getElementsByClassName("result-pegs");
+  for (let allResPeg of allResPegs) {
+    allResPeg.style.backgroundColor = "gray";
+  }
+
   secretCode = [];
   arrOfPickedColors = [];
   currentRow = 0;
@@ -33,16 +62,10 @@ function startGame() {
   sumOfCorrect = 0;
   sumOfWrongPlace = 0;
 
-  // To clear the colors on guess and result pegs once game is restarted
-  let allGuessPegs = document.getElementsByClassName("guess-pegs");
-  for (let allGuessPeg of allGuessPegs) {
-    allGuessPeg.style.backgroundColor = "white";
-  }
-  let allResPegs = document.getElementsByClassName("result-pegs");
-  for (let allResPeg of allResPegs) {
-    allResPeg.style.backgroundColor = "gray";
-  }
+  startGame();
+}
 
+function startGame() {
   moveNextRow();
   addClickActiveCurrRow();
   generateSecretCode();
@@ -272,7 +295,7 @@ function moveToNextRow() {
     for (let prevResPeg of prevResPegs) {
       prevResPeg.classList.remove("active");
     }
-  }
+  } 
   console.log("moveToNextRow running");
 }
 
