@@ -205,15 +205,11 @@ function checkResult(arr1, arr2) {
   }
   giveUserFeedback();
   if (sumOfCorrect === 4) {
-    //User wins
     alert("Congratulations! You cracked the code!!");
-    secretRow.style.visibility = "visible";
-    //resetGame();
+    gameOver();
   } else if (currentRow === 10) {
-    secretRow.style.visibility = "visible";
+    gameOver();
     alert("GameOver. You have used all your chances. Good luck next time!");
-    //resetGame();
-    //include to change style visibility of secret code to visible. Can't forget!!!!!********************
   } else {
     // Move to the next row
     moveNextRow();
@@ -289,6 +285,21 @@ function giveUserFeedback() {
     secondResultPeg.style.backgroundColor = "white";
     thirdResultPeg.style.backgroundColor = "white";
     fourthResultPeg.style.backgroundColor = "white";
+  }
+}
+
+function gameOver(){
+  secretRow.style.visibility = "visible";
+  // Select all Guest Pegs
+  let allGuessPegs = document.querySelectorAll(".guess-pegs");
+  // Reset styles and remove event listeners from all guess pegs
+  for (let GuessPeg of allGuessPegs) {
+    if (GuessPeg.classList.contains("selected")) {
+      GuessPeg.classList.remove("selected");
+    }
+    GuessPeg.style.border = "solid 1px black";
+    GuessPeg.removeEventListener("click", selectTargetPeg);
+    GuessPeg.removeEventListener("click", handleSelected);
   }
 }
 
