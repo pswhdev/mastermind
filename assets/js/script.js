@@ -20,7 +20,7 @@ let secretCode = [];
 let arrOfPickedColors = [];
 let currentRow = 0;
 let selectedColor = "";
-let selectedTargetPegId = "";
+let selectedTargetPegId = "row1_1";
 let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
@@ -33,7 +33,7 @@ function resetGame() {
   arrOfPickedColors = [];
   currentRow = 0;
   selectedColor = "";
-  selectedTargetPegId = "";
+  selectedTargetPegId = "row1_1";
   selectedColorObj = {};
   result = {};
   sumOfCorrect = 0;
@@ -68,7 +68,7 @@ function resetPegs() {
 
 function startGame() {
   moveNextRow();
-  addClickActiveCurrRow();
+  handleCurrentRow();
   generateSecretCode();
 }
 
@@ -79,7 +79,7 @@ function moveNextRow() {
 }
 
 // Add event listeners to guess pegs and class active to result pegs of the current row
-function addClickActiveCurrRow() {
+function handleCurrentRow() {
   let currRowElement = document.getElementById(currentRow.toString());
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let guessPegCurrRow of guessPegsCurrRow) {
@@ -213,7 +213,7 @@ function checkResult(arr1, arr2) {
   } else {
     // Move to the next row
     moveNextRow();
-    addClickActiveCurrRow();
+    handleCurrentRow();
     moveToNextRow();
     sumOfCorrect = 0;
     sumOfWrongPlace = 0;

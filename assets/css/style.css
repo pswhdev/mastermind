@@ -29,7 +29,7 @@ body {
   flex-shrink: 0;
   margin: 10px;
   background-color: green;
-  max-height: 85vh;
+  max-height: 100vh;
   width: 250px;
   border-radius: 5px;
 }
