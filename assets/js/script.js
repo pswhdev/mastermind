@@ -75,6 +75,7 @@ function startGame() {
 // Move current row to be the next row
 function moveNextRow() {
   currentRow++;
+  selectedTargetPegId = "row" + currentRow.toString() + "_" + (+1).toString();
   return currentRow;
 }
 
@@ -236,7 +237,6 @@ function checkResult(arr1, arr2) {
     result = {};
     selectedColorObj = {};
     selectedColor = "";
-    selectedTargetPegId = "";
   }
 }
 
