@@ -4,8 +4,8 @@
 //Or show message Win and shpw secret pegs OR open a modal to ask if the player wants to play again.
 //Program toask the user if he wantes to play again after the game is over and //resetGame();
 
-
 //Remove reminders from the code
+//Check for uncommented code
 
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
@@ -25,7 +25,7 @@ let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
-let secretRow = document.getElementById('secret');
+let secretRow = document.getElementById("secret");
 
 function resetGame() {
   resetPegs();
@@ -78,11 +78,29 @@ function moveNextRow() {
   return currentRow;
 }
 
+
+function moveNextPeg() {
+  let rowsLastDigit = parseInt(selectedTargetPegId.slice(-1)); // Extract last digit from the id's name
+  // Check if last digit is less than 4 before incrementing
+  if (rowsLastDigit < 4) {
+    // Increment last digit
+      var newLastDigit = rowsLastDigit + 1;
+  } else {
+    // Starts again from 1 if last digit is 4
+      var newLastDigit = 1;
+  }
+  selectedTargetPegId = "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
+ 
+  //console.log(selectedTargetPegId);
+}
+
 // Add event listeners to guess pegs and class active to result pegs of the current row
 function handleCurrentRow() {
   let currRowElement = document.getElementById(currentRow.toString());
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
-  for (let guessPegCurrRow of guessPegsCurrRow) {
+  for (let i = 0; i < guessPegsCurrRow.length; i++) {
+    let guessPegCurrRow = guessPegsCurrRow[i];
+    console.log(guessPegsCurrRow[i]);
     guessPegCurrRow.style.border = "solid 3px green";
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.addEventListener("click", handleSelected);
@@ -126,7 +144,7 @@ function generateSecretCode() {
 
 // User clicks on one of the pegs of the active row (marked with different color board)
 function selectTargetPeg(event) {
-  selectedTargetPegId = "";
+  // selectedTargetPegId = "";
   selectedTargetPegId = event.target.getAttribute("id");
 }
 
@@ -139,13 +157,10 @@ function selectColor(color) {
 
 // Chamges color of the selected peg on the current row
 function changeColor() {
-  if (selectedTargetPegId !== "" && selectedColor !== "") {
-    let currentPeg = document.getElementById(selectedTargetPegId);
-    currentPeg.style.backgroundColor = selectedColor;
-    selectedColorObj[selectedTargetPegId] = selectedColor;
-  } else {
-    alert("Please select a peg from the current row.");
-  }
+  let currentPeg = document.getElementById(selectedTargetPegId);
+  currentPeg.style.backgroundColor = selectedColor;
+  selectedColorObj[selectedTargetPegId] = selectedColor;
+  moveNextPeg();
 }
 
 let playButton = document.getElementById("play");
@@ -288,7 +303,7 @@ function giveUserFeedback() {
   }
 }
 
-function gameOver(){
+function gameOver() {
   secretRow.style.visibility = "visible";
   // Select all Guest Pegs
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
