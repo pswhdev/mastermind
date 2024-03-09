@@ -26,6 +26,7 @@ let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
 let secretRow = document.getElementById("secret");
+let playButton = document.getElementById('play');
 
 function resetGame() {
   resetPegs();
@@ -39,6 +40,7 @@ function resetGame() {
   sumOfCorrect = 0;
   sumOfWrongPlace = 0;
   secretRow.style.visibility = "hidden";
+  playButton.style.visibility = "visible";
   startGame();
 }
 
@@ -91,9 +93,7 @@ function moveNextPeg() {
       var newLastDigit = 4;
   }
   selectedTargetPegId = "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
- 
-  //console.log(selectedTargetPegId);
-}
+ }
 
 // Add event listeners to guess pegs and class active to result pegs of the current row
 function handleCurrentRow() {
@@ -101,7 +101,6 @@ function handleCurrentRow() {
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let i = 0; i < guessPegsCurrRow.length; i++) {
     let guessPegCurrRow = guessPegsCurrRow[i];
-    console.log(guessPegsCurrRow[i]);
     guessPegCurrRow.style.border = "solid 3px green";
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.addEventListener("click", handleSelected);
@@ -164,8 +163,13 @@ function changeColor() {
   moveNextPeg();
 }
 
-let playButton = document.getElementById("play");
 playButton.addEventListener("click", computeResult);
+// playButton.addEventListener("keypress", function(event) {
+//   if (event.key === "Enter") {
+//     event.preventDefault();
+//     computeResult();
+//   }
+//   });
 
 function computeResult() {
   // to stop user beign able to change pegs colors on played row
@@ -304,6 +308,7 @@ function giveUserFeedback() {
 }
 
 function gameOver() {
+  playButton.style.visibility = "hidden";
   secretRow.style.visibility = "visible";
   // Select all Guest Pegs
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
