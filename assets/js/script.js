@@ -26,7 +26,7 @@ let result = {};
 let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
 let secretRow = document.getElementById("secret");
-let playButton = document.getElementById('play');
+let playButton = document.getElementById("play");
 
 function resetGame() {
   resetPegs();
@@ -72,28 +72,33 @@ function startGame() {
   moveNextRow();
   handleCurrentRow();
   generateSecretCode();
+  document.getElementById(selectedTargetPegId).classList.add("selected");
 }
 
 // Move current row to be the next row
 function moveNextRow() {
   currentRow++;
   selectedTargetPegId = "row" + currentRow.toString() + "_" + (+1).toString();
+  document.getElementById(selectedTargetPegId).classList.add("selected");
   return currentRow;
 }
-
 
 function moveNextPeg() {
   let rowsLastDigit = parseInt(selectedTargetPegId.slice(-1)); // Extract last digit from the id's name
   // Check if last digit is less than 4 before incrementing
   if (rowsLastDigit < 4) {
     // Increment last digit
-      var newLastDigit = rowsLastDigit + 1;
+    var newLastDigit = rowsLastDigit + 1;
   } else {
     // Starts again from 1 if last digit is 4
-      var newLastDigit = 4;
+    var newLastDigit = 4;
   }
-  selectedTargetPegId = "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
- }
+  selectedTargetPegId =
+    "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
+  document.getElementById(selectedTargetPegId).classList.add("selected");
+  let previousPegId = "row" + currentRow.toString() + "_" + (+newLastDigit-1).toString();
+  document.getElementById(previousPegId).classList.remove("selected");
+}
 
 // Add event listeners to guess pegs and class active to result pegs of the current row
 function handleCurrentRow() {
