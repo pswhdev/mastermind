@@ -88,7 +88,7 @@ function moveNextPeg() {
       var newLastDigit = rowsLastDigit + 1;
   } else {
     // Starts again from 1 if last digit is 4
-      var newLastDigit = 1;
+      var newLastDigit = 4;
   }
   selectedTargetPegId = "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
  
@@ -225,7 +225,7 @@ function checkResult(arr1, arr2) {
     gameOver();
   } else if (currentRow === 10) {
     gameOver();
-    alert("GameOver. You have used all your chances. Good luck next time!");
+    alert("Game Over! You have used all your chances. Good luck next time!");
   } else {
     // Move to the next row
     moveNextRow();
