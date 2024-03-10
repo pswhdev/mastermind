@@ -48,7 +48,7 @@ function resetPegs() {
       GuessPeg.classList.remove("selected");
     }
     GuessPeg.style.backgroundColor = "white";
-    GuessPeg.style.border = "solid 1px black";
+    GuessPeg.style.border = "transparent";
     GuessPeg.removeEventListener("click", selectTargetPeg);
     GuessPeg.removeEventListener("click", handleSelected);
   }
@@ -59,7 +59,7 @@ function resetPegs() {
     if (ResultPeg.classList.contains("active")) {
       ResultPeg.classList.remove("active");
     }
-    ResultPeg.style.backgroundColor = "gray";
+    ResultPeg.style.backgroundColor = "#c0c0c0";
   }
 }
 
@@ -325,7 +325,7 @@ function gameOver() {
     if (GuessPeg.classList.contains("selected")) {
       GuessPeg.classList.remove("selected");
     }
-    GuessPeg.style.border = "solid 1px black";
+    GuessPeg.style.border = "transparent";
     GuessPeg.removeEventListener("click", selectTargetPeg);
     GuessPeg.removeEventListener("click", handleSelected);
   }
@@ -342,7 +342,7 @@ function moveToNextRow() {
     for (let prevGuessPeg of prevGuessPegs) {
       prevGuessPeg.removeEventListener("click", selectTargetPeg);
       prevGuessPeg.removeEventListener("click", handleSelected);
-      prevGuessPeg.style.border = "solid 1px black";
+      prevGuessPeg.style.border = "transparent";
       prevGuessPeg.classList.remove("selected");
     }
     // Remove class active from result pegs of the previous row
