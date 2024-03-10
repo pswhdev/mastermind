@@ -108,7 +108,7 @@ function handleCurrentRow() {
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
   for (let i = 0; i < guessPegsCurrRow.length; i++) {
     let guessPegCurrRow = guessPegsCurrRow[i];
-    guessPegCurrRow.style.border = "solid 3px green";
+    guessPegCurrRow.style.border = "solid 3px #005700";
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.addEventListener("click", handleSelected);
   }
@@ -357,11 +357,16 @@ function moveToNextRow() {
 let rulesBtn = document.getElementById("rules");
 let modal = document.getElementById("bg-modal");
 let closeModal = document.getElementById("closeModal");
+let closeModalBtn = document.getElementById("closeModalBtn");
 
 rulesBtn.addEventListener("click", function () {
   modal.style.display = "flex";
 });
 
 closeModal.addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
+closeModalBtn.addEventListener("click", function () {
   modal.style.display = "none";
 });

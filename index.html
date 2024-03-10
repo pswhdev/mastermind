@@ -173,7 +173,7 @@
         </div>
         <!-- Options of colors to be chosen -->
         <div class="colors">
-          <h2>Please pick your colours</h2>
+          <h2>Pick your colours</h2>
           <div class="color" id="color1" onclick="selectColor('blue')"></div>
           <div class="color" id="color2" onclick="selectColor('red')"></div>
           <div class="color" id="color3" onclick="selectColor('orange')"></div>
@@ -184,10 +184,10 @@
       </div>
       <button id="newGame" class="btn">Start new game</button>
       <!-- Modal -->
-      <button id="rules" class="btn">Rules</button>
+      <button id="rules" class="btn">Instructions</button>
       <div id="bg-modal">
         <div id="modal-content">
-          <h2>Game Rules</h2>
+          <h2>Instructions</h2>
           <h3>Objective</h3>
           <p>
             Your aim is to guess the computer's secret code within up to 10
@@ -223,7 +223,8 @@
             The player wins by guessing the code within the allotted attempts.
           </p>
           <p>The computer wins if the player fails to guess the code.</p>
-          <button id="closeModal" class="btn">Close</button>
+          <span id="closeModal">+</span>
+          <button id="closeModalBtn" class="btn">Close</button>
         </div>
       </div>
 
