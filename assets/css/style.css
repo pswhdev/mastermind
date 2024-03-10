@@ -95,7 +95,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
   display: inline-block;
   /* transition: 0.2s ease; */
   cursor: pointer;
@@ -115,7 +115,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   flex-direction: row;
   flex-wrap: wrap;
   background-color: inherit;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
@@ -127,10 +127,9 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   margin: 3px;
   background-color: #fff;
   box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
-  height: 15px;
-  width: 15px;
+  height: 13px;
+  width: 13px;
   border-radius: 50%;
-  z-index: 10;
 }
 
 .result-pegs-invisible {
