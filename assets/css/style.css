@@ -145,8 +145,9 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 .result-pegs-invisible {
   background-color: inherit;
 }
+
 .colors {
-  max-width: 50px;
+  max-width: 60px;
   margin: 10px;
   padding: 5px;
   display: flex;
@@ -159,7 +160,6 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 .colors h2 {
-  font-size: 16px;
   color: #000;
   font-size: 21px;
 }
@@ -192,6 +192,24 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 #color6 {
   background-color: purple;
   order: 2;
+}
+
+#result-black {
+  margin: 3px;
+  background-color: #000;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+}
+
+#result-gray {
+  margin: 3px;
+  background-color: #c0c0c0;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
 }
 
 .btn {
