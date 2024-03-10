@@ -47,7 +47,7 @@ function resetPegs() {
     if (GuessPeg.classList.contains("selected")) {
       GuessPeg.classList.remove("selected");
     }
-    GuessPeg.style.backgroundColor = "white";
+    GuessPeg.style.backgroundColor = "#fff";
     GuessPeg.style.border = "transparent";
     GuessPeg.removeEventListener("click", selectTargetPeg);
     GuessPeg.removeEventListener("click", handleSelected);
@@ -59,7 +59,7 @@ function resetPegs() {
     if (ResultPeg.classList.contains("active")) {
       ResultPeg.classList.remove("active");
     }
-    ResultPeg.style.backgroundColor = "#c0c0c0";
+    ResultPeg.style.backgroundColor = "#fff";
   }
 }
 
@@ -258,59 +258,59 @@ function giveUserFeedback() {
   let fourthResultPeg = document.getElementsByClassName("active")[3];
 
   if (sumOfCorrect === 4) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "black";
-    fourthResultPeg.style.backgroundColor = "black";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
+    thirdResultPeg.style.backgroundColor = "#000";
+    fourthResultPeg.style.backgroundColor = "#000";
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "black";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
+    thirdResultPeg.style.backgroundColor = "#000";
   } else if (sumOfCorrect === 3 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "black";
-    fourthResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
+    thirdResultPeg.style.backgroundColor = "#000";
+    fourthResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 2 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
   } else if (sumOfCorrect === 2 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 2 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "black";
-    thirdResultPeg.style.backgroundColor = "white";
-    fourthResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#000";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
+    fourthResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 1 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "black";
+    firstResultPeg.style.backgroundColor = "#000";
   } else if (sumOfCorrect === 1 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 1 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "white";
-    thirdResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 1 && sumOfWrongPlace === 3) {
-    firstResultPeg.style.backgroundColor = "black";
-    secondResultPeg.style.backgroundColor = "white";
-    thirdResultPeg.style.backgroundColor = "white";
-    fourthResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#000";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
+    fourthResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 0 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 0 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "white";
-    secondResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#c0c0c0";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 0 && sumOfWrongPlace === 3) {
-    firstResultPeg.style.backgroundColor = "white";
-    secondResultPeg.style.backgroundColor = "white";
-    thirdResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#c0c0c0";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
   } else if (sumOfCorrect === 0 && sumOfWrongPlace === 4) {
-    firstResultPeg.style.backgroundColor = "white";
-    secondResultPeg.style.backgroundColor = "white";
-    thirdResultPeg.style.backgroundColor = "white";
-    fourthResultPeg.style.backgroundColor = "white";
+    firstResultPeg.style.backgroundColor = "#c0c0c0";
+    secondResultPeg.style.backgroundColor = "#c0c0c0";
+    thirdResultPeg.style.backgroundColor = "#c0c0c0";
+    fourthResultPeg.style.backgroundColor = "#c0c0c0";
   }
 }
 

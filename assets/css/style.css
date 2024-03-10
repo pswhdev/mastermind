@@ -1,5 +1,5 @@
 /* Google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /* To remove default padding and margin.
 */
 *,
@@ -9,21 +9,46 @@
   margin: 0;
 }
 
-/* Gradients from https://uigradients.com/#Lawrencium */
+/* Gradients from https://uigradients.com/#KingYna */
 body {
-  height: 100vh;
-  background-color: #808080;
+  height: 100%;
+  background: #1a2a6c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #fdbb2d,
+    #b21f1f,
+    #1a2a6c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #fdbb2d,
+    #b21f1f,
+    #1a2a6c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   font-family: "Barlow Condensed", sans-serif;
   display: flex;
   flex-direction: column;
-}
-
-h1 {
-  margin: 20px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
+main {
+  height: 90vh;
+}
+
+h1 {
+  font-size: 40px;
+  color: #c0c0c0;
+  margin: 10px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 5px 5px 3px black;
+}
+
 #game-setup {
+  margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,12 +58,13 @@ h1 {
 }
 
 #gameboard {
-  /* margin-bottom: 5px; */
+  /* margin-left: 5px; */
   background-color: #fff;
   max-height: 600px;
   max-width: 260px;
+  margin-bottom: 7px;
   border-radius: 5px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .row {
@@ -58,21 +84,20 @@ h1 {
 
 #rowS-result {
   visibility: hidden;
-
 }
 
 /* box-shadow from: https://www.cssmatic.com/box-shadow
 suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-css-box-shadow-property*/
 .guess-pegs,
 .color {
-  margin: 5px;
+  margin: 4px;
   background-color: #fff;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.46);
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
   display: inline-block;
-  transition: 0.2s ease;
+  /* transition: 0.2s ease; */
   cursor: pointer;
 }
 
@@ -84,7 +109,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 .result-panel {
   margin-right: 5px;
-  max-width: 40px;
+  max-width: 50px;
   max-height: 50px;
   display: flex;
   flex-direction: row;
@@ -99,11 +124,11 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 .result-pegs {
-  margin: 5px;
-  background-color: #c0c0c0;
-  box-shadow: inset 0px 0px 1.5px 0px rgba(0,0,0,0.46);
-  height: 10px;
-  width: 10px;
+  margin: 3px;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  height: 15px;
+  width: 15px;
   border-radius: 50%;
   z-index: 10;
 }
@@ -112,51 +137,62 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   background-color: inherit;
 }
 .colors {
+  max-width: 50px;
   margin: 10px;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .colors h2 {
   color: #000;
+  font-size: 21px;
 }
 
 #color1 {
   background-color: blue;
+  order: 3;
 }
 
 #color2 {
   background-color: red;
+  order: 5;
 }
 
 #color3 {
   background-color: orange;
+  order: 6;
 }
 
 #color4 {
   background-color: pink;
+  order: 1;
 }
 
 #color5 {
   background-color: green;
+  order: 4;
 }
 
 #color6 {
   background-color: purple;
+  order: 2;
 }
 
 .btn {
-  display: flex;
+  font-size: 16px;
+  color: #000;
+  flex-direction: row;
   border-radius: 10px;
-  padding: 2px 15px;
-  margin: 5px;
+  padding: 2px 10px;
+  margin: 15px 5px;
   background-color: #c0c0c0;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
 }
 
@@ -184,7 +220,8 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: relative;
 }
 
-#modal-content > h2, p {
+#modal-content > h2,
+p {
   padding-top: 7px;
 }
 
@@ -196,7 +233,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: absolute;
   top: 0;
   right: 15px;
-  display:inline-block;
+  display: inline-block;
   font-size: 42px;
-  rotate: 45deg; 
+  rotate: 45deg;
 }
