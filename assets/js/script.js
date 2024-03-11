@@ -20,6 +20,7 @@ let sumOfCorrect = 0;
 let sumOfWrongPlace = 0;
 let secretRow = document.getElementById("secret");
 let submitButton = document.getElementById("submit");
+let codeTop = document.getElementById("codeTop");
 
 /** Run routine if the game is restarted */
 function resetGame() {
@@ -35,6 +36,7 @@ function resetGame() {
   sumOfWrongPlace = 0;
   secretRow.style.visibility = "hidden";
   submitButton.style.visibility = "visible";
+  codeTop.style.visibility = "visible";
   startGame();
 }
 
@@ -78,6 +80,8 @@ function moveNextRow() {
   currentRow++;
   selectedTargetPegId = "row" + currentRow.toString() + "_" + (+1).toString();
   document.getElementById(selectedTargetPegId).classList.add("selected");
+  console.log(selectedTargetPegId);
+  console.log(document.getElementById(selectedTargetPegId));
   return currentRow;
 }
 
@@ -85,13 +89,14 @@ function moveNextRow() {
 function moveNextPeg() {
   // Extract last digit from the id's name
   let rowsLastDigit = parseInt(selectedTargetPegId.slice(-1));
+  let newLastDigit = 0;
   // Check if last digit is less than 4 before incrementing
   if (rowsLastDigit < 4) {
     // Increment last digit
-    var newLastDigit = rowsLastDigit + 1;
+    newLastDigit = rowsLastDigit + 1;
   } else {
     // Starts again from 1 if last digit is 4
-    var newLastDigit = 4;
+    newLastDigit = 4;
   }
   selectedTargetPegId =
     "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
@@ -153,6 +158,15 @@ function generateSecretCode() {
 /** Peg is marked as selected when user clicks on one of the pegs of the active row */
 function selectTargetPeg(event) {
   selectedTargetPegId = event.target.getAttribute("id");
+}
+
+let colorOptions = document.querySelectorAll('.color');
+for (let colorOption of colorOptions) {
+  colorOption.addEventListener('click', function() {
+      // Get the color from the div's id attribute
+      let color = this.id.replace('color', '');
+      selectColor(color);
+  });
 }
 
 /** Activates changeColor function upon color selection */
@@ -318,6 +332,7 @@ function giveUserFeedback() {
 function gameOver() {
   submitButton.style.visibility = "hidden";
   secretRow.style.visibility = "visible";
+  codeTop.style.visibility = "hidden";
   // Select all Guest Pegs
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
   // Reset styles and remove event listeners from all guess pegs

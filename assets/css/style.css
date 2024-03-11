@@ -34,13 +34,14 @@ body {
   text-align: center;
 }
 
-main {
+/* main {
   height: 90vh;
-}
+} */
+
 
 h1 {
   font-family: "Madimi One", sans-serif;
-  font-size: 40px;
+  font-size: clamp(2rem, 2.5vw, 3rem);
   color: #c0c0c0;
   margin: 10px;
   text-align: center;
@@ -70,12 +71,13 @@ h1 {
 
 #codeTop {
   font-family: "Tilt Prism", sans-serif;
-  letter-spacing: 27px;
+  letter-spacing: 25px;
   position: absolute;
-  font-size: 45px;
+  font-size: clamp(3rem, 2.5vw, 3rem);
   color: #c0c0c0;
   top: 0;
   left: 17px;
+  visibility: visible;
 }
 .row {
   margin-left: 5px;
@@ -93,6 +95,7 @@ h1 {
 }
 
 #rowS-result {
+  width: 50px;
   visibility: hidden;
 }
 
@@ -107,7 +110,6 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   border-radius: 50%;
   box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
   display: inline-block;
-  /* transition: 0.2s ease; */
   cursor: pointer;
 }
 
@@ -161,35 +163,35 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 .colors h2 {
   color: #000;
-  font-size: 21px;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);;
 }
 
-#color1 {
+#blue {
   background-color: blue;
   order: 3;
 }
 
-#color2 {
+#red {
   background-color: red;
   order: 5;
 }
 
-#color3 {
+#orange {
   background-color: orange;
   order: 6;
 }
 
-#color4 {
+#pink {
   background-color: pink;
   order: 1;
 }
 
-#color5 {
+#green {
   background-color: green;
   order: 4;
 }
 
-#color6 {
+#purple {
   background-color: purple;
   order: 2;
 }
@@ -265,4 +267,10 @@ p {
   display: inline-block;
   font-size: 42px;
   rotate: 45deg;
+}
+
+@media (max-width: 320px) {
+  .game-area {
+      height: 70vh;
+  }
 }
