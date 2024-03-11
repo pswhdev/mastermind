@@ -34,11 +34,6 @@ body {
   text-align: center;
 }
 
-/* main {
-  height: 90vh;
-} */
-
-
 h1 {
   font-family: "Madimi One", sans-serif;
   font-size: clamp(2rem, 2.5vw, 3rem);
@@ -240,7 +235,8 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 #modal-content {
-  width: 500px;
+  width: 70%;
+  max-width: 500px;
   height: 300px;
   background-color: #fff;
   border-radius: 4px;
@@ -267,4 +263,93 @@ p {
   display: inline-block;
   font-size: 42px;
   rotate: 45deg;
+}
+
+@media (max-width: 320px) {
+
+  h1 {
+    margin: 3px;
+  }
+
+  #gameboard {
+    max-height: 450px;
+    max-width: 300px;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  #codeTop {
+    left: 15px;
+    font-size: 29px;
+    letter-spacing: 25px;
+  }
+  
+  #rowS-result {
+    width: 30px;
+  }
+  
+  .guess-pegs,
+  .color {
+    margin: 2px;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+  }
+  
+  /* Increase scale when hover(colors) and selected(pegs) */
+  .color:hover,
+  .selected {
+    transform: scale(1.1);
+  }
+  
+  .result-panel {
+    max-width: 30px;
+    max-height: 30px;
+  }
+  
+  .result-pegs {
+    margin: 2px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.46);
+    height: 7px;
+    width: 7px;
+  }
+ 
+  .colors {
+    max-width: 60px;
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  }
+  
+  .colors h2 {
+    font-size: 15px;
+  }
+  
+  #result-black {
+    margin: 2px;
+    height: 8px;
+    width: 8px;
+  }
+  
+  #result-gray {
+    margin: 2px;
+    height: 8px;
+    width: 8px;
+  }
+
+  .resExplanation {
+    font-size: 15px;
+  }
+  
+  .btn {
+    font-size: 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3px 5px;
+  }
+
+  #modal-content {
+    width: 70%;
+  }
 }
