@@ -95,13 +95,12 @@ function moveToNextRow() {
   }
 }
 
-  /** Marks current row as active, adds even listeners to guess pegs on that row,
+/** Marks current row as active, adds even listeners to guess pegs on that row,
  * and marks result pegs as active so they can be used to display the result*/
 function handleCurrentRow() {
   // First peg id="row1_1" on first round, id="row1_2" on second round and so on
   selectedTargetPegId = "row" + currentRow.toString() + "_1";
-  console.log(selectedTargetPegId);
-  
+
   let currRowElement = document.getElementById(currentRow.toString());
   // Get children elements from current row
   let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
@@ -112,11 +111,10 @@ function handleCurrentRow() {
     guessPegCurrRow.style.border = "solid 3px #005700";
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.addEventListener("click", handleSelected);
-    // Adds value of'selected' to class of first Peg of current row to allow marking for visual identification
-    guessPegsCurrRow[0].classList.add("selected");
-    console.log(guessPegsCurrRow[0]);
   }
-    // Get child elements from current row that is a parent of the result pegs
+  // Adds value of'selected' to class of first Peg of current row to allow marking for visual identification
+  guessPegsCurrRow[0].classList.add("selected");
+  // Get child elements from current row that is a parent of the result pegs
   let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
   let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
   for (let ResPegCurrRow of ResPegsCurrRow) {
@@ -158,7 +156,7 @@ function changeColor() {
   currentPeg.style.backgroundColor = selectedColor;
   //Creates or replaces the key value pair for color and position to be used to generate array of picked colors
   selectedColorObj[selectedTargetPegId] = selectedColor;
-  moveNextPeg();//After changing the pegs color it moves to the next peg on the row
+  moveNextPeg(); //After changing the pegs color it moves to the next peg on the row
 }
 
 /** Allows auto selection of active pegs upon starting each row or picking a color for a previous peg */
@@ -177,9 +175,9 @@ function moveNextPeg() {
   // Reassigns the selectedTargetPegId which allows for color change of the element with that id
   selectedTargetPegId =
     "row" + currentRow.toString() + "_" + (+newLastDigit).toString();
-    //Adds the value of selected to the current peg (allows vusualization of current selected peg)
+  //Adds the value of selected to the current peg (allows vusualization of current selected peg)
   document.getElementById(selectedTargetPegId).classList.add("selected");
-//Removes the value of selected from preibvious peg
+  //Removes the value of selected from preibvious peg
   let previousPegId =
     "row" + currentRow.toString() + "_" + (+newLastDigit - 1).toString();
   document.getElementById(previousPegId).classList.remove("selected");
@@ -194,13 +192,13 @@ function computeResult() {
   //Count the amount of key-value pairs on the selectedColorObj to make sure the user picked a color for each peg
   let count = Object.keys(selectedColorObj).length;
   if (count === 4) {
-    createArrOfPickedColors();
     //Remove highlight of last clicked peg
     for (let prevSelectedGuessPeg of document.querySelectorAll(
       ".guess-pegs.selected"
     )) {
       prevSelectedGuessPeg.classList.remove("selected");
     }
+    createArrOfPickedColors();
   } else {
     alert("Please choose all your colors.");
   }
@@ -267,8 +265,8 @@ function checkResult(arr1, arr2) {
 }
 
 /**Function to generate the secret code (random colorpick) once the page is
-  * loaded and upon completing or restarting the game
-  * Note: It allows the same color to be chosen multiple times */
+ * loaded and upon completing or restarting the game
+ * Note: It allows the same color to be chosen multiple times */
 function generateSecretCode() {
   let colors = ["blue", "red", "orange", "pink", "green", "purple"];
   for (let i = 0; i < 4; i++) {
@@ -352,7 +350,7 @@ function giveUserFeedback() {
 /** Runs routine if the game is over */
 function gameOver() {
   submitButton.style.visibility = "hidden";
-    // Allows for the user to see the secret code
+  // Allows for the user to see the secret code
   secretRow.style.visibility = "visible";
   codeTop.style.visibility = "hidden";
   // Select all Guest Pegs
