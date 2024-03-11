@@ -74,6 +74,27 @@ function resetPegs() {
   }
 }
 
+/** Runs routine if the game continues onto the next row */
+function moveToNextRow() {
+  if (currentRow >= 2) {
+    // Remove event listeners from guess pegs of the previous row
+    let prevRow = document.getElementById((currentRow - 1).toString());
+    let prevGuessPegs = prevRow.querySelectorAll(".guess-pegs");
+    let prevResPanel = prevRow.querySelector(".result-panel");
+    let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
+    for (let prevGuessPeg of prevGuessPegs) {
+      prevGuessPeg.removeEventListener("click", selectTargetPeg);
+      prevGuessPeg.removeEventListener("click", handleSelected);
+      prevGuessPeg.style.border = "transparent";
+      prevGuessPeg.classList.remove("selected");
+    }
+    // Remove class active from result pegs of the previous row
+    for (let prevResPeg of prevResPegs) {
+      prevResPeg.classList.remove("active");
+    }
+  }
+}
+
   /** Marks current row as active, adds even listeners to guess pegs on that row,
  * and marks result pegs as active so they can be used to display the result*/
 function handleCurrentRow() {
@@ -234,8 +255,8 @@ function checkResult(arr1, arr2) {
   } else {
     // Move to the next row:
     currentRow++;
-    handleCurrentRow();
     moveToNextRow();
+    handleCurrentRow();
     sumOfCorrect = 0;
     sumOfWrongPlace = 0;
     arrOfPickedColors = [];
@@ -263,7 +284,6 @@ function generateSecretCode() {
   let code4 = document.getElementById("rowS-4");
   code4.style.backgroundColor = secretCode[3];
 }
-
 
 /** Provides the user visual feedback of the result */
 function giveUserFeedback() {
@@ -345,27 +365,6 @@ function gameOver() {
     GuessPeg.style.border = "transparent";
     GuessPeg.removeEventListener("click", selectTargetPeg);
     GuessPeg.removeEventListener("click", handleSelected);
-  }
-}
-
-/** Runs routine if the game continues onto the next row */
-function moveToNextRow() {
-  if (currentRow >= 2) {
-    // Remove event listeners from guess pegs of the previous row
-    let prevRow = document.getElementById((currentRow - 1).toString());
-    let prevGuessPegs = prevRow.querySelectorAll(".guess-pegs");
-    let prevResPanel = prevRow.querySelector(".result-panel");
-    let prevResPegs = prevResPanel.querySelectorAll(".result-pegs");
-    for (let prevGuessPeg of prevGuessPegs) {
-      prevGuessPeg.removeEventListener("click", selectTargetPeg);
-      prevGuessPeg.removeEventListener("click", handleSelected);
-      prevGuessPeg.style.border = "transparent";
-      prevGuessPeg.classList.remove("selected");
-    }
-    // Remove class active from result pegs of the previous row
-    for (let prevResPeg of prevResPegs) {
-      prevResPeg.classList.remove("active");
-    }
   }
 }
 
