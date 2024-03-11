@@ -160,15 +160,6 @@ function selectTargetPeg(event) {
   selectedTargetPegId = event.target.getAttribute("id");
 }
 
-let colorOptions = document.querySelectorAll('.color');
-for (let colorOption of colorOptions) {
-  colorOption.addEventListener('click', function() {
-      // Get the color from the div's id attribute
-      let color = this.id.replace('color', '');
-      selectColor(color);
-  });
-}
-
 /** Activates changeColor function upon color selection */
 function selectColor(color) {
   selectedColor = "";
