@@ -13,7 +13,7 @@ let secretCode = [];
 let arrOfPickedColors = [];
 let currentRow = 0;
 let selectedColor = "";
-let selectedTargetPegId = "row1_1";
+let selectedTargetPegId = "";
 let selectedColorObj = {};
 let result = {};
 let sumOfCorrect = 0;
@@ -29,7 +29,6 @@ function resetGame() {
   arrOfPickedColors = [];
   currentRow = 0;
   selectedColor = "";
-  selectedTargetPegId = "row1_1";
   selectedColorObj = {};
   result = {};
   sumOfCorrect = 0;
@@ -72,16 +71,13 @@ function startGame() {
   moveNextRow();
   handleCurrentRow();
   generateSecretCode();
-  document.getElementById(selectedTargetPegId).classList.add("selected");
 }
 
 /** Move the next row to be the current row */
 function moveNextRow() {
   currentRow++;
-  selectedTargetPegId = "row" + currentRow.toString() + "_" + (+1).toString();
-  document.getElementById(selectedTargetPegId).classList.add("selected");
-  console.log(selectedTargetPegId);
-  console.log(document.getElementById(selectedTargetPegId));
+  selectedTargetPegId = "row" + currentRow.toString() + "_1";
+  document.getElementById(selectedTargetPegId).classList.add("selected")
   return currentRow;
 }
 
@@ -95,7 +91,7 @@ function moveNextPeg() {
     // Increment last digit
     newLastDigit = rowsLastDigit + 1;
   } else {
-    // Starts again from 1 if last digit is 4
+    // Stops at 4
     newLastDigit = 4;
   }
   selectedTargetPegId =
