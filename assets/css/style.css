@@ -264,7 +264,7 @@ footer p {
   padding: 0;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 768x) {
   h1 {
     margin: 3px;
   }
