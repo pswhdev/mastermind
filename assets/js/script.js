@@ -64,20 +64,38 @@ function resetPegs() {
   }
 }
 
-/** Runs routine to start the game, calls moveNetRow,
+/** Runs routine to start the game, calls
  * handleCurrentRow and generateSecretCode functions
  */
 function startGame() {
-  moveNextRow();
   handleCurrentRow();
   generateSecretCode();
 }
 
-/** Move the next row to be the current row */
-function moveNextRow() {
+  /** Marks current row as active, adds even listeners to guess pegs on that row,
+ * and marks result pegs as active so they can be used to display the result*/
+function handleCurrentRow() {
+  // Because we start with currentRow = 0
   currentRow++;
+  // First peg id="row1_1" on first round, id="row1_2" on second round and so on
   selectedTargetPegId = "row" + currentRow.toString() + "_1";
-  document.getElementById(selectedTargetPegId).classList.add("selected");
+  
+  let currRowElement = document.getElementById(currentRow.toString());
+  let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
+  for (let i = 0; i < guessPegsCurrRow.length; i++) {
+    let guessPegCurrRow = guessPegsCurrRow[i];
+    guessPegCurrRow.style.border = "solid 3px #005700";
+    guessPegCurrRow.addEventListener("click", selectTargetPeg);
+    guessPegCurrRow.addEventListener("click", handleSelected);
+    // Adds valueof'selected' to class of current Peg for visual identification
+    guessPegsCurrRow[0].classList.add("selected");
+    console.log(guessPegsCurrRow[0]);
+  }
+  let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
+  let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
+  for (let ResPegCurrRow of ResPegsCurrRow) {
+    ResPegCurrRow.classList.add("active");
+  }
 }
 
 /** Allows auto selection of active pegs upon starting each row or picking colors */
@@ -89,6 +107,7 @@ function moveNextPeg() {
   if (rowsLastDigit < 4) {
     // Increment last digit
     newLastDigit = rowsLastDigit + 1;
+    console.log(rowsLastDigit)
   } else {
     // Stops at 4
     newLastDigit = 4;
@@ -101,23 +120,7 @@ function moveNextPeg() {
   document.getElementById(previousPegId).classList.remove("selected");
 }
 
-/** Marks current row as active, adds even listeners to guess pegs on that row,
- * and marks result pegs as active so they can be used to display the result*/
-function handleCurrentRow() {
-  let currRowElement = document.getElementById(currentRow.toString());
-  let guessPegsCurrRow = currRowElement.querySelectorAll(".guess-pegs");
-  for (let i = 0; i < guessPegsCurrRow.length; i++) {
-    let guessPegCurrRow = guessPegsCurrRow[i];
-    guessPegCurrRow.style.border = "solid 3px #005700";
-    guessPegCurrRow.addEventListener("click", selectTargetPeg);
-    guessPegCurrRow.addEventListener("click", handleSelected);
-  }
-  let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
-  let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
-  for (let ResPegCurrRow of ResPegsCurrRow) {
-    ResPegCurrRow.classList.add("active");
-  }
-}
+
 
 /** Removes class that marks peg as active from previous pegs */
 function handleSelected() {
@@ -237,8 +240,7 @@ function checkResult(arr1, arr2) {
     gameOver();
     alert("Game Over! You have used all your chances. Good luck next time!");
   } else {
-    // Move to the next row
-    moveNextRow();
+    // Move to the next row:
     handleCurrentRow();
     moveToNextRow();
     sumOfCorrect = 0;
