@@ -26,6 +26,8 @@ let codeTop = document.getElementById("codeTop");
  * handleCurrentRow and generateSecretCode functions
  */
 function startGame() {
+  // Because we start with currentRow = 0
+  currentRow++;
   handleCurrentRow();
   generateSecretCode();
 }
@@ -75,10 +77,9 @@ function resetPegs() {
   /** Marks current row as active, adds even listeners to guess pegs on that row,
  * and marks result pegs as active so they can be used to display the result*/
 function handleCurrentRow() {
-  // Because we start with currentRow = 0
-  currentRow++;
   // First peg id="row1_1" on first round, id="row1_2" on second round and so on
   selectedTargetPegId = "row" + currentRow.toString() + "_1";
+  console.log(selectedTargetPegId);
   
   let currRowElement = document.getElementById(currentRow.toString());
   // Get children elements from current row
@@ -232,6 +233,7 @@ function checkResult(arr1, arr2) {
     alert("Game Over! You have used all your chances. Good luck next time!");
   } else {
     // Move to the next row:
+    currentRow++;
     handleCurrentRow();
     moveToNextRow();
     sumOfCorrect = 0;
