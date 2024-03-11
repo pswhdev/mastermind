@@ -77,8 +77,7 @@ function startGame() {
 function moveNextRow() {
   currentRow++;
   selectedTargetPegId = "row" + currentRow.toString() + "_1";
-  document.getElementById(selectedTargetPegId).classList.add("selected")
-  return currentRow;
+  document.getElementById(selectedTargetPegId).classList.add("selected");
 }
 
 /** Allows auto selection of active pegs upon starting each row or picking colors */

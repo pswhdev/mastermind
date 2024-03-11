@@ -24,7 +24,7 @@ body {
 
 h1 {
   font-family: "Madimi One", sans-serif;
-  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   color: #c0c0c0;
   margin: 10px;
   text-align: center;
@@ -64,6 +64,7 @@ h1 {
 .row {
   margin-left: 5px;
   border-radius: 5px;
+  border-bottom: solid 1px #c0c0c0;
   display: flex;
   flex-direction: row;
   background-color: #fff;
