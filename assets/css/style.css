@@ -166,32 +166,32 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   font-size: clamp(1rem, 2.5vw, 1.5rem);;
 }
 
-#blue {
+#color1 {
   background-color: blue;
   order: 3;
 }
 
-#red {
+#color2 {
   background-color: red;
   order: 5;
 }
 
-#orange {
+#color3 {
   background-color: orange;
   order: 6;
 }
 
-#pink {
+#color4 {
   background-color: pink;
   order: 1;
 }
 
-#green {
+#color5 {
   background-color: green;
   order: 4;
 }
 
-#purple {
+#color6 {
   background-color: purple;
   order: 2;
 }
