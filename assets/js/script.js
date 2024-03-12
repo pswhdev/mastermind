@@ -54,14 +54,14 @@ function resetPegs() {
   //Select all Guest Pegs
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
   //Reset styles and remove event listeners from all guess pegs
-  for (let GuessPeg of allGuessPegs) {
-    if (GuessPeg.classList.contains("selected")) {
-      GuessPeg.classList.remove("selected");
+  for (let guessPeg of allGuessPegs) {
+    if ( guessPeg.classList.contains("selected")) {
+       guessPeg.classList.remove("selected");
     }
-    GuessPeg.style.backgroundColor = "#fff";
-    GuessPeg.style.border = "transparent";
-    GuessPeg.removeEventListener("click", selectTargetPeg);
-    GuessPeg.removeEventListener("click", handleSelected);
+     guessPeg.style.backgroundColor = "#fff";
+     guessPeg.style.border = "transparent";
+     guessPeg.removeEventListener("click", selectTargetPeg);
+     guessPeg.removeEventListener("click", handleSelected);
   }
   //Select all Result Pegs
   let allResultPegs = document.querySelectorAll(".result-pegs");

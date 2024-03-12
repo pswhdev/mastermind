@@ -14,6 +14,11 @@ body {
   background: #1a2a6c; /* fallback for old browsers */
   background: linear-gradient(to top, #fdbb2d, #b21f1f, #1a2a6c);
   font-family: "Barlow Condensed", sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 main {
@@ -29,18 +34,18 @@ h1 {
   font-family: "Madimi One", sans-serif;
   font-size: clamp(2rem, 6vw, 4rem);
   color: #c0c0c0;
-  margin: 10px;
-  text-align: center;
-  letter-spacing: 0.5px;
   text-shadow: 5px 5px 3px black;
 }
 
-#bigContainer {
+#logo {
+
+}
+/* #bigContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 #game-setup {
   display: flex;
@@ -87,9 +92,9 @@ h1 {
   align-items: center;
 }
 
-#secret {
+/* #secret {
   visibility: hidden;
-}
+} */
 
 #rowS-result {
   width: 50px;
