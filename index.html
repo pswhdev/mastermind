@@ -193,64 +193,71 @@
           </div>
           <div id="codeResult" class="colors">
             <span id="result-black"></span
-            ><span class="resExplanation">color &#x2713; position &#x2713;</span>
-            <hr>
+            ><span class="resExplanation"
+              >color &#x2713; position &#x2713;</span
+            >
+            <hr />
             <span id="result-gray"></span
-            ><span class="resExplanation">color &#10003; position &#x2717;</span>
+            ><span class="resExplanation"
+              >color &#10003; position &#x2717;</span
+            >
           </div>
         </div>
+        
       </div>
-      <button id="newGame" class="btn">Start new game</button>
-      <!-- Modal -->
-      <button id="rules" class="btn">Instructions</button>
-      <div id="bg-modal">
-        <div id="modal-content">
-          <h2>Instructions</h2>
-          <h3>Objective</h3>
-          <p>
-            Your aim is to guess the computer's secret code within up to 10
-            attempts.
-          </p>
-          <p>
-            The computer randomly generates a secret code of four colored pegs
-            from six available colors, allowing for repeats.
-          </p>
-          <h3>Gameplay</h3>
-          <p>
-            The player makes a guess by selecting a sequence of four colored
-            pegs from the available colors and submits it.
-          </p>
-          <p>Repeated colors are allowed in the guess.</p>
-          <p>Repeats are allowed.</p>
-          <p>The computer provides feedback after each guess.</p>
-          <p>
-            Feedback consists of a series of smaller pegs or markers placed
-            adjacent to the guess.
-          </p>
-          <h3>Results</h3>
-          <p>
-            Black pegs indicate a guessed peg that is the correct color and in
-            the correct position.
-          </p>
-          <p>
-            Gray pegs indicate a guessed peg that is the correct color but in
-            the wrong position.
-          </p>
-          <h3>Winning</h3>
-          <p>
-            The player wins by guessing the code within the allotted attempts.
-          </p>
-          <p>The computer wins if the player fails to guess the code.</p>
-          <span id="closeModal">&times;</span>
-          <button id="closeModalBtn" class="btn">Close</button>
+      <div id="buttons">
+        <button id="newGame" class="btn">Start new game</button>
+        <!-- Modal -->
+        <button id="rules" class="btn">Instructions</button>
+        <div id="bg-modal">
+          <div id="modal-content">
+            <h2>Instructions</h2>
+            <h3>Objective</h3>
+            <p>
+              Your aim is to guess the computer's secret code within up to 10
+              attempts.
+            </p>
+            <p>
+              The computer randomly generates a secret code of four colored pegs
+              from six available colors, allowing for repeats.
+            </p>
+            <h3>Gameplay</h3>
+            <p>
+              The player makes a guess by selecting a sequence of four colored
+              pegs from the available colors and submits it.
+            </p>
+            <p>Repeated colors are allowed in the guess.</p>
+            <p>Repeats are allowed.</p>
+            <p>The computer provides feedback after each guess.</p>
+            <p>
+              Feedback consists of a series of smaller pegs or markers placed
+              adjacent to the guess.
+            </p>
+            <h3>Results</h3>
+            <p>
+              Black pegs indicate a guessed peg that is the correct color and in
+              the correct position.
+            </p>
+            <p>
+              Gray pegs indicate a guessed peg that is the correct color but in
+              the wrong position.
+            </p>
+            <h3>Winning</h3>
+            <p>
+              The player wins by guessing the code within the allotted attempts.
+            </p>
+            <p>The computer wins if the player fails to guess the code.</p>
+            <span id="closeModal">&times;</span>
+            <button id="closeModalBtn" class="btn">Close</button>
+          </div>
         </div>
-      </div>
-      <button id="submit" class="btn">Submit</button>
+        <button id="submit" class="btn">Submit</button>
+        </div>
     </main>
-     <!-- Footer -->
-  <footer>
-    <p>Created by Patricia Halley</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <p>Created by Patricia Halley</p>
+    </footer>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
