@@ -92,9 +92,9 @@ h1 {
   align-items: center;
 }
 
-/* #secret {
+#secret {
   visibility: hidden;
-} */
+}
 
 #rowS-result {
   width: 50px;
