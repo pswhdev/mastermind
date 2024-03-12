@@ -108,7 +108,7 @@ function handleCurrentRow() {
     let guessPegCurrRow = guessPegsCurrRow[i];
     // Highlight and add click event listeners to the pegs of the current row for:
     //1.selecting to change color and 2.remove selection of previous selected pegs
-    guessPegCurrRow.style.border = "solid 3px #005700";
+    guessPegCurrRow.style.border = "solid 3px #8d8d8d";
     guessPegCurrRow.addEventListener("click", selectTargetPeg);
     guessPegCurrRow.addEventListener("click", handleSelected);
   }
