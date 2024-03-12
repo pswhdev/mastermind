@@ -17,7 +17,12 @@ body {
 }
 
 main {
-  height: 95vh;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 h1 {
@@ -30,7 +35,14 @@ h1 {
   text-shadow: 5px 5px 3px black;
 }
 
-  #game-setup {
+#bigContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#game-setup {
   display: flex;
   justify-content: center;
   align-items: center;
