@@ -116,53 +116,41 @@ __Cursor Pointer__
 
 ### Colour Scheme
 
-I wanted the chosen picture to be featured on the front page as the basis for selecting the color theme for the website. To accomplish this, I utilized the [Adobe Colors - Extract Theme](https://color.adobe.com/create/image) tool.
-
-- I have maintained consistency throughout the website by following the same color scheme, ensuring a pleasant user experience. The colors used were:
-  - #023859 for the background color of the body.
-  - #f2e4dc for the text color on the body and footer, as well as for the background color of the header (logo and navigation menu).
-  - #0d0d0d for the text color of the header (logo and navigation menu) and footer.
-
-  ![Pepe Beach Haven's color scheme](documentation/color-scheme.png)
+- The game is inherently colorful, so I opted for a clean appearance for the game board, selecting a simple yet pleasant and joyful linear gradient for the background.
+- Shadow effects were applied to the game elements to provide a sense of depth and enhance the user experience.
 
 ### Typography
 
 Google Fonts were utilized to import the selected fonts for use on the website.
 
-- [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display?query=dm+serif) was used for the headings for being a good contrasting font to be used in combination with [Raleway](https://fonts.google.com/specimen/Raleway?query=Raleway), which was chosen for the rest of the text content due to its sleek and modern design, as well as its excellent readability.
- - For the headings, Verdana was chosen as a browser-safe font, while Arial was used for the body text. Sans-serif was designated as the fallback font for both.
+The title font, [Madimi One](https://fonts.google.com/?category=Serif,Display&query=Madimi+One) was selected for its distinctive, stylish, yet simple and readable characteristics.
 
-DM Serif Display example: 
-![DM Serif Display Example](documentation/DM-sample.png)
+For the other sections, including the instructions, the font chosen was [Barlow Condensed](https://fonts.google.com/?category=Serif,Display&query=Barlow+Condensed) for its concise and readable nature, even on small screens.
 
-Raleway example
-![Raleway Example](documentation/railway-sample.png)
+Madimi One example: 
+![Madimi One Example](documentation/MadimiOne-sample.png)
+Barlow Condensed example: 
+![Barlow Condensed Display Example](documentation/BarlowCond-sample.png)
 
 ### Imagery
 
-Since the website serves as an advertisement for an accommodation located at Pepe Beach, I aimed for a photo specifically showcasing this area of Rio. This decision was made deliberately to accurately represent the accommodation's location and to highlight the unique atmosphere offered by Pepe Beach, distinct from the internationally renowned Copacabana and Ipanema beaches.
+The FavIcon image features a colored peg from the classic game.
+
+![FavIcon image](documentation/faviconPeg.png)
 
 ### Wireframes
 
-Wireframes were initially created for both mobile and desktop versions using Balsamiq. However, during the website development process adjustments were made resulting in alterations to the layout and the number of pages. As a result, the wireframes do not perfectly match the final product, but they served as a foundational guide throughout the development process.
+Wireframes were generated for both mobile and desktop versions utilizing Balsamiq. The layout remains consistent across all screens, adapting seamlessly to various screen sizes.
 
-## Desktop wireframes:
-
-![Home Page on a desktop](documentation/balsamiq-home-desktop.png) ![Accomodation Page on a desktop](documentation/balsamiq-photo-desktop.png) ![Contact Page on a desktop](documentation/balsamic-contact-desktop.png)
-
-## Mobile wireframes:
-
-![Home Page on a mobile](documentation/balsamiq-index-mobile.png) ![Accomodation Page on a mobile](documentation/balsamiq-photo-mobile.png) ![Contact Page on a mobile](documentation/balsamiq-contact-mobile.png)
+![Wireframes](documentation/balsamiqMastermind.png) 
 
 ## Technologies Used
 
 ### Languages Used
 
-- HTML and CSS
+- HTML, CSS and JavaScript
 
 ### Frameworks, Libraries & Programs Used
-
-- [Adobe Color](https://color.adobe.com/) - To generate a color theme using the photograph chhosen for the main page.
 
 - [Balsamiq](https://balsamiq.com/) - To create wireframes.
 
