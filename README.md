@@ -212,8 +212,21 @@ To clone the repository:
 Please refer to [TESTING.md](TESTING.md) file for details on all testing conducted.
 
 ## Fixed bugs
+
 During the test phase a few bugs were detected and corrected accordingly:
-1. 
+
+1. The random color generation method permits color repetition, leading to incorrect results when a player's guess includes the same color multiple times. For instance, if a color appears only once in the secret array and one of the repeated colors chosen by the player happens to be correctly placed during the comparison, that color is erroneously counted as many times as it occurred plus one in the result. 
+To address this issue, I created a variable to keep track of all indexes had already been compared. For each element of the user's guess (arr2) that was not a perfect match, the fuction would search for its presence in the secret code (arr1) at different positions, checking the array of indexes that have been already checked, ensuring that the current position hasn't already been identified as a perfect match. This is descibed on the JavaScript code as a comment on the function checkResult(arr1, arr2) as well.
+
+2. When the "Start New Game" button was pressed, the active row wasn't the first row, but rather the one that was last played before pressing the button. This issue was fixed by implementing a "resetGame" function to delete configurations saved on the last played pegs.
+
+3. When the game started with a page reload, only the pegs on the current row were clickable, which was the intended behavior. However, after losing or playing until a certain row and restarting with the "Start New Game" button, the pegs of the previously played rows did not lose the ".selected" class and could also be chosen to be played with. To fix this issue, I added reassignments for variables that stored values to reset them in the function that runs after clicking on "Submit".
+
+4. The pegs on the previously played rows retained the selected class on them. To address this, I had to remove the event listener on the "moveToNextRow" function.
+
+5. After winning, the color sequence was revealed, but the last played row remained active, and I could still press "Submit". Similarly, after losing, the same issue occurs, and I could still play. This issue was fixed by creating a "gameOver" function that removes attributes from the "guess pegs".
+
+6. After cleaning up and restructuring the code, an issue arose where the first "peg" of the current row wouldn't hold the "selected" class attribute, which allows for visualization of the active peg. To fix this, a thorough analysis of the entire code was conducted. It was discovered that the attribute was being added by one function but removed by setting some variables to clear upon moving to the next row. The fix was to move the function that handles the addition of the class attribute to the bottom of the tasks within the function that checks if the game proceeds after comparing the arrays. This ensured it was placed underneath the tasks that clear up the configurations on previous played "pegs".
 
 ## Unfixed Bugs
 

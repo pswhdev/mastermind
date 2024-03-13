@@ -228,7 +228,7 @@ function checkResult(arr1, arr2) {
       checkedIndexes.push(i);
     }
   }
-  //For each element of the User's guess (arr2) that is not a perfect macth, we search for its presence in the Secret code (arr1) at different positions, chhecking if the current position hasn't been already checked as a perfect match.
+  //For each element of the user's guess (arr2) that is not a perfect match, we search for its presence in the secret code (arr1) at different positions, ensuring that the current position hasn't already been identified as a perfect match.
   for (let i = 0; i < arr2.length; i++) {
     if (arr1[i] !== arr2[i]) {
       for (let j = 0; j < arr1.length; j++) {
