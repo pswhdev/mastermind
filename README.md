@@ -105,12 +105,12 @@ __Cursor Pointer__
 
 ### User Stories
 
-  - As a traveler planning a trip to Rio de Janeiro:
-    - I want to easily find and book accommodation so I can have a comfortable place to stay during my visit.
-    - I want to view high-quality photos of the apartment, so I can decide if it is a place I would like to stay.
-    - I want to access practical information about the surrounding area to help plan my activities during my stay.
-    - I want to easily find answers to frequently asked questions (FAQs) such as check-in process, and policies.
-
+  - As a player, I want to:
+    - Be able to easily find the instructions so that I can understand the game.
+    - Be able to restart a new game at any time.
+    - Easily select the colors I want to pick.
+    - Easily be able to change the color of any peg before submitting, but after having chosen the colors of the current row.
+    - Understand the result keys after each round without having to check any other place.
 
 ## Design
 
