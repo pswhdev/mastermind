@@ -52,21 +52,22 @@ h1 {
 #game-setup {
   display: flex;
   margin: 5px;
-  flex-wrap: wrap;
-  max-width: 95%;
-  height: 90%;
-  align-items: flex-end;
+  /* flex-wrap: wrap; */
+  /* width: 95%; */
+  /* height: 90%; */
+  align-items: center;
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
   flex-direction: column;
+  align-content: center;
+  order: 1;
 }
 
 #gameboard {
   position: relative;
   background-color: #fff;
   max-height: 550px;
-  width: 200px;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
 }
@@ -113,7 +114,7 @@ h1 {
 suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-css-box-shadow-property*/
 .guess-pegs,
 .color {
-  margin: 5px;
+  margin: 3px;
   background-color: #fff;
   width: 30px;
   height: 30px;
@@ -203,6 +204,16 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 #color6 {
   background-color: purple;
   order: 2;
+}
+
+#colorsContainer {
+  width: 260px;
+  flex-direction: row;
+  order: 3;
+}
+
+#codeResult {
+  order:2;
 }
 
 #result-black {
