@@ -19,7 +19,34 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 ## CONTENTS
 
 # Table of Contents
-<!-- Insert table of contents here  -->
+# Table of Contents
+
+1. [Mastermind](#mastermind)
+2. [Contents](#contents)
+3. [Features](#features)
+    1. [Existing Features](#existing-features)
+    2. [Features Left to Implement](#features-left-to-implement)
+4. [User Experience (UX)](#user-experience-ux)
+    1. [User Stories](#user-stories)
+5. [Design](#design)
+    1. [Colour Scheme](#colour-scheme)
+    2. [Typography](#typography)
+    3. [Imagery](#imagery)
+    4. [Wireframes](#wireframes)
+6. [Technologies Used](#technologies-used)
+    1. [Languages Used](#languages-used)
+    2. [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+7. [Deployment and Local deployment](#deployment-and-local-deployment)
+    1. [Deployment](#deployment)
+    2. [Local Development](#local-development)
+8. [Testing](#testing)
+9. [Fixed Bugs](#fixed-bugs)
+10. [Unfixed Bugs](#unfixed-bugs)
+11. [Credits](#credits)
+    1. [Code Used](#code-used)
+    2. [Content](#content)
+    3. [Media](#media)
+    4. [Acknowledgments](#acknowledgments)
 
 ## Features 
 
