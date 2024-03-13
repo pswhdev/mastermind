@@ -250,6 +250,7 @@ function checkResult(arr1, arr2) {
     let modalWin = document.getElementById("bg-modalWin");
     let closeModalWin = document.getElementById("closeModalWin");
     let closeModalWinBtn = document.getElementById("closeModalWinBtn");
+    let closeModalResetBtn = document.getElementById("closeModalResetBtn");
     modalWin.style.display = "flex";
     closeModalWin.addEventListener("click", function () {
       modalWin.style.display = "none";
@@ -257,6 +258,9 @@ function checkResult(arr1, arr2) {
     closeModalWinBtn.addEventListener("click", function () {
       modalWin.style.display = "none";
     });
+    closeModalResetBtn.addEventListener("click", resetGame);
+    closeModalResetBtn.addEventListener("click", function () {
+      modalWin.style.display = "none"});
     // call gameOver fucntion
     gameOver();
     // The last row is played and the result is not a match
@@ -264,13 +268,19 @@ function checkResult(arr1, arr2) {
     let modalLoose = document.getElementById("bg-modalLoose");
     let closeModalLoose = document.getElementById("closeModalLoose");
     let closeModalLooseBtn = document.getElementById("closeModalLooseBtn");
+    let closeModalLResetBtn = document.getElementById("closeModalLResetBtn");
     modalLoose.style.display = "flex";
     closeModalLoose.addEventListener("click", function () {
       modalLoose.style.display = "none";
     });
+    
     closeModalLooseBtn.addEventListener("click", function () {
       modalLoose.style.display = "none";
     });
+    closeModalLResetBtn.addEventListener("click", resetGame);
+    closeModalLResetBtn.addEventListener("click", function () {
+      modalLoose.style.display = "none"});
+    // call gameOver fucntion
     gameOver();
   } else {
     // Move to the next row:
