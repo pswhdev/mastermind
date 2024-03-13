@@ -42,26 +42,6 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-evenly;
   text-align: center;
-
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-}
-
-#game-setup {
-  display: flex;
-  margin: 5px;
-  /* flex-wrap: wrap; */
-  /* width: 95%; */
-  /* height: 90%; */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center;
-  order: 1;
 }
 
 #gameboard {
@@ -101,9 +81,9 @@ h1 {
   align-items: center;
 }
 
-#secret {
+/* #secret {
   visibility: hidden;
-}
+} */
 
 #rowS-result {
   width: 40px;
@@ -208,12 +188,13 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 #colorsContainer {
   width: 260px;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
   order: 3;
 }
 
 #codeResult {
-  order:2;
+  order: 2;
 }
 
 #result-black {
@@ -246,13 +227,19 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   cursor: pointer;
 }
 
+.btnWinLoose {
+margin: 20px;
+}
+
 .btn:hover {
   color: #1a2a6c;
   background-color: #fff;
 }
 
 /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
-#bg-modal {
+#bg-modal,
+#bg-modalWin,
+#bg-modalLoose {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -277,16 +264,35 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: relative;
 }
 
+#modal-win,
+#modal-loose {
+  width: 70%;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: justify;
+  letter-spacing: 0.5px;
+  padding: 20px;
+  position: relative;
+}
+
 #modal-content > h2,
 p {
   padding-top: 7px;
+}
+
+#modal-win > h2, #modal-loose > h2 {
+  text-align: justify;
+  padding:20px;
 }
 
 #modal-content > h3 {
   padding-top: 10px;
 }
 
-#closeModal {
+#closeModal,
+#closeModalWin,
+#closeModalLoose {
   position: absolute;
   top: 0;
   right: 15px;
@@ -294,9 +300,11 @@ p {
   font-size: 42px;
 }
 
-#closeModal:hover {
+#closeModal:hover,
+#closeModalWin:hover,
+#closeModalLoose:hover {
   cursor: pointer;
-  color:#c0c0c0;
+  color: #c0c0c0;
 }
 
 footer {

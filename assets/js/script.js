@@ -55,13 +55,13 @@ function resetPegs() {
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
   //Reset styles and remove event listeners from all guess pegs
   for (let guessPeg of allGuessPegs) {
-    if ( guessPeg.classList.contains("selected")) {
-       guessPeg.classList.remove("selected");
+    if (guessPeg.classList.contains("selected")) {
+      guessPeg.classList.remove("selected");
     }
-     guessPeg.style.backgroundColor = "#fff";
-     guessPeg.style.border = "transparent";
-     guessPeg.removeEventListener("click", selectTargetPeg);
-     guessPeg.removeEventListener("click", handleSelected);
+    guessPeg.style.backgroundColor = "#fff";
+    guessPeg.style.border = "transparent";
+    guessPeg.removeEventListener("click", selectTargetPeg);
+    guessPeg.removeEventListener("click", handleSelected);
   }
   //Select all Result Pegs
   let allResultPegs = document.querySelectorAll(".result-pegs");
@@ -245,11 +245,33 @@ function checkResult(arr1, arr2) {
   }
   giveUserFeedback();
   if (sumOfCorrect === 4) {
-    alert("Congratulations! You cracked the code!!");
+    // Modal
+    /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
+    let modalWin = document.getElementById("bg-modalWin");
+    let closeModalWin = document.getElementById("closeModalWin");
+    let closeModalWinBtn = document.getElementById("closeModalWinBtn");
+    modalWin.style.display = "flex";
+    closeModalWin.addEventListener("click", function () {
+      modalWin.style.display = "none";
+    });
+    closeModalWinBtn.addEventListener("click", function () {
+      modalWin.style.display = "none";
+    });
+    // call gameOver fucntion
     gameOver();
+    // The last row is played and the result is not a match
   } else if (currentRow === 10) {
+    let modalLoose = document.getElementById("bg-modalLoose");
+    let closeModalLoose = document.getElementById("closeModalLoose");
+    let closeModalLooseBtn = document.getElementById("closeModalLooseBtn");
+    modalLoose.style.display = "flex";
+    closeModalLoose.addEventListener("click", function () {
+      modalLoose.style.display = "none";
+    });
+    closeModalLooseBtn.addEventListener("click", function () {
+      modalLoose.style.display = "none";
+    });
     gameOver();
-    alert("Game Over! You have used all your chances. Good luck next time!");
   } else {
     // Move to the next row:
     currentRow++;
@@ -376,11 +398,9 @@ let closeModalBtn = document.getElementById("closeModalBtn");
 rulesBtn.addEventListener("click", function () {
   modal.style.display = "flex";
 });
-
 closeModal.addEventListener("click", function () {
   modal.style.display = "none";
 });
-
 closeModalBtn.addEventListener("click", function () {
   modal.style.display = "none";
 });
