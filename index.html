@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="mastermind, master mind, senha, code-breaking game, code cracking, colors guess, code game"
+    />
+    <meta
+      name="description"
+      content="Code breaking game where the color combination has to be figured out based on hints."
+    />
+    <meta name="author" content="Patricia Halley" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Mastermind</title>
+    <!--Favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon/favicon-16x16.png"
+    />
+  </head>
+  <!-- Body -->
+  <body>
+    <header>
+      <!-- Logo -->
+      <div id="logo">
+        <h1>Mastermind</h1>
+      </div>
+    </header>
+    <!-- Main -->
+    <main>
+      <div id="bigContainer">
+        <div id="game-setup">
+          <!-- Game -->
+          <section id="gameboard">
+            <div id="codeTop">????</div>
+            <section class="row" id="secret">
+              <div class="guess-pegs" id="rowS-1"></div>
+              <div class="guess-pegs" id="rowS-2"></div>
+              <div class="guess-pegs" id="rowS-3"></div>
+              <div class="guess-pegs" id="rowS-4"></div>
+              <div class="guess-pegs" id="rowS-result"></div>
+            </section>
+            <section class="row" id="10">
+              <div class="guess-pegs r10" id="row10_1"></div>
+              <div class="guess-pegs r10" id="row10_2"></div>
+              <div class="guess-pegs r10" id="row10_3"></div>
+              <div class="guess-pegs r10" id="row10_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow10_1"></div>
+                <div class="result-pegs" id="resultRow10_2"></div>
+                <div class="result-pegs" id="resultRow10_3"></div>
+                <div class="result-pegs" id="resultRow10_4"></div>
+              </div>
+            </section>
+            <section class="row" id="9">
+              <div class="guess-pegs r9" id="row9_1"></div>
+              <div class="guess-pegs r9" id="row9_2"></div>
+              <div class="guess-pegs r9" id="row9_3"></div>
+              <div class="guess-pegs r9" id="row9_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow9_1"></div>
+                <div class="result-pegs" id="resultRow9_2"></div>
+                <div class="result-pegs" id="resultRow9_3"></div>
+                <div class="result-pegs" id="resultRow9_4"></div>
+              </div>
+            </section>
+            <section class="row" id="8">
+              <div class="guess-pegs r8" id="row8_1"></div>
+              <div class="guess-pegs r8" id="row8_2"></div>
+              <div class="guess-pegs r8" id="row8_3"></div>
+              <div class="guess-pegs r8" id="row8_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow8_1"></div>
+                <div class="result-pegs" id="resultRow8_2"></div>
+                <div class="result-pegs" id="resultRow8_3"></div>
+                <div class="result-pegs" id="resultRow8_4"></div>
+              </div>
+            </section>
+            <section class="row" id="7">
+              <div class="guess-pegs r7" id="row7_1"></div>
+              <div class="guess-pegs r7" id="row7_2"></div>
+              <div class="guess-pegs r7" id="row7_3"></div>
+              <div class="guess-pegs r7" id="row7_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow7_1"></div>
+                <div class="result-pegs" id="resultRow7_2"></div>
+                <div class="result-pegs" id="resultRow7_3"></div>
+                <div class="result-pegs" id="resultRow7_4"></div>
+              </div>
+            </section>
+            <section class="row" id="6">
+              <div class="guess-pegs r6" id="row6_1"></div>
+              <div class="guess-pegs r6" id="row6_2"></div>
+              <div class="guess-pegs r6" id="row6_3"></div>
+              <div class="guess-pegs r6" id="row6_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow6_1"></div>
+                <div class="result-pegs" id="resultRow6_2"></div>
+                <div class="result-pegs" id="resultRow6_3"></div>
+                <div class="result-pegs" id="resultRow6_4"></div>
+              </div>
+            </section>
+            <section class="row" id="5">
+              <div class="guess-pegs r5" id="row5_1"></div>
+              <div class="guess-pegs r5" id="row5_2"></div>
+              <div class="guess-pegs r5" id="row5_3"></div>
+              <div class="guess-pegs r5" id="row5_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow5_1"></div>
+                <div class="result-pegs" id="resultRow5_2"></div>
+                <div class="result-pegs" id="resultRow5_3"></div>
+                <div class="result-pegs" id="resultRow5_4"></div>
+              </div>
+            </section>
+            <section class="row" id="4">
+              <div class="guess-pegs r4" id="row4_1"></div>
+              <div class="guess-pegs r4" id="row4_2"></div>
+              <div class="guess-pegs r4" id="row4_3"></div>
+              <div class="guess-pegs r4" id="row4_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow4_1"></div>
+                <div class="result-pegs" id="resultRow4_2"></div>
+                <div class="result-pegs" id="resultRow4_3"></div>
+                <div class="result-pegs" id="resultRow4_4"></div>
+              </div>
+            </section>
+            <section class="row" id="3">
+              <div class="guess-pegs r3" id="row3_1"></div>
+              <div class="guess-pegs r3" id="row3_2"></div>
+              <div class="guess-pegs r3" id="row3_3"></div>
+              <div class="guess-pegs r3" id="row3_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow3_1"></div>
+                <div class="result-pegs" id="resultRow3_2"></div>
+                <div class="result-pegs" id="resultRow3_3"></div>
+                <div class="result-pegs" id="resultRow3_4"></div>
+              </div>
+            </section>
+            <section class="row" id="2">
+              <div class="guess-pegs r2" id="row2_1"></div>
+              <div class="guess-pegs r2" id="row2_2"></div>
+              <div class="guess-pegs r2" id="row2_3"></div>
+              <div class="guess-pegs r2" id="row2_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow2_1"></div>
+                <div class="result-pegs" id="resultRow2_2"></div>
+                <div class="result-pegs" id="resultRow2_3"></div>
+                <div class="result-pegs" id="resultRow2_4"></div>
+              </div>
+            </section>
+            <section class="row" id="1">
+              <div class="guess-pegs r1" id="row1_1"></div>
+              <div class="guess-pegs r1" id="row1_2"></div>
+              <div class="guess-pegs r1" id="row1_3"></div>
+              <div class="guess-pegs r1" id="row1_4"></div>
+              <div class="result-panel">
+                <div class="result-pegs" id="resultRow1_1"></div>
+                <div class="result-pegs" id="resultRow1_2"></div>
+                <div class="result-pegs" id="resultRow1_3"></div>
+                <div class="result-pegs" id="resultRow1_4"></div>
+              </div>
+            </section>
+          </div>
+          <!-- Options of colors to be chosen -->
+          
+            <section id="colorsContainer" class="colors">
+              <h2>Pick your colours</h2>
+              <div
+                class="color"
+                id="color1"
+                onclick="selectColor('blue')"
+              ></div>
+              <div class="color" id="color2" onclick="selectColor('red')"></div>
+              <div
+                class="color"
+                id="color3"
+                onclick="selectColor('orange')"
+              ></div>
+              <div
+                class="color"
+                id="color4"
+                onclick="selectColor('pink')"
+              ></div>
+              <div
+                class="color"
+                id="color5"
+                onclick="selectColor('green')"
+              ></div>
+              <div
+                class="color"
+                id="color6"
+                onclick="selectColor('purple')"
+              ></div>
+            </section>
+            <section id="codeResult" class="colors">
+              <span id="result-black"></span
+              ><span class="resExplanation"
+                >color &#x2713; position &#x2713;</span
+              >
+              <hr />
+              <span id="result-gray"></span
+              ><span class="resExplanation"
+                >color &#10003; position &#x2717;</span
+              >
+            </section>
+        </div>
+        <section id="buttons">
+          <button id="newGame" class="btn">Start new game</button>
+          <!-- Modal -->
+          <button id="rules" class="btn">Instructions</button>
+          <div id="bg-modal">
+            <div id="modal-content">
+              <h2>Instructions</h2>
+              <h3>Objective</h3>
+              <p>
+                Your aim is to guess the computer's secret code within up to 10
+                attempts.
+              </p>
+              <p>
+                The computer randomly generates a secret code of four colored
+                pegs from six available colors, allowing for repeats.
+              </p>
+              <h3>Gameplay</h3>
+              <p>
+                The player makes a guess by selecting a sequence of four colored
+                pegs from the available colors and submits it.
+              </p>
+              <p>Repeated colors are allowed in the guess.</p>
+              <p>Repeats are allowed.</p>
+              <p>The computer provides feedback after each guess.</p>
+              <p>
+                Feedback consists of a series of smaller pegs or markers placed
+                adjacent to the guess.
+              </p>
+              <h3>Results</h3>
+              <p>
+                Black pegs indicate a guessed peg that is the correct color and
+                in the correct position.
+              </p>
+              <p>
+                Gray pegs indicate a guessed peg that is the correct color but
+                in the wrong position.
+              </p>
+              <h3>Winning</h3>
+              <p>
+                The player wins by guessing the code within the allotted
+                attempts.
+              </p>
+              <p>The computer wins if the player fails to guess the code.</p>
+              <span id="closeModal">&times;</span>
+              <button id="closeModalBtn" class="btn">Close</button>
+            </div>
+          </div>
+          <button id="submit" class="btn">Submit</button>
+        </section>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <p>Created by Patricia Halley</p>
+    </footer>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,412 @@
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Tilt+Prism:XROT,YROT@-2,-1&display=swap");
+/* To remove default padding and margin.
+*/
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+}
+
+/* Gradients from https://uigradients.com/#KingYna */
+body {
+  background: #1a2a6c; /* fallback for old browsers */
+  background: linear-gradient(to top, #fdbb2d, #b21f1f, #1a2a6c);
+  font-family: "Barlow Condensed", sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  height: 100vh;
+}
+
+h1 {
+  margin-top: 20px;
+  font-family: "Madimi One", sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #c0c0c0;
+  text-shadow: 5px 5px 3px black;
+}
+
+#bigContainer {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+#game-setup {
+  display: flex;
+  margin: 5px;
+  /* flex-wrap: wrap; */
+  /* width: 95%; */
+  /* height: 90%; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  order: 1;
+}
+
+#gameboard {
+  position: relative;
+  background-color: #fff;
+  max-height: 550px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+#buttons {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#codeTop {
+  font-family: "Tilt Prism", sans-serif;
+  letter-spacing: 21px;
+  position: absolute;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  color: #c0c0c0;
+  top: 0;
+  left: 14px;
+  visibility: visible;
+}
+
+.row {
+  border-radius: 5px;
+  border-bottom: solid 1px #c0c0c0;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  width: 98%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#secret {
+  visibility: hidden;
+}
+
+#rowS-result {
+  width: 40px;
+  visibility: hidden;
+}
+
+/* box-shadow from: https://www.cssmatic.com/box-shadow
+suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-css-box-shadow-property*/
+.guess-pegs,
+.color {
+  margin: 3px;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Increase scale when hover(colors) and selected(pegs) */
+.color:hover,
+.selected {
+  transform: scale(1.2);
+}
+
+.result-panel {
+  max-width: 40px;
+  max-height: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+#not-visible {
+  background-color: inherit;
+}
+
+.result-pegs {
+  margin: 3px;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.46);
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
+.result-pegs-invisible {
+  background-color: inherit;
+}
+
+.colors {
+  max-width: 50px;
+  margin: 3px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.colors h2 {
+  color: #000;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+#color1 {
+  background-color: blue;
+  order: 3;
+}
+
+#color2 {
+  background-color: red;
+  order: 5;
+}
+
+#color3 {
+  background-color: orange;
+  order: 6;
+}
+
+#color4 {
+  background-color: pink;
+  order: 1;
+}
+
+#color5 {
+  background-color: green;
+  order: 4;
+}
+
+#color6 {
+  background-color: purple;
+  order: 2;
+}
+
+#colorsContainer {
+  width: 260px;
+  flex-direction: row;
+  order: 3;
+}
+
+#codeResult {
+  order:2;
+}
+
+#result-black {
+  margin: 3px;
+  background-color: #000;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+}
+
+#result-gray {
+  margin: 3px;
+  background-color: #c0c0c0;
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+}
+
+.btn {
+  font-size: 16px;
+  color: #fff;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #1a2a6c;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #1a2a6c;
+  background-color: #fff;
+}
+
+/* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
+#bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+#modal-content {
+  width: 70%;
+  max-width: 500px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: justify;
+  letter-spacing: 0.5px;
+  padding: 20px;
+  overflow: auto;
+  position: relative;
+}
+
+#modal-content > h2,
+p {
+  padding-top: 7px;
+}
+
+#modal-content > h3 {
+  padding-top: 10px;
+}
+
+#closeModal {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  display: inline-block;
+  font-size: 42px;
+}
+
+footer {
+  background-color: #080808;
+  font-size: 1rem;
+  color: #eeeeee;
+  width: 100%;
+}
+
+footer p {
+  padding: 5px;
+  text-align: center;
+}
+
+/* @media (max-width: 280px) {
+  h1 {
+    margin: 3px;
+  }
+
+  #game-setup {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 275px;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  
+  #gameboard {
+    max-height: 450px;
+    max-width: 300px;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  #codeTop {
+    left: 15px;
+    font-size: 29px;
+    letter-spacing: 25px;
+  }
+
+  #rowS-result {
+    width: 30px;
+  }
+
+  .guess-pegs,
+  .color {
+    margin: 2px;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
+  }
+
+  Increase scale when hover(colors) and selected(pegs)
+  .color:hover,
+  .selected {
+    transform: scale(1.1);
+  }
+
+  .result-panel {
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+  .result-pegs {
+    margin: 2px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.46);
+    height: 7px;
+    width: 7px;
+  }
+
+  .colors {
+    max-width: 60px;
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  .colors h2 {
+    font-size: 15px;
+  }
+
+  #result-black {
+    margin: 2px;
+    height: 8px;
+    width: 8px;
+  }
+
+  #result-gray {
+    margin: 2px;
+    height: 8px;
+    width: 8px;
+  }
+
+  .resExplanation {
+    font-size: 15px;
+  }
+
+  .btn {
+    font-size: 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3px 5px;
+  }
+
+  #modal-content {
+    width: 70%;
+  }
+
+  footer {
+    background-color: #080808;
+    color: #eeeeee;
+    width: 100%;
+  }
+}*/
