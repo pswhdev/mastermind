@@ -19,34 +19,36 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 ## CONTENTS
 
 # Table of Contents
-# Table of Contents
 
-1. [Mastermind](#mastermind)
+1. [Introduction](#introduction)
 2. [Contents](#contents)
 3. [Features](#features)
-    1. [Existing Features](#existing-features)
-    2. [Features Left to Implement](#features-left-to-implement)
+   - [Existing Features](#existing-features)
+   - [Features Left to Implement](#features-left-to-implement)
 4. [User Experience (UX)](#user-experience-ux)
-    1. [User Stories](#user-stories)
+   - [User Stories](#user-stories)
 5. [Design](#design)
-    1. [Colour Scheme](#colour-scheme)
-    2. [Typography](#typography)
-    3. [Imagery](#imagery)
-    4. [Wireframes](#wireframes)
+   - [Colour Scheme](#colour-scheme)
+   - [Typography](#typography)
+   - [Imagery](#imagery)
+   - [Wireframes](#wireframes)
 6. [Technologies Used](#technologies-used)
-    1. [Languages Used](#languages-used)
-    2. [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
-7. [Deployment and Local deployment](#deployment-and-local-deployment)
-    1. [Deployment](#deployment)
-    2. [Local Development](#local-development)
+   - [Languages Used](#languages-used)
+   - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+7. [Deployment and Local Deployment](#deployment-and-local-deployment)
+   - [Deployment](#deployment)
+   - [Local Development](#local-development)
+      - [How to Fork](#how-to-fork)
+      - [How to Clone](#how-to-clone)
 8. [Testing](#testing)
 9. [Fixed Bugs](#fixed-bugs)
 10. [Unfixed Bugs](#unfixed-bugs)
 11. [Credits](#credits)
-    1. [Code Used](#code-used)
-    2. [Content](#content)
-    3. [Media](#media)
-    4. [Acknowledgments](#acknowledgments)
+   - [Code Used](#code-used)
+   - [Content](#content)
+   - [Media](#media)
+   - [Acknowledgments](#acknowledgments)
+
 
 ## Features 
 
@@ -289,6 +291,6 @@ I would like to express my gratitude to the following individuals:
 
 - Jubril Akolade, my mentor, for providing invaluable guidance throughout the development process.
 - Kera Cudmore, whose exemplary README files served as a model for the documentation included in this project.
-- My husband, Josh Halley, for patiently serving as my rubber duck and attentively listening to my descriptions of the problems I encountered at various stages of the game's development.
-- My brother, for shedding light on a critical bug in my code towards the end of the process and assisting with debugging.
-- My brother Rafael Wyant and my mother, Fernanda Soares, for their assistance with manual tests and for providing suggestions to enhance user-friendliness and necessary features.
+- My husband, Josh Halley, for patiently and attentively listening to my ideas and problems I encountered at various stages of the development.
+- My brother Rafael  Wyant for shedding light on a bug in my game towards the end of the development and assisting in finding the reason for the problem.
+- My brother and my mother, Fernanda Soares, for their assistance with manual tests and for providing suggestions to enhance user-friendliness and necessary features.
