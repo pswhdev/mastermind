@@ -493,7 +493,7 @@ footer p {
   }
 
   #coloursAndKeys {
-    flex: 0 0 70px;
+    flex: 0 0 100px;
   }
 
   #codeTop div {
@@ -536,7 +536,7 @@ footer p {
 
   #buttons {
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
   }
 
   footer p {
