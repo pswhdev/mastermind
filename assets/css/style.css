@@ -489,7 +489,7 @@ footer p {
   }
 
   #gameboard {
-    flex: 0 0 200px;
+    flex: 0 0 400px;
   }
 
   #coloursAndKeys {
@@ -497,7 +497,7 @@ footer p {
   }
 
   #codeTop div {
-    font-size: 30px;
+    font-size: 35px;
   }
 
   #colorsContainer h2 {
@@ -511,32 +511,33 @@ footer p {
 
   .guess-pegs,
   .color {
-    width: 40px;
-    height: 40px;
-    box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
+    width: 45px;
+    height: 45px;
+    box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.46);
   }
 
   .result-panel {
-    width: 25px;
+    width: 35px;
   }
   
   .rowS-result {
-    width: 25px;
+    width: 35px;
   }
 
   #result-black, #result-gray, .result-pegs {
-    height: 8px;
-    width: 8px;
-    box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.46);
+    height: 13px;
+    width: 13px;
+    box-shadow: inset 0px 0px 6px 0px rgba(0, 0, 0, 0.46);
   }
 
   .btn {
-    font-size: 20px;
+    font-size: 25px;
+    padding: 5px 25px;
   }
 
   #buttons {
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
   }
 
   footer p {
