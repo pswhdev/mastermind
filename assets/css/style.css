@@ -15,13 +15,19 @@ body {
   background: linear-gradient(to top, #fdbb2d, #b21f1f, #1a2a6c);
   font-family: "Barlow Condensed", sans-serif;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 h1 {
+  display: block;
+  text-align: center;
   margin-top: 20px;
   font-family: "Madimi One", sans-serif;
   font-size: clamp(2rem, 6vw, 4rem);
@@ -29,19 +35,23 @@ h1 {
   text-shadow: 5px 5px 3px black;
 }
 
-#boardAndColors {
+/* Flex container with board, colours and result keys interpretation */
+#boardColorsAndKeys {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 7px;
 }
 
 #gameboard {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   position: relative;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  order: 1;
 }
 
 .row {
@@ -52,7 +62,6 @@ h1 {
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  width: 98%;
   justify-content: space-between;
   align-items: center;
 }
@@ -94,23 +103,46 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   visibility: hidden;
 }
 
+/* Flex container with coloursand result keys interpretation */
+#coloursAndKeys {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 7px;
+}
+
 #colorsContainer {
   padding: 2px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
   justify-content: space-around;
-  order: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+#codeResult {
+  padding: 2px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 3px;;
 }
 
 #colorsContainer h2 {
   color: #000;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  text-align: center;
 }
 
 /* Increase scale when hover(colors) and selected(pegs) */
@@ -145,13 +177,9 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 /* Result Keys interpretation */
-#codeResult {
- margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  order: 2;
+#codeResult p, span {
+  display: inline-block;
+  font-size: clamp(1rem, 2vw, 2rem);
 }
 
 #result-black {
@@ -192,13 +220,15 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 #buttons {
+  margin: 5px;
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .btn {
-  font-size: 16px;
+  font-size: (1.2rem, 2.5vw, 2rem);
+  font-family: "Barlow Condensed", sans-serif;;
   color: #fff;
   flex-direction: row;
   border-radius: 10px;
@@ -299,6 +329,7 @@ footer {
 
 footer p {
   padding: 5px;
+  font-size: clamp(1rem, 2vw, 2rem);
   text-align: center;
 }
 
