@@ -30,7 +30,6 @@ h1 {
   text-align: center;
   margin-top: 5px;
   font-family: "Madimi One", sans-serif;
-  font-size: clamp(2rem, 6vw, 4rem);
   color: #c0c0c0;
   text-shadow: 5px 5px 3px black;
 }
@@ -38,6 +37,7 @@ h1 {
 /* Flex container with board, colours and result keys interpretation */
 #boardColorsAndKeys {
   display: flex;
+  margin: 0 6px;
   justify-content: center;
   flex-grow: 1;
   gap: 7px;
@@ -46,6 +46,7 @@ h1 {
 #gameboard {
   position: relative;
   display: flex;
+  flex: 0 0 75%;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -55,7 +56,7 @@ h1 {
 }
 
 .row {
-  padding:5px;
+  padding: 5px;
   border-radius: 5px;
   gap: 6px;
   border-bottom: solid 1px #c0c0c0;
@@ -104,7 +105,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 /* Placeholder for the result panel size to aling pegs on the secret and codeTpo rows. Always to be hidden */
 .rowS-result {
-  width: 25px;
+  width: 28px;
   visibility: hidden !important;
 }
 
@@ -130,15 +131,13 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 #codeResult {
-  padding: 2px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 3px;;
+  justify-content: flex-end;
 }
 
 #colorsContainer h2 {
@@ -179,11 +178,14 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 /* Result Keys interpretation */
-#codeResult p, span {
-  display: inline-block;
-  font-size: clamp(0.7rem, 2vw, 2rem);
+#codeResult p, div,
+span {
+  display: block;
+  text-align: center;
+  font-size: 12px;
 }
 
+/* Result Keys interpretation black key*/
 #result-black {
   display: inline-block;
   margin: 3px;
@@ -194,6 +196,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   border-radius: 50%;
 }
 
+/* Result Keys interpretation gray key*/
 #result-gray {
   display: inline-block;
   margin: 3px;
@@ -214,25 +217,25 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: absolute;
   margin: 0;
   padding: 0;
-  width: 175px;
-  top: 10px;
+  /* This width will be calculated automatically to  follow the resizing of the flex row secret (js function to resize) */
+  width: 201px;
   text-align: justify;
   color: #8d8d8d;
   visibility: visible;
 }
 
 #codeTop div {
-font-family: "Tilt Prism", sans-serif;
-font-size: 19px;
-text-align: center;
+  font-family: "Tilt Prism", sans-serif;
+  font-size: 19px;
+  text-align: center;
 }
 
 /* To style the marings around dummy row pegs with id: codeTop */
 .topRow {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
-#rowT-1{
+#rowT-1 {
   margin-left: 3px;
 }
 
@@ -245,8 +248,10 @@ text-align: center;
 }
 
 .btn {
-  /* font-size: (1.2rem, 2.5vw, 2rem); */
-  font-family: "Barlow Condensed", sans-serif;;
+  font-size: 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.7px;
   color: #fff;
   flex-direction: row;
   border-radius: 10px;
@@ -347,11 +352,132 @@ footer {
 
 footer p {
   padding: 5px;
-  /* font-size: clamp(1rem, 2vw, 2rem); */
   text-align: center;
+  letter-spacing: 1px;
+  font-weight: 100;
 }
 
 /* 576px for portrait phones
 768px for tablets
 992px for laptops
 1200px for large devices */
+
+/* Media query for medium mobiles */
+@media screen and (min-width: 360px) {
+  #boardColorsAndKeys {
+    margin: 0 10px;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 7px;
+  }
+
+  /* #codeTop {
+    width: 277px;
+  } */
+
+  #codeTop div {
+    font-size: 40px;
+  }
+
+  #colorsContainer h2 {
+    font-size: 20px;
+  }
+
+  #codeResult p,
+  span {
+    font-size: 15px;
+  }
+
+  .guess-pegs,
+  .color {
+    width: 45px;
+    height: 45px;
+  }
+
+  .result-panel {
+    width: 30px;
+  }
+
+  .rowS-result {
+    width: 30px;
+  }
+
+  #result-black, #result-gray, .result-pegs {
+    height: 10px;
+    width: 10px;
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}
+
+/* Media query for large phones and  larger */
+@media screen and (min-width: 390px) {
+
+  h1 {
+    font-size: 45px;
+  }
+}
+
+/* Media query for tablets and  larger */
+@media screen and (min-width: 768px) {
+
+  h1 {
+    font-size: 70px;
+  }
+
+  #boardColorsAndKeys {
+    gap: 30px;
+    margin: 10px 10px;
+  }
+  
+  #gameboard {
+    flex: 0 0 50%;
+  }
+
+  /* #codeTop {
+    width: 374px;
+  } */
+
+  #codeTop div {
+    font-size: 40px;
+  }
+
+  #colorsContainer h2 {
+    font-size: 30px;
+  }
+
+  #codeResult p,
+  span {
+    font-size: 20px;
+  }
+
+  .guess-pegs,
+  .color {
+    width: 55px;
+    height: 55px;
+  }
+
+  .result-panel {
+    width: 35px;
+  }
+  
+  .rowS-result {
+    width: 35px;
+  }
+
+  .btn {
+    font-size: 35px;
+  }
+
+  #buttons {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  footer p {
+    font-size: 25px;
+  }
+}

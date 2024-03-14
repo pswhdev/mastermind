@@ -414,3 +414,14 @@ closeModal.addEventListener("click", function () {
 closeModalBtn.addEventListener("click", function () {
   modal.style.display = "none";
 });
+
+//To automatically resize the dummy row, which is positioned absolutely on top of the secretCode element that has a flex property.
+window.addEventListener('resize', function() {
+  let secretWidth = document.querySelector('#secret').offsetWidth;
+  let secretHeight = document.querySelector('#secret').offsetHeight;
+  document.getElementById('codeTop').style.width = secretWidth + 'px';
+  document.getElementById('codeTop').style.height = secretHeight + 'px';
+});
+
+// The window resizing will trigger the function
+window.dispatchEvent(new Event('resize'));
