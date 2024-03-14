@@ -210,7 +210,6 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: absolute;
   margin: 0;
   padding: 0;
-  padding-left: ;
   width: 200px;
   top: 10px;
   text-align: justify;
@@ -222,6 +221,15 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 font-family: "Tilt Prism", sans-serif;
 font-size: 27px;
 text-align: center;
+}
+
+/* To style the marings around dummy row pegs with id: codeTop */
+.topRow {
+  margin-bottom: 5px;
+}
+
+#rowT-1{
+  margin-left: 3px;
 }
 
 /* Container with the buttons on the bottom of the gameboard */
