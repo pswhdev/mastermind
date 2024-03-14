@@ -64,7 +64,7 @@ h1 {
   flex-direction: row;
   flex-grow: 1;
   background-color: #fff;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -217,7 +217,7 @@ span {
   position: absolute;
   margin: 0;
   padding: 0;
-  /* This width will be calculated automatically to  follow the resizing of the flex row secret (js function to resize) */
+  /* This width has to be set to the width of the gameboard and will be calculated automatically to  follow the resizing of the flex row secret (js function to resize) */
   width: 201px;
   text-align: justify;
   color: #8d8d8d;
@@ -357,11 +357,6 @@ footer p {
   font-weight: 100;
 }
 
-/* 576px for portrait phones
-768px for tablets
-992px for laptops
-1200px for large devices */
-
 /* Media query for medium mobiles */
 @media screen and (min-width: 360px) {
   #boardColorsAndKeys {
@@ -434,11 +429,11 @@ footer p {
   }
   
   #gameboard {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
   }
 
   /* #codeTop {
-    width: 374px;
+    width: 449px;
   } */
 
   #codeTop div {
@@ -446,26 +441,34 @@ footer p {
   }
 
   #colorsContainer h2 {
-    font-size: 30px;
-  }
-
-  #codeResult p,
-  span {
-    font-size: 20px;
+    font-size: 35px;
   }
 
   .guess-pegs,
   .color {
     width: 55px;
     height: 55px;
+    box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.46);
   }
 
   .result-panel {
-    width: 35px;
+    width: 45px;
   }
   
   .rowS-result {
-    width: 35px;
+    width: 45px;
+  }
+
+  #result-black, #result-gray, .result-pegs {
+    height: 15px;
+    width: 15px;
+    box-shadow: inset 0px 0px 6px 0px rgba(0, 0, 0, 0.46);
+  }
+
+  #codeResult p,
+  span {
+    font-size: 25px;
+    padding-bottom: 6px;
   }
 
   .btn {
@@ -481,3 +484,71 @@ footer p {
     font-size: 25px;
   }
 }
+
+/* Media query for laptops and  larger */
+@media screen and (min-width: 992px) {
+
+  h1 {
+    font-size: 50px;
+  }
+
+  #gameboard {
+    flex: 0 0 200px;
+  }
+
+  #coloursAndKeys {
+    flex: 0 0 70px;
+  }
+
+  #codeTop div {
+    font-size: 30px;
+  }
+
+  #colorsContainer h2 {
+    font-size: 25px;
+  }
+
+  #codeResult p,
+  span {
+    font-size: 16px;
+  }
+
+  .guess-pegs,
+  .color {
+    width: 40px;
+    height: 40px;
+    box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
+  }
+
+  .result-panel {
+    width: 25px;
+  }
+  
+  .rowS-result {
+    width: 25px;
+  }
+
+  #result-black, #result-gray, .result-pegs {
+    height: 8px;
+    width: 8px;
+    box-shadow: inset 0px 0px 6px 0px rgba(0, 0, 0, 0.46);
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+
+  #buttons {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  footer p {
+    font-size: 16px;
+  }
+}
+
+
+
+/* 
+1200px for large devices */
