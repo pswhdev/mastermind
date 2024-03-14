@@ -28,7 +28,7 @@ main {
 h1 {
   display: block;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5px;
   font-family: "Madimi One", sans-serif;
   font-size: clamp(2rem, 6vw, 4rem);
   color: #c0c0c0;
@@ -82,12 +82,16 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 .guess-pegs,
 .color {
   background-color: #fff;
-  width: 30px;
-  height: 30px;
+  width: 23px;
+  height: 23px;
   border-radius: 50%;
   box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.46);
   display: inline-block;
   cursor: pointer;
+}
+.color {
+  width: 30px;
+  height: 30px;
 }
 
 .result-pegs {
@@ -139,7 +143,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 #colorsContainer h2 {
   color: #000;
-  /* font-size: clamp(1.2rem, 2vw, 2rem); */
+  font-size: clamp(1rem, 2vw, 2rem);
   text-align: center;
 }
 
@@ -177,7 +181,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 /* Result Keys interpretation */
 #codeResult p, span {
   display: inline-block;
-  /* font-size: clamp(1rem, 2vw, 2rem); */
+  font-size: clamp(0.7rem, 2vw, 2rem);
 }
 
 #result-black {
@@ -210,7 +214,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   position: absolute;
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 175px;
   top: 10px;
   text-align: justify;
   color: #8d8d8d;
@@ -219,7 +223,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 #codeTop div {
 font-family: "Tilt Prism", sans-serif;
-font-size: 27px;
+font-size: 19px;
 text-align: center;
 }
 
@@ -347,107 +351,7 @@ footer p {
   text-align: center;
 }
 
-/* @media (max-width: 280px) {
-  h1 {
-    margin: 3px;
-  }
-
-  #game-setup {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 275px;
-    height: 90%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-  }
-  
-  #gameboard {
-    max-height: 450px;
-    max-width: 300px;
-    margin-bottom: 7px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  }
-
-  #codeTop {
-    left: 15px;
-    font-size: 29px;
-    letter-spacing: 25px;
-  }
-
-  #rowS-result {
-    width: 30px;
-  }
-
-  .guess-pegs,
-  .color {
-    margin: 2px;
-    width: 30px;
-    height: 30px;
-    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.46);
-  }
-
-  Increase scale when hover(colors) and selected(pegs)
-  .color:hover,
-  .selected {
-    transform: scale(1.1);
-  }
-
-  .result-panel {
-    max-width: 30px;
-    max-height: 30px;
-  }
-
-  .result-pegs {
-    margin: 2px;
-    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.46);
-    height: 7px;
-    width: 7px;
-  }
-
-  .colors {
-    max-width: 60px;
-    margin: 15px;
-    padding: 5px;
-    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  }
-
-  .colors h2 {
-    font-size: 15px;
-  }
-
-  #result-black {
-    margin: 2px;
-    height: 8px;
-    width: 8px;
-  }
-
-  #result-gray {
-    margin: 2px;
-    height: 8px;
-    width: 8px;
-  }
-
-  .resExplanation {
-    font-size: 15px;
-  }
-
-  .btn {
-    font-size: 12px;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 3px 5px;
-  }
-
-  #modal-content {
-    width: 70%;
-  }
-
-  footer {
-    background-color: #080808;
-    color: #eeeeee;
-    width: 100%;
-  }
-}*/
+/* 576px for portrait phones
+768px for tablets
+992px for laptops
+1200px for large devices */
