@@ -44,11 +44,11 @@ h1 {
 }
 
 #gameboard {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  position: relative;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
@@ -61,14 +61,14 @@ h1 {
   border-bottom: solid 1px #c0c0c0;
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
   background-color: #fff;
   justify-content: space-between;
   align-items: center;
 }
 
 .result-panel {
-  max-width: 40px;
-  max-height: 40px;
+  width: 25px;
   display: flex;
   flex-wrap: wrap;
   gap: 3px;
@@ -98,9 +98,10 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   border-radius: 50%;
 }
 
-#rowS-result {
-  width: 40px;
-  visibility: hidden;
+/* Placeholder for the result panel size to aling pegs on the secret and codeTpo rows. Always to be hidden */
+.rowS-result {
+  width: 25px;
+  visibility: hidden !important;
 }
 
 /* Flex container with coloursand result keys interpretation */
@@ -120,7 +121,6 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
   flex-wrap: wrap;
   flex-grow: 1;
 }
@@ -130,18 +130,16 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
   flex-wrap: wrap;
   gap: 3px;;
 }
 
 #colorsContainer h2 {
   color: #000;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  /* font-size: clamp(1.2rem, 2vw, 2rem); */
   text-align: center;
 }
 
@@ -179,7 +177,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 /* Result Keys interpretation */
 #codeResult p, span {
   display: inline-block;
-  font-size: clamp(1rem, 2vw, 2rem);
+  /* font-size: clamp(1rem, 2vw, 2rem); */
 }
 
 #result-black {
@@ -209,16 +207,24 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 
 /* Question marks on top of secret code */
 #codeTop {
-  font-family: "Tilt Prism", sans-serif;
-  letter-spacing: 21px;
   position: absolute;
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  color: #c0c0c0;
-  top: 0;
-  left: 14px;
+  margin: 0;
+  padding: 0;
+  padding-left: ;
+  width: 200px;
+  top: 10px;
+  text-align: justify;
+  color: #8d8d8d;
   visibility: visible;
 }
 
+#codeTop div {
+font-family: "Tilt Prism", sans-serif;
+font-size: 27px;
+text-align: center;
+}
+
+/* Container with the buttons on the bottom of the gameboard */
 #buttons {
   margin: 5px;
   display: flex;
@@ -227,7 +233,7 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
 }
 
 .btn {
-  font-size: (1.2rem, 2.5vw, 2rem);
+  /* font-size: (1.2rem, 2.5vw, 2rem); */
   font-family: "Barlow Condensed", sans-serif;;
   color: #fff;
   flex-direction: row;
@@ -322,14 +328,14 @@ p {
 
 footer {
   background-color: #080808;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   color: #eeeeee;
   width: 100%;
 }
 
 footer p {
   padding: 5px;
-  font-size: clamp(1rem, 2vw, 2rem);
+  /* font-size: clamp(1rem, 2vw, 2rem); */
   text-align: center;
 }
 
