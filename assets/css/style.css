@@ -10,6 +10,10 @@
   margin: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Gradients from https://uigradients.com/#KingYna */
 body {
   background: #1a2a6c; /* fallback for old browsers */
