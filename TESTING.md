@@ -37,17 +37,17 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
   - No errors were returned when passing through the official W3C validator:
 
-    - [W3C Result](linkXXXXXXXXX)
+    - [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fpswhdev.github.io%2Fmastermind%2F)
 
 - CSS:
 
-  - No errors were found when passing through the official [Jigsaw result](linkXXXXXXXXX)
+  - No errors were found when passing through the official [Jigsaw result](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpswhdev.github.io%2Fmastermind%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 ### JavaScript Validator
 
 [jshint](https://jshint.com/) was used to validate the JavaScript.
 
-- [script.js](documentation/jshintresult.png) passed with a message indicating that one variable was reported as not being used, despite being utilized.
+- [script.js](documentation/jshint_result.png) passed with a message indicating that one variable was reported as not being used, despite being utilized.
 
 ### Lighthouse
 
@@ -55,9 +55,9 @@ The page was tested using the Lighthouse feature in Dev Tools from Google Chrome
 
 - Home page:
 
-<!-- ![Home page lh test desktop](xxxxxxxx link)
+![Game WebApp lh test desktop](documentation/lh_result_desktop.png)
 
-![Home page lh test mobile](xxxxxxxx link) -->
+![Game WebApp lh test mobile](documentation/lh_result_mobile.png)
 
 
 ## MANUAL TESTING
