@@ -341,7 +341,7 @@ function checkResult(arr1, arr2) {
   }
 }
 
-/** Provides the user visual feedback of the result through displaying different colours result keys (pegs) */
+/** Provides the user visual feedback of the result through displaying different colors result keys (pegs) */
 function giveUserFeedback() {
   let firstResultPeg = document.getElementsByClassName("active")[0];
   let secondResultPeg = document.getElementsByClassName("active")[1];

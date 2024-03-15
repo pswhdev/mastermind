@@ -36,7 +36,7 @@ h1 {
   text-shadow: 5px 5px 3px black;
 }
 
-/* Flex container with board, colours and result keys interpretation */
+/* Flex container with board, colors and result keys interpretation */
 #boardColorsAndKeys {
   display: flex;
   margin: 0 6px;
@@ -107,8 +107,8 @@ suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-c
   visibility: hidden !important;
 }
 
-/* Flex container with coloursand result keys interpretation */
-#coloursAndKeys {
+/* Flex container with colors and result keys interpretation */
+#colorsAndKeys {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -513,7 +513,7 @@ footer p {
     flex: 0 0 400px;
   }
 
-  #coloursAndKeys {
+  #colorsAndKeys {
     flex: 0 0 100px;
   }
 
