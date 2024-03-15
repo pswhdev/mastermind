@@ -100,6 +100,13 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
 ![Start New Game Button](documentation/resetButton.png)
 
+- __Try Again and Play again Game Buttons__
+
+  - If the player wishes to restart the game immediately after winning or losing, the 'Try again' (if the player loses) or 'Play again' (if the player wins) button on the popup window restarts the game without requiring any further action or the page to be reloaded.
+
+![Try Again Game Button](documentation/resetButton.png)
+![Play Again Game Button](documentation/resetButton.png)
+
 - __Instructions Button__
 
   - "The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules."
