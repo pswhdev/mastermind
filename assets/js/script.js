@@ -32,6 +32,25 @@ function startGame() {
   generateSecretCode();
 }
 
+/**Function to generate the secret code (random colorpick) once the page is
+ * loaded and upon completing or restarting the game
+ * Note: It allows the same color to be chosen multiple times */
+function generateSecretCode() {
+  let colors = ["blue", "red", "orange", "pink", "green", "purple"];
+  for (let i = 0; i < 4; i++) {
+    secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
+  }
+  //Assign the color to the pegs on the secret row
+  let code1 = document.getElementById("rowS-1");
+  code1.style.backgroundColor = secretCode[0];
+  let code2 = document.getElementById("rowS-2");
+  code2.style.backgroundColor = secretCode[1];
+  let code3 = document.getElementById("rowS-3");
+  code3.style.backgroundColor = secretCode[2];
+  let code4 = document.getElementById("rowS-4");
+  code4.style.backgroundColor = secretCode[3];
+}
+
 /** Run routine if the game is restarted */
 function resetGame() {
   resetPegs();
@@ -66,11 +85,11 @@ function resetPegs() {
   //Select all Result Pegs
   let allResultPegs = document.querySelectorAll(".result-pegs");
   //Remove class active from all result pegs
-  for (let ResultPeg of allResultPegs) {
-    if (ResultPeg.classList.contains("active")) {
-      ResultPeg.classList.remove("active");
+  for (let resultPeg of allResultPegs) {
+    if (resultPeg.classList.contains("active")) {
+      resultPeg.classList.remove("active");
     }
-    ResultPeg.style.backgroundColor = "#fff";
+    resultPeg.style.backgroundColor = "#fff";
   }
 }
 
@@ -116,10 +135,10 @@ function handleCurrentRow() {
   guessPegsCurrRow[0].classList.add("selected");
   // Get child elements from current row that is a parent of the result pegs
   let resultPanelCurrRow = currRowElement.querySelector(".result-panel");
-  let ResPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
-  for (let ResPegCurrRow of ResPegsCurrRow) {
+  let resPegsCurrRow = resultPanelCurrRow.querySelectorAll(".result-pegs");
+  for (let resPegCurrRow of resPegsCurrRow) {
     // Add class value of active to result pegs to allow visual feedback when results are computed
-    ResPegCurrRow.classList.add("active");
+    resPegCurrRow.classList.add("active");
   }
 }
 
@@ -183,7 +202,7 @@ function moveNextPeg() {
   document.getElementById(previousPegId).classList.remove("selected");
 }
 
-//Pressing submit the following function is triggered:
+//By clicking submit the following function is triggered:
 /** Controls if all color have been chosen and activates the
  * createArrOfPickedColors function*/
 function computeResult() {
@@ -243,14 +262,19 @@ function checkResult(arr1, arr2) {
     result.perfectMatch = sumOfCorrect;
     result.wrongPlace = sumOfWrongPlace;
   }
-  giveUserFeedback();
+
   if (sumOfCorrect === 4) {
-    // Modal
+    giveUserFeedback();
+
+    gameOver();
+
+    // Modal if user wins the game
     /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
     let modalWin = document.getElementById("bg-modalWin");
     let closeModalWin = document.getElementById("closeModalWin");
     let closeModalWinBtn = document.getElementById("closeModalWinBtn");
     let closeModalResetBtn = document.getElementById("closeModalResetBtn");
+
     modalWin.style.display = "flex";
     closeModalWin.addEventListener("click", function () {
       modalWin.style.display = "none";
@@ -258,13 +282,16 @@ function checkResult(arr1, arr2) {
     closeModalWinBtn.addEventListener("click", function () {
       modalWin.style.display = "none";
     });
+    // Try again button --> closes the popup  window and restarts a new game
     closeModalResetBtn.addEventListener("click", resetGame);
     closeModalResetBtn.addEventListener("click", function () {
-      modalWin.style.display = "none"});
-    // call gameOver fucntion
-    gameOver();
+      modalWin.style.display = "none";
+    });
+
     // The last row is played and the result is not a match
-  } else if (currentRow === 10) {
+  } else if (currentRow === 10 && sumOfCorrect < 4) {
+    gameOver();
+
     let modalLoose = document.getElementById("bg-modalLoose");
     let closeModalLoose = document.getElementById("closeModalLoose");
     let closeModalLooseBtn = document.getElementById("closeModalLooseBtn");
@@ -273,15 +300,15 @@ function checkResult(arr1, arr2) {
     closeModalLoose.addEventListener("click", function () {
       modalLoose.style.display = "none";
     });
-    
+
     closeModalLooseBtn.addEventListener("click", function () {
       modalLoose.style.display = "none";
     });
+    // Try again button --> closes the popup  window and restarts a new game
     closeModalLResetBtn.addEventListener("click", resetGame);
     closeModalLResetBtn.addEventListener("click", function () {
-      modalLoose.style.display = "none"});
-    // call gameOver fucntion
-    gameOver();
+      modalLoose.style.display = "none";
+    });
   } else {
     // Move to the next row:
     currentRow++;
@@ -296,86 +323,31 @@ function checkResult(arr1, arr2) {
   }
 }
 
-/**Function to generate the secret code (random colorpick) once the page is
- * loaded and upon completing or restarting the game
- * Note: It allows the same color to be chosen multiple times */
-function generateSecretCode() {
-  let colors = ["blue", "red", "orange", "pink", "green", "purple"];
-  for (let i = 0; i < 4; i++) {
-    secretCode.push(colors[Math.floor(Math.random() * colors.length)]);
-  }
-  //Assign the color to the pegs on the secret row
-  let code1 = document.getElementById("rowS-1");
-  code1.style.backgroundColor = secretCode[0];
-  let code2 = document.getElementById("rowS-2");
-  code2.style.backgroundColor = secretCode[1];
-  let code3 = document.getElementById("rowS-3");
-  code3.style.backgroundColor = secretCode[2];
-  let code4 = document.getElementById("rowS-4");
-  code4.style.backgroundColor = secretCode[3];
-}
-
-/** Provides the user visual feedback of the result */
+/** Provides the user visual feedback of the result through displaying different colours result keys (pegs) */
 function giveUserFeedback() {
   let firstResultPeg = document.getElementsByClassName("active")[0];
   let secondResultPeg = document.getElementsByClassName("active")[1];
   let thirdResultPeg = document.getElementsByClassName("active")[2];
   let fourthResultPeg = document.getElementsByClassName("active")[3];
 
-  if (sumOfCorrect === 4) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-    thirdResultPeg.style.backgroundColor = "#000";
-    fourthResultPeg.style.backgroundColor = "#000";
-  } else if (sumOfCorrect === 3 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-    thirdResultPeg.style.backgroundColor = "#000";
-  } else if (sumOfCorrect === 3 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-    thirdResultPeg.style.backgroundColor = "#000";
-    fourthResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 2 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#000";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-    fourthResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 0) {
-    firstResultPeg.style.backgroundColor = "#000";
-  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 1 && sumOfWrongPlace === 3) {
-    firstResultPeg.style.backgroundColor = "#000";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-    fourthResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 1) {
-    firstResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 2) {
-    firstResultPeg.style.backgroundColor = "#c0c0c0";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 3) {
-    firstResultPeg.style.backgroundColor = "#c0c0c0";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-  } else if (sumOfCorrect === 0 && sumOfWrongPlace === 4) {
-    firstResultPeg.style.backgroundColor = "#c0c0c0";
-    secondResultPeg.style.backgroundColor = "#c0c0c0";
-    thirdResultPeg.style.backgroundColor = "#c0c0c0";
-    fourthResultPeg.style.backgroundColor = "#c0c0c0";
+  let resultKeys = [
+    firstResultPeg,
+    secondResultPeg,
+    thirdResultPeg,
+    fourthResultPeg,
+  ];
+
+  // The number of perfect matches (right color and right position) will be represented by black keys, while the number of colors present in the wrong position will be displayed as gray keys.
+  for (let i = 0; i < resultKeys.length; i++) {
+    if (sumOfCorrect > 0) {
+      resultKeys[i].style.backgroundColor = "#000";
+      sumOfCorrect--;
+    } else if (sumOfWrongPlace > 0) {
+      resultKeys[i].style.backgroundColor = "#c0c0c0";
+      sumOfWrongPlace--;
+    } else {
+      break;
+    }
   }
 }
 
@@ -388,13 +360,13 @@ function gameOver() {
   // Select all Guest Pegs
   let allGuessPegs = document.querySelectorAll(".guess-pegs");
   // Reset styles and remove event listeners from all guess pegs
-  for (let GuessPeg of allGuessPegs) {
-    if (GuessPeg.classList.contains("selected")) {
-      GuessPeg.classList.remove("selected");
+  for (let guessPeg of allGuessPegs) {
+    if (guessPeg.classList.contains("selected")) {
+      guessPeg.classList.remove("selected");
     }
-    GuessPeg.style.border = "transparent";
-    GuessPeg.removeEventListener("click", selectTargetPeg);
-    GuessPeg.removeEventListener("click", handleSelected);
+    guessPeg.style.border = "transparent";
+    guessPeg.removeEventListener("click", selectTargetPeg);
+    guessPeg.removeEventListener("click", handleSelected);
   }
 }
 
@@ -416,12 +388,12 @@ closeModalBtn.addEventListener("click", function () {
 });
 
 //To automatically resize the dummy row, which is positioned absolutely on top of the secretCode element that has a flex property.
-window.addEventListener('resize', function() {
-  let secretWidth = document.querySelector('#secret').offsetWidth;
-  let secretHeight = document.querySelector('#secret').offsetHeight;
-  document.getElementById('codeTop').style.width = secretWidth + 'px';
-  document.getElementById('codeTop').style.height = secretHeight + 'px';
+window.addEventListener("resize", function () {
+  let secretWidth = document.querySelector("#secret").offsetWidth;
+  let secretHeight = document.querySelector("#secret").offsetHeight;
+  document.getElementById("codeTop").style.width = secretWidth + "px";
+  document.getElementById("codeTop").style.height = secretHeight + "px";
 });
 
 // The window resizing will trigger the function
-window.dispatchEvent(new Event('resize'));
+window.dispatchEvent(new Event("resize"));

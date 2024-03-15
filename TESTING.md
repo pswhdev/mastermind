@@ -1,8 +1,4 @@
-# Mastermind -  Testing
-
-## CONTENTS
-
-<!-- Add contents list here -->
+# Mastermind - Testing
 
 Testing was conducted continuously throughout the entire development. I have used Replit to test my logical functions before implementing thom on the code. I also used Chrome Developer Tools extensively during the building process to identify and address any issues.
 
@@ -10,16 +6,27 @@ The responsivness testing was conducted in different browsers, computers and mob
 
 Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
+## CONTENTS
 
-## AUTOMATED TESTING
+1. [Automated Testing](#automated-testing)
+    - [Responsiveness Test](#responsiveness-test)
+    - [W3C Validator](#w3c-validator)
+    - [JavaScript Validator](#javascript-validator)
+    - [Lighthouse](#lighthouse)
+2. [Manual Testing](#manual-testing)
+    - [Testing User Stories](#testing-user-stories)
+    - [Full Testing](#full-testing)
 
-## Responsiveness test
+## Automated Testing
 
-- Responsiveness tests were conducted manually by accessing the live website using different computer, browsers and mobile devices.
+### Responsiveness Test
+
+- Responsiveness tests were conducted manually by accessing the live website using different computers, browsers, and mobile devices.
 
 - The website is fully responsive, resizing the content of all pages according to the device's screen sizes, as can be seen in the images below.
 
-    - The game page:
+
+- The game page:
 <!-- ![Responsive game](documentation/am-i-responsive-index.png) -->
     - Modal Instructions:
 <!-- ![Responsive game](documentation/am-i-responsive-index.png) -->
@@ -32,7 +39,7 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
 [W3C](https://validator.w3.org/) was used to validate the HTML on all pages of the website. It was also used to validate the CSS.
 
-- - HTML:
+- HTML:
 
   - No errors were returned when passing through the official W3C validator:
 
@@ -46,7 +53,7 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
 [jshint](https://jshint.com/) was used to validate the JavaScript.
 
-- [script.js](documentation/jshintresult.png) passed with a message indicating that one variable was not being used. The reason for this is that the variable represents a function utilized within an onclick attribute in the HTML file. This function is triggered by clicking a color. Given my current understanding, for this specific case, to incorporate the onclick attribute directly within the HTML code was the simplest approach I could have used, rather than separating it into an event listener within the JavaScript file.
+- [script.js](documentation/jshintresult.png) passed with a message indicating that one variable was reported as not being used, despite being utilized.
 
 ### Lighthouse
 
@@ -104,9 +111,9 @@ Each device tested the site using the following browsers:
 
 
 
- Feature 	|	 Expected Outcome 	|	 Testing Performed 	|	 Result 	|	 Pass/Fail 
- --- 	|	 --- 	|	 --- 	|	 --- 	|	 --- 
-Color palette	|	Changes the color of the selected peg on the active row.	|	Clicked or touched on the color.	|	Changed the color of the selected peg on the active row.	|	 Pass 
+| Feature                  | Expected Outcome                                        | Testing Performed                                  | Result                                                | Pass/Fail |
+|--------------------------|---------------------------------------------------------|----------------------------------------------------|-------------------------------------------------------|-----------|
+|Color palette	|	Changes the color of the selected peg on the active row.	|	Clicked or touched on the color.	|	Changed the color of the selected peg on the active row.	|	 Pass 
 Color palette - hover effect 	|	The colors scale up when hovered over.	|	Moved the mouse over the colors.	|	The colors scaled up when hovered over.	|	 Pass 
 Color spacing	|	To be able to choose one color without touching the others.	|	Touched the colours one at a time.	|	The correct color could be chosen without any problems.	|	 Pass 
 "Secret code" row	|	To be invisible during the game and visible at the end, regardless of the player winning or losing.	|	Observed to see if the expected outcome would occur upon winning and losing.	|	Remained invisible during the game and became visible at the end, regardless of whether the I won or lost.	|	 Pass 
