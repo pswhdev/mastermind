@@ -6,23 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   submitButton.addEventListener("click", computeResult);
   startGame();
-
-  // To automatically hide the toolbar on smartphones browsers (make it fullscreen) once the page is loaded.
-  document.addEventListener('DOMContentLoaded', function() {
-    var el = document.documentElement;
-  
-    // Check if the browser supports fullscreen API
-    if (el.requestFullscreen) {
-      el.requestFullscreen();
-    } else if (el.mozRequestFullScreen) { /* Firefox */
-      el.mozRequestFullScreen();
-    } else if (el.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-      el.webkitRequestFullscreen();
-    } else if (el.msRequestFullscreen) { /* IE/Edge */
-      el.msRequestFullscreen();
-    }
-  });
-  
 });
 
 // Variables assigned out of any function so it is acessible to other functions as well
