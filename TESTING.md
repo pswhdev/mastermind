@@ -78,11 +78,11 @@ To be able to restart a new game at any time.
 - Result:
 The "Restart" button is situated beside the "Instructions" button. When clicked, it clears the entire game board, initiating a new game session without requiring a page refresh.
 - Expectation:
-To be able to easily select the colours I want to pick.
+To be able to easily select the colors I want to pick.
 - Result:
 The color palette is positioned adjacent to the gameboard, allowing users to select colors by directly clicking or touching their desired color.
 - Expectation:
-To be able to easily change the color of any peg before submitting, but after having chosen the colours of the current row.
+To be able to easily change the color of any peg before submitting, but after having chosen the colors of the current row.
 - Result: To select a peg, simply click or touch the peg on the active row, which is distinguished by dark circles. This can be done regardless of whether a color has already been chosen for the peg. Moreover, you can change the color by selecting a different one from the color palette.
 - Expectation: Understand the result keys after each round without having to check any other place.
 - Result:
@@ -115,7 +115,7 @@ Each device tested the site using the following browsers:
 |--------------------------|---------------------------------------------------------|----------------------------------------------------|-------------------------------------------------------|-----------|
 |Color palette	|	Changes the color of the selected peg on the active row.	|	Clicked or touched on the color.	|	Changed the color of the selected peg on the active row.	|	 Pass 
 Color palette - hover effect 	|	The colors scale up when hovered over.	|	Moved the mouse over the colors.	|	The colors scaled up when hovered over.	|	 Pass 
-Color spacing	|	To be able to choose one color without touching the others.	|	Touched the colours one at a time.	|	The correct color could be chosen without any problems.	|	 Pass 
+Color spacing	|	To be able to choose one color without touching the others.	|	Touched the colors one at a time.	|	The correct color could be chosen without any problems.	|	 Pass 
 "Secret code" row	|	To be invisible during the game and visible at the end, regardless of the player winning or losing.	|	Observed to see if the expected outcome would occur upon winning and losing.	|	Remained invisible during the game and became visible at the end, regardless of whether the I won or lost.	|	 Pass 
 Curent "guess" row	|	On the current row being played (active row), the peg positions are marked with a darker circle around them.	|	Observed if the current row has the dark circle around the peg positions.	|	The peg positions were marked with a darker circle around them when the row was the current one being played.	|	 Pass 
 Current "peg"	|	To be slightly enlarged for easy identification.	|	Observe if the selected peg is slightly larger than the others when automatically selected, and if clicked on another peg, observe if that one would be enlarged and the other one would go back to normal size.	|	Was slightly larger than the other pegs.	|	 Pass 
