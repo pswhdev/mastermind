@@ -398,3 +398,14 @@ window.addEventListener("resize", function () {
 
 // The window resizing will trigger the function
 window.dispatchEvent(new Event("resize"));
+
+// To automatically hide the toolbar on smartphones browsers once the page is loaded.
+window.onload = function() {
+  // Check if the user agent indicates a mobile device
+  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // If it's a mobile device, scroll to the top to hide the toolbar
+  if (isMobile) {
+    window.scrollTo(0, 1);
+  }
+};
