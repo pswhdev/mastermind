@@ -14,40 +14,38 @@ The player requires a combination of logical reasoning, pattern recognition, and
 
 This game appeals to a wide range of players, from children acquiring fundamental deduction abilities to experienced strategists refining their mental agility."
 
-<!-- ![Responsive Mockup](link here) -->
+![Responsive Mockup](documentation/mockup.png)
 
 ## CONTENTS
 
 # Table of Contents
-
-1. [Introduction](#introduction)
-2. [Contents](#contents)
-3. [Features](#features)
+1. [Introduction](#mastermind)
+   - [Contents](#contents)
+2. [Features](#features)
    - [Existing Features](#existing-features)
    - [Features Left to Implement](#features-left-to-implement)
-4. [User Experience (UX)](#user-experience-ux)
+3. [User Experience (UX)](#user-experience-ux)
    - [User Stories](#user-stories)
-5. [Design](#design)
-   - [color Scheme](#color-scheme)
+4. [Design](#design)
+   - [Color Scheme](#color-scheme)
    - [Typography](#typography)
    - [Imagery](#imagery)
    - [Wireframes](#wireframes)
-6. [Technologies Used](#technologies-used)
+5. [Technologies Used](#technologies-used)
    - [Languages Used](#languages-used)
    - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
-7. [Deployment and Local Deployment](#deployment-and-local-deployment)
+6. [Deployment and Local deployment](#deployment-and-local-deployment)
    - [Deployment](#deployment)
    - [Local Development](#local-development)
-      - [How to Fork](#how-to-fork)
-      - [How to Clone](#how-to-clone)
-8. [Testing](#testing)
-9. [Fixed Bugs](#fixed-bugs)
-10. [Unfixed Bugs](#unfixed-bugs)
-11. [Credits](#credits)
+7. [Testing](#testing)
+8. [Fixed bugs](#fixed-bugs)
+9. [Unfixed Bugs](#unfixed-bugs)
+10. [Credits](#credits)
    - [Code Used](#code-used)
    - [Content](#content)
    - [Media](#media)
    - [Acknowledgments](#acknowledgments)
+
 
 
 ## Features 
@@ -60,46 +58,45 @@ This game appeals to a wide range of players, from children acquiring fundamenta
   - When playing on a computer, the colors scale up when the mouse hovers over them, making the color about to be chosen more evident for a better user experience (UX).
   - The colors are spaced apart sufficiently to prevent accidentally choosing the wrong color when playing the game on smaller devices such as smartphones or tablets.
 
-![Color Palette](documentation/colorpalette.png) Add photo of color pick palette.
-![Responsive hover over color](documentation/highlight-colorhover.png)
+![Color Palette](documentation/color_palette.png) Add photo of color pick palette.
 
 - __Secret Code Row__
 
   - The row containing the secret code is hidden behind question marks, enhancing the intuitive understanding for the player that the game revolves around discovering this hidden information.
 
-![Secret row](documentation/secretrow.png)
+![Secret row](documentation/guess_row.png)
 
 - __Current Guess Row__
 
   - The current row being played is marked with dark rings improving visual clarity during gameplay progression.
 
-![Current Guess Row](documentation/currentrow.png)
+![Current Guess Row]()
 
 - __Current Peg__
   - The circles on the gameboard symbolizes the pegs from the classic game as seen from the top.
 
   - The selected peg (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous peg) is slightly enlarged, ensuring clear visual distinction from the other pegs and aiding the player in identifying the peg they are coloring.
 
-![Current Peg automatically selected](documentation/currentpeg.png)
-![Current Peg manually selected](documentation/currentpeg.png)
+![Current Peg automatically selected]()
+![Current Peg manually selected]()
 
 - __Result keys__ 
 
   - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little pegs used as keys in the classic game when viewed from above.
 
-![Result pegs](documentation/resultpegs.png)
+![Result pegs](documentation/guess_and_rerult.png)
 
 - __Keys Interpretation Panel__
 
   - A concise panel for interpreting keys is displayed on the screen, eliminating the need for players to refer to the instructions, which is particularly helpful for first-time players.
 
-![Keys interpretation](documentation/keysinterpretation.png)
+![Keys interpretation]()
 
 - __Start New Game Button__
 
   - If the player wants to restart the game before finishing or after winning or losing, the "Start New Game" option clears all guesses and resets the game without requiring the page to be reloaded.
 
-![Start New Game Button](documentation/resetButton.png)
+![Start New Game Button](documentation/start_button.png)
 
 
 - __Instructions Button__
@@ -107,28 +104,24 @@ This game appeals to a wide range of players, from children acquiring fundamenta
   - "The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules."
 
 ![Instructions Button](documentation/instButton.png)
-![Instructions Modal](documentation/instModal.png)
+![Instructions Modal](documentation/modal_inst.png)
 
 - __Try Again and Play again Game Buttons__
 
   - If the player wishes to restart the game immediately after winning or losing, the 'Try again' (if the player loses) or 'Play again' (if the player wins) button on the popup window restarts the game without requiring any further action or the page to be reloaded.
 
-![Try Again Game Button](documentation/resetButton.png)
-![Play Again Game Button](documentation/resetButton.png)
+![Try Again Game Button](documentation/modal_loose.png)
+![Play Again Game Button](documentation/modal_win.png)
 
 - __Modals__
 
 All modals can be closed either pressing the button "Close" at the end or on the top righ corner of the popup window.
-![Close Modal](documentation/closeModal.png)
-![Close Button Modal](documentation/closeButtonModal.png)
 
 __Cursor Pointer__
 
   - Cusror pointer has been used on button, pegs and colors for better UX
 
-![Pointer over buttons](documentation/highlight-hover.png)
-![Pointer over colors](documentation/button-normal.png)
-![Pointer over pegs](documentation/button-hover.png)
+![Pointer over color](documentation/pointer_example.png)
 
 ### Features Left to Implement
 
@@ -168,21 +161,21 @@ The title font, [Madimi One](https://fonts.google.com/?category=Serif,Display&qu
 For the other sections, including the instructions, the font chosen was [Barlow Condensed](https://fonts.google.com/?category=Serif,Display&query=Barlow+Condensed) for its concise and readable nature, even on small screens.
 
 Madimi One example: 
-![Madimi One Example](documentation/MadimiOne-sample.png)
+![Madimi One Example](documentation/madimi_one.png)
 Barlow Condensed example: 
-![Barlow Condensed Display Example](documentation/BarlowCond-sample.png)
+![Barlow Condensed Display Example](documentation/barlow_condensed.png)
 
 ### Imagery
 
 The FavIcon image features a colored peg from the classic game.
 
-![FavIcon image](documentation/faviconPeg.png)
+![FavIcon image](documentation/classic_peg_yellow.png)
 
 ### Wireframes
 
-Wireframes were generated for both mobile and desktop versions utilizing Balsamiq. The layout remains consistent across all screens, adapting seamlessly to various screen sizes.
+Wireframes were generated for both mobile and desktop versions utilizing Balsamiq. The layout remains consistent across all screens, adapting seamlessly to various screen sizes. Little changes were made during the development and therefore the wireframes don't represent the final product 100%.
 
-![Wireframes](documentation/balsamiqMastermind.png) 
+![Wireframes](documentation/wireframes.png) 
 
 ## Technologies Used
 

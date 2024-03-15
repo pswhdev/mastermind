@@ -27,13 +27,7 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
 
 - The game page:
-<!-- ![Responsive game](documentation/am-i-responsive-index.png) -->
-    - Modal Instructions:
-<!-- ![Responsive game](documentation/am-i-responsive-index.png) -->
-    - Modal Win:
-
-    - Modal Loose:
-
+![Responsive game](documentation/mockup.png)
 
 ### W3C Validator
 
