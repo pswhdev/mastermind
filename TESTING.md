@@ -4,7 +4,7 @@ Testing was conducted continuously throughout the entire development. I have use
 
 The responsivness testing was conducted in different browsers, computers and mobile devices of different sizes and models to ensure the game can be played in diverse platforms.
 
-Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
+Visit the deployed site: ![Mastermind](https://pswhdev.github.io/mastermind/)
 
 ## CONTENTS
 
