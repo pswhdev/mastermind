@@ -58,7 +58,7 @@ This game appeals to a wide range of players, from children acquiring fundamenta
   - When playing on a computer, the colors scale up when the mouse hovers over them, making the color about to be chosen more evident for a better user experience (UX).
   - The colors are spaced apart sufficiently to prevent accidentally choosing the wrong color when playing the game on smaller devices such as smartphones or tablets.
 
-![Color Palette](documentation/color_palette.png) Add photo of color pick palette.
+![Color Palette](documentation/color_palette.png)
 
 - __Secret Code Row__
 
