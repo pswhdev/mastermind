@@ -219,7 +219,14 @@ function computeResult() {
     }
     createArrOfPickedColors();
   } else {
-    alert("Please choose all your colors.");
+    let modalSubmit = document.getElementById("bg-modalSubmit");
+    let closeModalSubmitBtn = document.getElementById("closeModalSubmitBtn");
+
+    modalSubmit.style.display = "flex";
+    
+    closeModalSubmitBtn.addEventListener("click", function () {
+      modalSubmit.style.display = "none";
+    });
   }
 }
 
@@ -374,7 +381,7 @@ function gameOver() {
 // Modal
 /* inspired on the modal tutorial from https://www.youtube.com/watch?v=gLWIYk0Sd38 */
 let rulesBtn = document.getElementById("rules");
-let modal = document.getElementById("bg-modal");
+let modal = document.getElementById("bg-modalInst");
 let closeModal = document.getElementById("closeModal");
 let closeModalBtn = document.getElementById("closeModalBtn");
 

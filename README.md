@@ -80,7 +80,8 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
   - The selected peg (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous peg) is slightly enlarged, ensuring clear visual distinction from the other pegs and aiding the player in identifying the peg they are coloring.
 
-![Current Peg](documentation/currentpeg.png)
+![Current Peg automatically selected](documentation/currentpeg.png)
+![Current Peg manually selected](documentation/currentpeg.png)
 
 - __Result keys__ 
 
@@ -100,12 +101,6 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
 ![Start New Game Button](documentation/resetButton.png)
 
-- __Try Again and Play again Game Buttons__
-
-  - If the player wishes to restart the game immediately after winning or losing, the 'Try again' (if the player loses) or 'Play again' (if the player wins) button on the popup window restarts the game without requiring any further action or the page to be reloaded.
-
-![Try Again Game Button](documentation/resetButton.png)
-![Play Again Game Button](documentation/resetButton.png)
 
 - __Instructions Button__
 
@@ -114,7 +109,16 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 ![Instructions Button](documentation/instButton.png)
 ![Instructions Modal](documentation/instModal.png)
 
-The modal can be closed either pressing the button "Close" at the end or on the top righ corner of the popup window.
+- __Try Again and Play again Game Buttons__
+
+  - If the player wishes to restart the game immediately after winning or losing, the 'Try again' (if the player loses) or 'Play again' (if the player wins) button on the popup window restarts the game without requiring any further action or the page to be reloaded.
+
+![Try Again Game Button](documentation/resetButton.png)
+![Play Again Game Button](documentation/resetButton.png)
+
+- __Modals__
+
+All modals can be closed either pressing the button "Close" at the end or on the top righ corner of the popup window.
 ![Close Modal](documentation/closeModal.png)
 ![Close Button Modal](documentation/closeButtonModal.png)
 
