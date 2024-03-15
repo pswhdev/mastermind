@@ -78,13 +78,14 @@ This game appeals to a wide range of players, from children acquiring fundamenta
   - The selected peg (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous peg) is slightly enlarged, ensuring clear visual distinction from the other pegs and aiding the player in identifying the peg they are coloring.
 - This is how the row starts with the first peg automatically selected:
 ![Current Peg automatically selected](documentation/current_peg_auto.png)
-- It is possible to click or touch any other peg on the active row to select it as well:
+- It is possible to click or touch any other peg on the active row to select it as well. On the image below the third peg from left to right has been manually selected:
 ![Current Peg manually selected](documentation/current_peg_manual.png)
 
 - __Result keys__ 
 
   - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little pegs used as keys in the classic game when viewed from above.
 
+Result  keys on the right side of the gameboard showing the computed result: black for the number of colors on the matching the position on the secret code and gray for the number of colors present on the secret code, but on the wrong place:
 ![Result pegs](documentation/gameboard_win.png)
 
 - __Keys Interpretation Panel__
@@ -105,6 +106,9 @@ This game appeals to a wide range of players, from children acquiring fundamenta
   - "The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules."
 
 ![Instructions Button](documentation/instructions_btn.png)
+
+
+Instructions Modal:
 ![Instructions Modal](documentation/modal_inst.png)
 
 - __Try Again and Play again Game Buttons__
@@ -125,7 +129,9 @@ __Cursor Pointer__
 
   - Cusror pointer has been used on button, pegs and colors for better UX
 
+Example of pointer cursor:
 ![Pointer over color](documentation/pointer_example.png)
+
 
 ### Features Left to Implement
 
@@ -166,12 +172,13 @@ For the other sections, including the instructions, the font chosen was [Barlow 
 
 Madimi One example: 
 ![Madimi One Example](documentation/madimi_one.png)
+
 Barlow Condensed example: 
 ![Barlow Condensed Display Example](documentation/barlow_condensed.png)
 
 ### Imagery
 
-The FavIcon image features a colored peg from the classic game.
+The FavIcon image features a colored peg from the classic game:
 
 ![FavIcon image](documentation/classic_peg_yellow.png)
 
