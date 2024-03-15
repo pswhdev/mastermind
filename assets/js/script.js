@@ -223,7 +223,7 @@ function computeResult() {
     let closeModalSubmitBtn = document.getElementById("closeModalSubmitBtn");
 
     modalSubmit.style.display = "flex";
-    
+
     closeModalSubmitBtn.addEventListener("click", function () {
       modalSubmit.style.display = "none";
     });
