@@ -70,7 +70,7 @@ The "Instructions" button is conveniently located beneath the gameboard, alongsi
 - Expectation:
 To be able to restart a new game at any time.
 - Result:
-The "Restart" button is situated beside the "Instructions" button. When clicked, it clears the entire game board, initiating a new game session without requiring a page refresh.
+The "Start new game" button is situated beside the "Instructions" button. When clicked, it clears the entire game board, initiating a new game session without requiring a page refresh.
 - Expectation:
 To be able to easily select the colors I want to pick.
 - Result:
