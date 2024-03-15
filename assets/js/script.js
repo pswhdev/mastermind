@@ -265,7 +265,6 @@ function checkResult(arr1, arr2) {
 
   if (sumOfCorrect === 4) {
     giveUserFeedback();
-
     gameOver();
 
     // Modal if user wins the game
@@ -290,6 +289,7 @@ function checkResult(arr1, arr2) {
 
     // The last row is played and the result is not a match
   } else if (currentRow === 10 && sumOfCorrect < 4) {
+    giveUserFeedback();
     gameOver();
 
     let modalLoose = document.getElementById("bg-modalLoose");
@@ -310,6 +310,7 @@ function checkResult(arr1, arr2) {
       modalLoose.style.display = "none";
     });
   } else {
+    giveUserFeedback();
     // Move to the next row:
     currentRow++;
     moveToNextRow();

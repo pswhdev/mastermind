@@ -215,7 +215,7 @@
             </div>
             <div id="gray">
               <div id="result-gray"></div>
-              <span>colour &#10003;</span><span>position &#x2717;</span>
+              <span>colour &#10003;</span><span id="bottomSpanKeys">position &#x2717;</span>
             </div>
           </section>
         </div>
@@ -226,7 +226,7 @@
         <!-- Modal instructions-->
         <button id="rules" class="btn">Instructions</button>
         <div id="bg-modal">
-          <div id="modal-content">
+          <div id="modal-content" class="modal-text">
             <h2>Instructions</h2>
             <h3>Objective</h3>
             <p>
@@ -263,7 +263,7 @@
               The player wins by guessing the code within the allotted attempts.
             </p>
             <p>The computer wins if the player fails to guess the code.</p>
-            <span id="closeModal">&times;</span>
+            <span id="closeModal" class="xCloseModal">&times;</span>
             <button id="closeModalBtn" class="btn">Close</button>
           </div>
         </div>
@@ -272,9 +272,9 @@
       <!-- Modals for win and loose -->
       <section>
         <div id="bg-modalWin">
-          <div id="modal-win">
+          <div id="modal-win" class="modal-text">
             <h2>Congratulations! You cracked the code!!</h2>
-            <span id="closeModalWin">&times;</span>
+            <span id="closeModalWin" class="xCloseModal">&times;</span>
             <button id="closeModalWinBtn" class="btn btnWinLoose">Close</button>
             <button id="closeModalResetBtn" class="btn btnWinLoose">
               Play again
@@ -283,11 +283,11 @@
         </div>
       </section>
       <section id="bg-modalLoose">
-        <div id="modal-loose">
+        <div id="modal-loose" class="modal-text">
           <h2>
             Game Over! You have used all your chances. Good luck next time!
           </h2>
-          <span id="closeModalLoose">&times;</span>
+          <span id="closeModalLoose" class="xCloseModal">&times;</span>
           <button id="closeModalLooseBtn" class="btn btnWinLoose">Close</button>
           <button id="closeModalLResetBtn" class="btn btnWinLoose">
             Try again
