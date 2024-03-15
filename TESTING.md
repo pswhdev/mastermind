@@ -47,7 +47,7 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
 [jshint](https://jshint.com/) was used to validate the JavaScript.
 
-- [script.js](documentation/jshint_result.png) passed with a message indicating that one variable was reported as not being used, despite being utilized.
+- [script.js](documentation/jshint_result.png) passed with a message indicating that one variable was reported as not being used, despite being utilised.
 
 ### Lighthouse
 
