@@ -73,7 +73,7 @@ This game is suitable to a wide range of players, from children acquiring fundam
 ![Current Guess Row](documentation/gameboard.png)
 
 - __Current "Peg"__
-  - The circles on the gameboard symbolizes the "pegs" from the classic game as seen from the top.
+  - The circles on the gameboard symbolizes the pegs from the classic game as seen from the top.
 
   - The selected "peg" (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous "peg") is slightly enlarged, ensuring clear visual distinction from the other "pegs" and aiding the player in identifying the "peg" they are coloring.
 - This is how the row starts with the first "peg" automatically selected:
@@ -83,7 +83,7 @@ This game is suitable to a wide range of players, from children acquiring fundam
 
 - __Result keys__ 
 
-  - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little "pegs" used as keys in the classic game when viewed from above.
+  - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little pegs used as keys in the classic game when viewed from above.
 
 Result  keys on the right side of the gameboard showing the computed result: black for the number of colors on the matching the position on the secret code and gray for the number of colors present on the secret code, but on the wrong place:
 ![Result "pegs"](documentation/gameboard_win.png)
