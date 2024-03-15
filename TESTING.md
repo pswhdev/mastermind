@@ -1,6 +1,6 @@
 # Mastermind - Testing
 
-Testing was conducted continuously throughout the entire development. I have used Replit to test my logical functions before implementing thom on the code. I also used Chrome Developer Tools extensively during the building process to identify and address any issues.
+Testing was conducted continuously throughout the entire development. I have used Replit to test my logical functions before implementing them on the code. I also used Chrome Developer Tools extensively during the building process to identify and address any issues.
 
 The responsivness testing was conducted in different browsers, computers and mobile devices of different sizes and models to ensure the game can be played in diverse platforms.
 
