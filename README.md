@@ -278,7 +278,7 @@ As of the current date of this documentation, to the best of my knowledge, there
 
 ### Code Used
 
-- I utilized code snippets from:
+- I utilised code snippets from:
   - box-shadow from: https://www.cssmatic.com/box-shadow
 suggested on https://stackoverflow.com/questions/54253830/give-divs-depth-with-css-box-shadow-property
   - https://uigradients.com/#KingYna for the background linear gradient.
