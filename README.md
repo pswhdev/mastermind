@@ -64,33 +64,34 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
   - The row containing the secret code is hidden behind question marks, enhancing the intuitive understanding for the player that the game revolves around discovering this hidden information.
 
-![Secret row](documentation/guess_row.png)
+![Secret row](documentation/secret_row.png)
 
 - __Current Guess Row__
 
   - The current row being played is marked with dark rings improving visual clarity during gameplay progression.
 
-![Current Guess Row]()
+![Current Guess Row](documentation/gameboard.png)
 
 - __Current Peg__
   - The circles on the gameboard symbolizes the pegs from the classic game as seen from the top.
 
   - The selected peg (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous peg) is slightly enlarged, ensuring clear visual distinction from the other pegs and aiding the player in identifying the peg they are coloring.
-
-![Current Peg automatically selected]()
-![Current Peg manually selected]()
+- This is how the row starts with the first peg automatically selected:
+![Current Peg automatically selected](documentation/current_peg_auto.png)
+- It is possible to click or touch any other peg on the active row to select it as well:
+![Current Peg manually selected](documentation/current_peg_manual.png)
 
 - __Result keys__ 
 
   - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little pegs used as keys in the classic game when viewed from above.
 
-![Result pegs](documentation/guess_and_rerult.png)
+![Result pegs](documentation/gameboard_win.png)
 
 - __Keys Interpretation Panel__
 
   - A concise panel for interpreting keys is displayed on the screen, eliminating the need for players to refer to the instructions, which is particularly helpful for first-time players.
 
-![Keys interpretation]()
+![Keys interpretation](documentation/result_keys.png)
 
 - __Start New Game Button__
 
@@ -103,14 +104,17 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
   - "The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules."
 
-![Instructions Button](documentation/instButton.png)
+![Instructions Button](documentation/instructions_btn.png)
 ![Instructions Modal](documentation/modal_inst.png)
 
 - __Try Again and Play again Game Buttons__
 
   - If the player wishes to restart the game immediately after winning or losing, the 'Try again' (if the player loses) or 'Play again' (if the player wins) button on the popup window restarts the game without requiring any further action or the page to be reloaded.
 
+Try again:
 ![Try Again Game Button](documentation/modal_loose.png)
+
+Play again:
 ![Play Again Game Button](documentation/modal_win.png)
 
 - __Modals__
@@ -173,7 +177,7 @@ The FavIcon image features a colored peg from the classic game.
 
 ### Wireframes
 
-Wireframes were generated for both mobile and desktop versions utilizing Balsamiq. The layout remains consistent across all screens, adapting seamlessly to various screen sizes. Little changes were made during the development and therefore the wireframes don't represent the final product 100%.
+Wireframes were generated for both mobile and desktop versions utilizing Balsamiq. The layout remains consistent across all screens, adapting seamlessly to various screen sizes. Few changes were made during development, so the wireframes differ slightly from the final product.
 
 ![Wireframes](documentation/wireframes.png) 
 

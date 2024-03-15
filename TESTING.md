@@ -37,11 +37,11 @@ Visit the deployed site: [Mastermind](https://pswhdev.github.io/mastermind/)
 
   - No errors were returned when passing through the official W3C validator:
 
-    <!-- - [Game Page](linkXXXXXXXXX) -->
+    - [W3C Result](linkXXXXXXXXX)
 
 - CSS:
 
-  <!-- - No errors were found when passing through the official [(Jigsaw) validator](linkXXXXXXXXX) -->
+  - No errors were found when passing through the official [Jigsaw result](linkXXXXXXXXX)
 
 ### JavaScript Validator
 
