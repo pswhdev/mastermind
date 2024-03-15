@@ -7,22 +7,27 @@ document.addEventListener("DOMContentLoaded", function () {
   submitButton.addEventListener("click", computeResult);
   startGame();
 
-  // To automatically hide the toolbar on smartphones browsers once the page is loaded.
+  // To automatically hide the toolbar on smartphones browsers (make it fullscreen) once the page is loaded.
   window.onload = function() {
     // Check if fullscreen API is supported
     if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
       var elem = document.documentElement;
   
-      // Try different methods to enter fullscreen
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
+      // Function to enter fullscreen mode
+      function enterFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
       }
+  
+      // Enter fullscreen mode on user gesture (e.g., click)
+      document.addEventListener('click', enterFullscreen);
     }
   };
 });
