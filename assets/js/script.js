@@ -6,6 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   submitButton.addEventListener("click", computeResult);
   startGame();
+
+  // To automatically hide the toolbar on smartphones browsers once the page is loaded.
+  window.onload = function() {
+    // Check if fullscreen API is supported
+    if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+      var elem = document.documentElement;
+  
+      // Try different methods to enter fullscreen
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    }
+  };
 });
 
 // Variables assigned out of any function so it is acessible to other functions as well
@@ -142,7 +161,7 @@ function handleCurrentRow() {
   }
 }
 
-//The two functions selectTargetPeg and handleSelected happen atthe sametime as a result of clicking on
+//The two functions selectTargetPeg and handleSelected happen at the same time as a result of clicking on
 //a peg of the current row. They 1.mark the peg as selected, 2.get the id of the div to allow change of color and
 //3.Remove value of selected from previously selected or clicked pegs
 
@@ -398,14 +417,3 @@ window.addEventListener("resize", function () {
 
 // The window resizing will trigger the function
 window.dispatchEvent(new Event("resize"));
-
-// To automatically hide the toolbar on smartphones browsers once the page is loaded.
-window.onload = function() {
-  // Check if the user agent indicates a mobile device
-  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-  // If it's a mobile device, scroll to the top to hide the toolbar
-  if (isMobile) {
-    window.scrollTo(0, 1);
-  }
-};
