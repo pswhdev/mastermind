@@ -1,18 +1,18 @@
 # Mastermind
-Mastermind is a classic board game of deduction and strategy that has captivated players since its invention in the 1970s for its simplicity and yet depth of strategy. Created by Mordecai Meirowitz, Mastermind challenges players to crack a secret code composed of colored pegs.
+Mastermind is a classic board game of deduction and strategy that has captivated players since its invention in the 1970s for its simplicity and yet depth of strategy. Created by Mordecai Meirowitz, Mastermind challenges players to crack a secret code composed of colored "pegs".
 
 This Mastermind WebApp faithfully recreates the essence of the classic game. The player's objective is to deduce the exact sequence of colors within a limited number of turns to crack the code randomly created by the app.
 
-Each turn, the player makes a guess by placing colored pegs in a row on the board. The app then provides feedback by placing smaller pegs, called 'key pegs,' next to the guess. These key pegs indicate how close the guess is to the secret code:
-- A black key peg signifies a correct color in the correct position;
-- A gray key peg indicates a correct color but in the wrong position;
-- No key peg means that none of the guessed colors are in the secret code.
+Each turn, the player makes a guess by placing colored "pegs" in a row on the board. The app then provides feedback by placing smaller "pegs", called "key pegs",' next to the guess. These key "pegs" indicate how close the guess is to the secret code:
+- A black key "peg" signifies a correct color in the correct position;
+- A gray key "peg" indicates a correct color but in the wrong position;
+- No key "peg" means that none of the guessed colors are in the secret code.
 
 Through a process of logical deduction and elimination, the player refines their guesses, using the feedback from previous attempts to narrow down the possibilities. The game continues until the player successfully guesses the exact sequence or exhausts their allotted number of turns.
 
 The player requires a combination of logical reasoning, pattern recognition, and a bit of luck to win the game.
 
-This game appeals to a wide range of players, from children acquiring fundamental deduction abilities to experienced strategists refining their mental agility."
+This game is suitable to a wide range of players, from children acquiring fundamental deduction abilities to experienced strategists refining their mental agility.
 
 ![Responsive Mockup](documentation/mockup.png)
 
@@ -72,21 +72,21 @@ This game appeals to a wide range of players, from children acquiring fundamenta
 
 ![Current Guess Row](documentation/gameboard.png)
 
-- __Current Peg__
-  - The circles on the gameboard symbolizes the pegs from the classic game as seen from the top.
+- __Current "Peg"__
+  - The circles on the gameboard symbolizes the "pegs" from the classic game as seen from the top.
 
-  - The selected peg (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous peg) is slightly enlarged, ensuring clear visual distinction from the other pegs and aiding the player in identifying the peg they are coloring.
-- This is how the row starts with the first peg automatically selected:
-![Current Peg automatically selected](documentation/current_peg_auto.png)
-- It is possible to click or touch any other peg on the active row to select it as well. On the image below the third peg from left to right has been manually selected:
-![Current Peg manually selected](documentation/current_peg_manual.png)
+  - The selected "peg" (chosen manually by clicking or tapping, or automatically at the start of a new row or when selecting a color for the previous "peg") is slightly enlarged, ensuring clear visual distinction from the other "pegs" and aiding the player in identifying the "peg" they are coloring.
+- This is how the row starts with the first "peg" automatically selected:
+![Current "peg" automatically selected](documentation/current_peg_auto.png)
+- It is possible to click or touch any other "peg" on the active row to select it as well. On the image below the third "peg" from left to right has been manually selected:
+![Current "Peg" manually selected](documentation/current_peg_manual.png)
 
 - __Result keys__ 
 
-  - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little pegs used as keys in the classic game when viewed from above.
+  - The result panel, displaying the computed keys, is aligned with the guess row for clear interpretation of the provided results. It consists of four small circles, symbolizing the little "pegs" used as keys in the classic game when viewed from above.
 
 Result  keys on the right side of the gameboard showing the computed result: black for the number of colors on the matching the position on the secret code and gray for the number of colors present on the secret code, but on the wrong place:
-![Result pegs](documentation/gameboard_win.png)
+![Result "pegs"](documentation/gameboard_win.png)
 
 - __Keys Interpretation Panel__
 
@@ -103,7 +103,7 @@ Result  keys on the right side of the gameboard showing the computed result: bla
 
 - __Instructions Button__
 
-  - "The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules."
+  - The player can easily access information on how to play the game by clicking the "Instructions" button, which opens a popup window containing the game rules.
 
 ![Instructions Button](documentation/instructions_btn.png)
 
@@ -127,7 +127,7 @@ All modals can be closed either pressing the button "Close" at the end or on the
 
 __Cursor Pointer__
 
-  - Cusror pointer has been used on button, pegs and colors for better UX
+  - Cusror pointer has been used on button, "pegs" and colors for better UX
 
 Example of pointer cursor:
 ![Pointer over color](documentation/pointer_example.png)
@@ -152,7 +152,7 @@ Example of pointer cursor:
     - Be able to easily find the instructions so that I can understand the game.
     - Be able to restart a new game at any time.
     - Easily select the colors I want to pick.
-    - Easily be able to change the color of any peg before submitting, but after having chosen the colors of the current row.
+    - Easily be able to change the color of any "peg" before submitting, but after having chosen the colors of the current row.
     - Understand the result keys after each round without having to check any other place.
 
 ## Design
@@ -178,7 +178,7 @@ Barlow Condensed example:
 
 ### Imagery
 
-The FavIcon image features a colored peg from the classic game:
+The FavIcon image features a colored "peg" from the classic game:
 
 ![FavIcon image](documentation/classic_peg_yellow.png)
 
@@ -260,15 +260,15 @@ During the test phase a few bugs were detected and corrected accordingly:
 1. The random color generation method permits color repetition, leading to incorrect results when a player's guess includes the same color multiple times. For instance, if a color appears only once in the secret array and one of the repeated colors chosen by the player happens to be correctly placed during the comparison, that color is erroneously counted as many times as it occurred plus one in the result. 
 To address this issue, I created a variable to keep track of all indexes had already been compared. For each element of the user's guess (arr2) that was not a perfect match, the fuction would search for its presence in the secret code (arr1) at different positions, checking the array of indexes that have been already checked, ensuring that the current position hasn't already been identified as a perfect match. This is descibed on the JavaScript code as a comment on the function checkResult(arr1, arr2) as well.
 
-2. When the "Start New Game" button was pressed, the active row wasn't the first row, but rather the one that was last played before pressing the button. This issue was fixed by implementing a "resetGame" function to delete configurations saved on the last played pegs.
+2. When the "Start New Game" button was pressed, the active row wasn't the first row, but rather the one that was last played before pressing the button. This issue was fixed by implementing a "resetGame" function to delete configurations saved on the last played "pegs".
 
-3. When the game started with a page reload, only the pegs on the current row were clickable, which was the intended behavior. However, after losing or playing until a certain row and restarting with the "Start New Game" button, the pegs of the previously played rows did not lose the ".selected" class and could also be chosen to be played with. To fix this issue, I added reassignments for variables that stored values to reset them in the function that runs after clicking on "Submit".
+3. When the game started with a page reload, only the "pegs" on the current row were clickable, which was the intended behavior. However, after losing or playing until a certain row and restarting with the "Start New Game" button, the "pegs" of the previously played rows did not lose the ".selected" class and could also be chosen to be played with. To fix this issue, I added reassignments for variables that stored values to reset them in the function that runs after clicking on "Submit".
 
-4. The pegs on the previously played rows retained the selected class on them. To address this, I had to remove the event listener on the "moveToNextRow" function.
+4. The "pegs" on the previously played rows retained the selected class on them. To address this, I had to remove the event listener on the "moveToNextRow" function.
 
 5. After winning, the color sequence was revealed, but the last played row remained active, and I could still press "Submit". Similarly, after losing, the same issue occurs, and I could still play. This issue was fixed by creating a "gameOver" function that removes attributes from the "guess pegs".
 
-6. After cleaning up and restructuring the code, an issue arose where the first "peg" of the current row wouldn't hold the "selected" class attribute, which allows for visualization of the active peg. To fix this, a thorough analysis of the entire code was conducted. It was discovered that the attribute was being added by one function but removed by setting some variables to clear upon moving to the next row. The fix was to move the function that handles the addition of the class attribute to the bottom of the tasks within the function that checks if the game proceeds after comparing the arrays. This ensured it was placed underneath the tasks that clear up the configurations on previous played "pegs".
+6. After cleaning up and restructuring the code, an issue arose where the first "peg" of the current row wouldn't hold the "selected" class attribute, which allows for visualization of the active "peg". To fix this, a thorough analysis of the entire code was conducted. It was discovered that the attribute was being added by one function but removed by setting some variables to clear upon moving to the next row. The fix was to move the function that handles the addition of the class attribute to the bottom of the tasks within the function that checks if the game proceeds after comparing the arrays. This ensured it was placed underneath the tasks that clear up the configurations on previous played "pegs".
 
 ## Unfixed Bugs
 
